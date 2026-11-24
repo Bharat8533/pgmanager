@@ -168,7 +168,7 @@ export const ExpenseCharts: React.FC<ExpenseChartsProps> = ({
                           boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
                         }}
                         itemStyle={{ color: "#C6F36B" }}
-                        formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, "Total Expense"]}
+                        formatter={(val: any) => [`₹${Number(val || 0).toLocaleString("en-IN")}`, "Total Expense"]}
                         labelStyle={{ color: "#9CA3AF", fontWeight: 600, marginBottom: "4px" }}
                       />
                       <Area
@@ -204,7 +204,7 @@ export const ExpenseCharts: React.FC<ExpenseChartsProps> = ({
                           color: "#FFFFFF",
                           fontSize: "12px",
                         }}
-                        formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, "Total Expense"]}
+                        formatter={(val: any) => [`₹${Number(val || 0).toLocaleString("en-IN")}`, "Total Expense"]}
                         cursor={{ fill: "#F4F5F2" }}
                       />
                       <Bar dataKey="amount" fill="#171A18" radius={[6, 6, 0, 0]}>
@@ -253,7 +253,7 @@ export const ExpenseCharts: React.FC<ExpenseChartsProps> = ({
                           color: "#FFF",
                           fontSize: "11px",
                         }}
-                        formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, "Cost"]}
+                        formatter={(val: any) => [`₹${Number(val || 0).toLocaleString("en-IN")}`, "Cost"]}
                       />
                       <Pie
                         data={categoryData}

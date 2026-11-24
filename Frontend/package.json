@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node -e \"const f=require('fs');const c=f.realpathSync.native(process.cwd());process.chdir(c);require('child_process').execSync('next dev', {stdio:'inherit', cwd:c})\"",
+    "build": "node -e \"const f=require('fs');const c=f.realpathSync.native(process.cwd());process.chdir(c);require('child_process').execSync('next build', {stdio:'inherit', cwd:c})\"",
+    "start": "node -e \"const f=require('fs');const c=f.realpathSync.native(process.cwd());process.chdir(c);require('child_process').execSync('next start', {stdio:'inherit', cwd:c})\"",
     "lint": "eslint"
   },
   "dependencies": {

@@ -90,33 +90,39 @@ export type PaymentType = "rent" | "security_deposit";
 
 export interface PaymentRecord {
   id: string;
-  invoiceNumber: string; // e.g. "INV-2026-104"
+  invoiceNumber?: string; // e.g. "INV-2026-104"
   residentId: string;
   residentName: string;
+  propertyId?: string;
   roomId: string;
-  roomNumber: string;
-  bedNumber: string;
+  roomNumber?: string;
+  bedNumber?: string;
   amount: number;
-  date: string;
+  date?: string;
   dueDate?: string;
   method?: PaymentMethod;
   status: PaymentStatus;
   type: PaymentType;
   daysOverdue?: number;
   notes?: string;
+  paymentDate?: string;
+  paymentMethod?: string;
+  transactionRef?: string;
 }
 
 export interface SecurityDepositRecord {
   id: string;
+  propertyId?: string;
   residentId: string;
   residentName: string;
   roomId: string;
-  roomNumber: string;
-  bedNumber: string;
+  roomNumber?: string;
+  bedNumber?: string;
   receivedAmount: number;
+  originalAmount?: number;
   receivedDate: string;
   adjustments: number; // e.g. damages or unbilled utilities
-  refunds: number;
+  refunds?: number;
   currentHeld: number; // receivedAmount - adjustments - refunds
   status: "held" | "partially_refunded" | "fully_refunded" | "forfeited";
 }
