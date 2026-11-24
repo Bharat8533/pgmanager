@@ -125,7 +125,7 @@ export const CollectionAnalytics: React.FC<CollectionAnalyticsProps> = ({
                       color: "#FFFFFF",
                       fontSize: "12px",
                     }}
-                    formatter={(val: number, name: string) => [`₹${val.toLocaleString("en-IN")}`, name]}
+                    formatter={(val: any, name: any) => [`₹${Number(val || 0).toLocaleString("en-IN")}`, String(name || "")]}
                   />
                   <Legend
                     verticalAlign="top"
@@ -162,7 +162,7 @@ export const CollectionAnalytics: React.FC<CollectionAnalyticsProps> = ({
                         color: "#FFF",
                         fontSize: "11px",
                       }}
-                      formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, "Collected"]}
+                      formatter={(val: any) => [`₹${Number(val || 0).toLocaleString("en-IN")}`, "Collected"]}
                     />
                     <Pie
                       data={methodData}

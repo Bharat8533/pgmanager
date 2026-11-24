@@ -684,9 +684,9 @@ export function RoomDetailsDrawer({
                           <tr key={d.id} className="hover:bg-purple-50/30">
                             <td className="p-3 font-bold text-brand-charcoal">{d.residentName}</td>
                             <td className="p-3 text-brand-muted">Bed {d.bedNumber}</td>
-                            <td className="p-3 font-semibold text-brand-charcoal">{formatINR(d.receivedAmount)}</td>
+                            <td className="p-3 font-semibold text-brand-charcoal">{formatINR(d.receivedAmount ?? 0)}</td>
                             <td className="p-3 text-brand-muted">{d.receivedDate}</td>
-                            <td className="p-3 text-brand-muted">{formatINR(d.adjustments)}</td>
+                            <td className="p-3 text-brand-muted">{formatINR(d.adjustments ?? 0)}</td>
                             <td className="p-3 font-black text-purple-800">{formatINR(d.currentHeld)}</td>
                           </tr>
                         ))}

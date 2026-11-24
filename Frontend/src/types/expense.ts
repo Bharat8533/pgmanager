@@ -25,6 +25,7 @@ export type PaymentMode =
   | "Cheque"
   | "Credit Card"
   | "Debit Card"
+  | "Debit / Credit Card"
   | "Other";
 
 export type DateFilterOption =
