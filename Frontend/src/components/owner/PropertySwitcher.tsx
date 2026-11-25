@@ -56,7 +56,7 @@ export function PropertySwitcher() {
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-72 rounded-xl bg-white border border-brand-border p-4 shadow-xl z-50 animate-fadeIn">
+          <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-24px)] max-w-[300px] sm:w-72 rounded-xl bg-white border border-brand-border p-4 shadow-xl z-50 animate-fadeIn">
             <div className="text-center py-2 space-y-2">
               <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mx-auto text-amber-700">
                 <Building className="w-5 h-5" />
@@ -111,18 +111,18 @@ export function PropertySwitcher() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg border border-brand-border bg-white hover:bg-brand-offwhite hover:border-[#CCD1C8] transition-all text-left shadow-2xs group"
+        className="flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1.5 rounded-xl border border-brand-border bg-white hover:bg-brand-offwhite hover:border-[#CCD1C8] transition-all text-left shadow-2xs group"
         aria-expanded={isOpen}
       >
-        <div className="w-7 h-7 rounded-md bg-brand-offwhite border border-brand-border flex items-center justify-center text-brand-charcoal flex-shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-brand-offwhite border border-brand-border flex items-center justify-center text-brand-charcoal flex-shrink-0">
           <Building2 className="w-4 h-4 text-brand-charcoal" />
         </div>
 
-        <div className="flex flex-col min-w-0 pr-1">
-          <span className="text-xs font-semibold text-brand-charcoal truncate max-w-[140px] sm:max-w-[180px]">
+        <div className="flex flex-col min-w-0 pr-0.5 sm:pr-1">
+          <span className="text-xs font-semibold text-brand-charcoal truncate max-w-[85px] sm:max-w-[180px]">
             {selectedProperty.name}
           </span>
-          <span className="text-[10px] text-brand-muted flex items-center gap-1 truncate">
+          <span className="text-[10px] text-brand-muted hidden sm:flex items-center gap-1 truncate">
             <MapPin className="w-2.5 h-2.5 text-brand-muted flex-shrink-0" />
             <span className="truncate">{selectedProperty.city}</span>
           </span>
@@ -137,7 +137,7 @@ export function PropertySwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-2 animate-fadeIn">
+        <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-24px)] max-w-[320px] sm:w-80 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-2 animate-fadeIn">
           {/* Dropdown Header */}
           <div className="px-3 py-2 border-b border-brand-border/70 flex items-center justify-between">
             <div>

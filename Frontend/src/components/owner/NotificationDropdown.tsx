@@ -48,7 +48,7 @@ export function NotificationDropdown() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-9 h-9 rounded-lg border border-brand-border bg-white hover:bg-brand-offwhite flex items-center justify-center text-brand-charcoal transition-colors shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-obsidian"
+        className="relative w-9 h-9 shrink-0 rounded-xl border border-brand-border bg-white hover:bg-brand-offwhite flex items-center justify-center text-brand-charcoal transition-colors shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-obsidian active:scale-95"
         aria-label="Notifications"
         aria-expanded={isOpen}
       >
@@ -61,7 +61,7 @@ export function NotificationDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-2 animate-fadeIn">
+        <div className="absolute right-0 mt-2 w-[calc(100vw-24px)] max-w-sm sm:w-96 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-2 animate-fadeIn">
           {/* Header */}
           <div className="px-3 py-2.5 border-b border-brand-border/70 flex items-center justify-between">
             <div className="flex items-center gap-2">

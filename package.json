@@ -1,0 +1,11 @@
+{
+  "name": "pgmanager",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node -e \"const r = require('fs').realpathSync.native('./Frontend'); process.chdir(r); require('child_process').execSync('npm run dev', {stdio: 'inherit', cwd: r})\"",
+    "build": "node -e \"const r = require('fs').realpathSync.native('./Frontend'); process.chdir(r); require('child_process').execSync('npm run build', {stdio: 'inherit', cwd: r})\"",
+    "start": "node -e \"const r = require('fs').realpathSync.native('./Frontend'); process.chdir(r); require('child_process').execSync('npm run start', {stdio: 'inherit', cwd: r})\"",
+    "lint": "node -e \"const r = require('fs').realpathSync.native('./Frontend'); process.chdir(r); require('child_process').execSync('npm run lint', {stdio: 'inherit', cwd: r})\""
+  }
+}

@@ -41,7 +41,7 @@ export function ProfileDropdown() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 p-1 pl-1.5 pr-2 rounded-lg border border-brand-border bg-white hover:bg-brand-offwhite transition-all shadow-2xs group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-obsidian"
+        className="flex items-center gap-1.5 sm:gap-2 p-1 pl-1 sm:pl-1.5 pr-1.5 sm:pr-2 shrink-0 rounded-xl border border-brand-border bg-white hover:bg-brand-offwhite transition-all shadow-2xs group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-obsidian active:scale-95"
         aria-label="Owner account menu"
         aria-expanded={isOpen}
       >
@@ -63,7 +63,7 @@ export function ProfileDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-1.5 animate-fadeIn">
+        <div className="absolute right-0 mt-2 w-[calc(100vw-24px)] max-w-xs sm:w-64 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-1.5 animate-fadeIn">
           {/* User details header */}
           <div className="p-2.5 pb-3 border-b border-brand-border/70">
             <p className="text-xs font-bold text-brand-charcoal">{ownerProfile.name}</p>
