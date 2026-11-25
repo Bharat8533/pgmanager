@@ -229,42 +229,44 @@ export function ResidentDetailsModal({
             {residentPayments.length === 0 ? (
               <p className="text-xs text-brand-muted italic">No payment transactions recorded yet.</p>
             ) : (
-              <div className="border border-brand-border rounded-xl overflow-hidden">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
-                    <tr>
-                      <th className="p-2.5">Date</th>
-                      <th className="p-2.5">Invoice</th>
-                      <th className="p-2.5">Amount</th>
-                      <th className="p-2.5">Method</th>
-                      <th className="p-2.5">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {residentPayments.map((p) => (
-                      <tr key={p.id} className="hover:bg-slate-50/60">
-                        <td className="p-2.5 font-medium">{p.date}</td>
-                        <td className="p-2.5 text-brand-muted font-mono">{p.invoiceNumber}</td>
-                        <td className="p-2.5 font-bold text-brand-charcoal">{formatINR(p.amount)}</td>
-                        <td className="p-2.5 text-brand-muted">{p.method || "Direct"}</td>
-                        <td className="p-2.5">
-                          <span
-                            className={cn(
-                              "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase",
-                              p.status === "completed"
-                                ? "bg-emerald-50 text-emerald-800"
-                                : p.status === "pending"
-                                ? "bg-amber-50 text-amber-800"
-                                : "bg-rose-50 text-rose-800"
-                            )}
-                          >
-                            {p.status}
-                          </span>
-                        </td>
+              <div className="border border-brand-border rounded-xl overflow-hidden shadow-2xs">
+                <div className="overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x">
+                  <table className="w-full text-left text-xs min-w-[500px]">
+                    <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
+                      <tr>
+                        <th className="p-2.5 whitespace-nowrap">Date</th>
+                        <th className="p-2.5 whitespace-nowrap">Invoice</th>
+                        <th className="p-2.5 whitespace-nowrap text-right">Amount</th>
+                        <th className="p-2.5 whitespace-nowrap">Method</th>
+                        <th className="p-2.5 whitespace-nowrap text-center">Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {residentPayments.map((p) => (
+                        <tr key={p.id} className="hover:bg-slate-50/60 transition-colors">
+                          <td className="p-2.5 font-medium whitespace-nowrap">{p.date}</td>
+                          <td className="p-2.5 text-brand-muted font-mono whitespace-nowrap">{p.invoiceNumber}</td>
+                          <td className="p-2.5 font-bold text-brand-charcoal whitespace-nowrap text-right">{formatINR(p.amount)}</td>
+                          <td className="p-2.5 text-brand-muted whitespace-nowrap">{p.method || "Direct"}</td>
+                          <td className="p-2.5 whitespace-nowrap text-center">
+                            <span
+                              className={cn(
+                                "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase",
+                                p.status === "completed"
+                                  ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                                  : p.status === "pending"
+                                  ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                  : "bg-rose-50 text-rose-800 border border-rose-200"
+                              )}
+                            >
+                              {p.status}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </div>

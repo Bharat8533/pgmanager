@@ -23,6 +23,12 @@ import {
   IndianRupee,
   Calendar,
   Sparkles,
+  Receipt,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  LayoutGrid,
+  List,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -53,6 +59,21 @@ export function RoomDetailsDrawer({
   const [activeTab, setActiveTab] = useState<"overview" | "residents" | "bookings" | "payments">("overview");
   const [bookingSearch, setBookingSearch] = useState("");
   const [bookingStatusFilter, setBookingStatusFilter] = useState<string>("all");
+  const [bookingViewMode, setBookingViewMode] = useState<"table" | "card">("table");
+  const [paymentViewMode, setPaymentViewMode] = useState<"table" | "card">("table");
+
+  const bookingTableRef = React.useRef<HTMLDivElement>(null);
+  const rentTableRef = React.useRef<HTMLDivElement>(null);
+  const depositTableRef = React.useRef<HTMLDivElement>(null);
+
+  const scrollContainer = (ref: React.RefObject<HTMLDivElement | null>, direction: "left" | "right") => {
+    if (ref.current) {
+      ref.current.scrollBy({
+        left: direction === "left" ? -240 : 240,
+        behavior: "smooth",
+      });
+    }
+  };
 
   if (!isOpen || !room) return null;
 
@@ -86,7 +107,7 @@ export function RoomDetailsDrawer({
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
       {/* Drawer Panel */}
-      <div className="relative w-full max-w-2xl sm:max-w-3xl bg-white h-screen shadow-2xl flex flex-col justify-between z-10 animate-slideInRight overflow-hidden">
+      <div className="relative w-full max-w-2xl sm:max-w-3xl bg-white h-screen shadow-2xl flex flex-col justify-between z-10 animate-slideInRight overflow-hidden min-w-0">
         {/* Top Drawer Header */}
         <div className="bg-brand-obsidian text-white px-5 sm:px-6 py-4 flex-shrink-0 flex items-center justify-between border-b border-white/10">
           <div className="flex items-center gap-3 min-w-0">
@@ -130,7 +151,7 @@ export function RoomDetailsDrawer({
         </div>
 
         {/* Tab Navigation Bar */}
-        <div className="bg-slate-50 border-b border-brand-border px-4 sm:px-6 flex items-center gap-1 sm:gap-3 overflow-x-auto no-scrollbar flex-shrink-0">
+        <div className="bg-slate-50 border-b border-brand-border px-4 sm:px-6 flex items-center gap-1 sm:gap-3 overflow-x-auto no-scrollbar flex-shrink-0 w-full min-w-0">
           <button
             type="button"
             onClick={() => setActiveTab("overview")}
@@ -189,7 +210,7 @@ export function RoomDetailsDrawer({
         </div>
 
         {/* Tab Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 text-xs text-brand-charcoal">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 space-y-5 text-xs text-brand-charcoal w-full min-w-0 max-w-full">
           {/* =========================================================================
               TAB 1: OVERVIEW
              ========================================================================= */}
@@ -502,31 +523,67 @@ export function RoomDetailsDrawer({
               TAB 3: BOOKING HISTORY
              ========================================================================= */}
           {activeTab === "bookings" && (
-            <div className="space-y-3.5">
+            <div className="space-y-3.5 w-full min-w-0 max-w-full">
               {/* Filter / Search within bookings */}
-              <div className="flex items-center gap-2">
-                <div className="relative flex-1">
-                  <Search className="w-3.5 h-3.5 text-brand-muted absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={bookingSearch}
-                    onChange={(e) => setBookingSearch(e.target.value)}
-                    placeholder="Search by resident name or booking code..."
-                    className="w-full h-9 pl-8 pr-3 text-xs bg-slate-50 rounded-xl border border-brand-border focus:outline-none focus:ring-1 focus:ring-brand-obsidian"
-                  />
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <div className="relative flex-1 min-w-0">
+                    <Search className="w-3.5 h-3.5 text-brand-muted absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      value={bookingSearch}
+                      onChange={(e) => setBookingSearch(e.target.value)}
+                      placeholder="Search bookings..."
+                      className="w-full h-9 pl-8 pr-3 text-xs bg-slate-50 rounded-xl border border-brand-border focus:outline-none focus:ring-1 focus:ring-brand-obsidian"
+                    />
+                  </div>
+
+                  <select
+                    value={bookingStatusFilter}
+                    onChange={(e) => setBookingStatusFilter(e.target.value)}
+                    className="h-9 px-2.5 text-xs bg-slate-50 rounded-xl border border-brand-border text-brand-charcoal font-medium cursor-pointer flex-shrink-0"
+                  >
+                    <option value="all">All Statuses</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="pending">Pending</option>
+                    <option value="converted">Converted</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
                 </div>
 
-                <select
-                  value={bookingStatusFilter}
-                  onChange={(e) => setBookingStatusFilter(e.target.value)}
-                  className="h-9 px-2.5 text-xs bg-slate-50 rounded-xl border border-brand-border text-brand-charcoal font-medium cursor-pointer"
-                >
-                  <option value="all">All Statuses</option>
-                  <option value="confirmed">Confirmed</option>
-                  <option value="pending">Pending</option>
-                  <option value="converted">Converted</option>
-                  <option value="cancelled">Cancelled</option>
-                </select>
+                {/* View Switcher (Table / Card) */}
+                <div className="flex items-center justify-end gap-1.5 self-end sm:self-auto">
+                  <div className="bg-slate-100 p-0.5 rounded-lg flex items-center border border-slate-200">
+                    <button
+                      type="button"
+                      onClick={() => setBookingViewMode("table")}
+                      className={cn(
+                        "px-2 py-1 rounded-md text-[11px] font-bold flex items-center gap-1 transition-colors",
+                        bookingViewMode === "table"
+                          ? "bg-white text-brand-charcoal shadow-2xs"
+                          : "text-brand-muted hover:text-brand-charcoal"
+                      )}
+                      title="Table View"
+                    >
+                      <List className="w-3.5 h-3.5" />
+                      <span>Table</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setBookingViewMode("card")}
+                      className={cn(
+                        "px-2 py-1 rounded-md text-[11px] font-bold flex items-center gap-1 transition-colors",
+                        bookingViewMode === "card"
+                          ? "bg-white text-brand-charcoal shadow-2xs"
+                          : "text-brand-muted hover:text-brand-charcoal"
+                      )}
+                      title="Cards View"
+                    >
+                      <LayoutGrid className="w-3.5 h-3.5" />
+                      <span>Cards</span>
+                    </button>
+                  </div>
+                </div>
               </div>
 
               {filteredBookings.length === 0 ? (
@@ -537,58 +594,180 @@ export function RoomDetailsDrawer({
                     Advance tokens and reservations for this room will appear here.
                   </p>
                 </div>
-              ) : (
-                <div className="border border-brand-border rounded-2xl overflow-hidden shadow-2xs">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
-                      <tr>
-                        <th className="p-3">Booking Code</th>
-                        <th className="p-3">Resident</th>
-                        <th className="p-3">Bed</th>
-                        <th className="p-3">Check-In Date</th>
-                        <th className="p-3">Token Advance</th>
-                        <th className="p-3">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {filteredBookings.map((b) => (
-                        <tr key={b.id} className="hover:bg-slate-50/60">
-                          <td className="p-3 font-mono font-bold text-brand-charcoal">
-                            {b.bookingCode}
-                          </td>
-                          <td className="p-3">
-                            <span className="font-bold text-brand-charcoal block">{b.residentName}</span>
-                            <span className="text-[10px] text-brand-muted">{b.phone}</span>
-                          </td>
-                          <td className="p-3 font-medium text-brand-muted">
-                            Bed {b.bedNumber}
-                          </td>
-                          <td className="p-3 font-medium text-brand-charcoal">
-                            {b.checkInDate}
-                          </td>
-                          <td className="p-3 font-bold text-emerald-700">
+              ) : bookingViewMode === "card" ? (
+                /* Card View (100% visible on any screen with no horizontal scrolling required) */
+                <div className="space-y-3">
+                  {filteredBookings.map((b) => (
+                    <div
+                      key={b.id}
+                      className="bg-white p-3.5 rounded-2xl border border-brand-border space-y-2.5 shadow-2xs"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono font-bold text-brand-charcoal text-xs bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
+                          {b.bookingCode}
+                        </span>
+                        <span
+                          className={cn(
+                            "px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase",
+                            b.status === "confirmed"
+                              ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                              : b.status === "converted"
+                              ? "bg-blue-50 text-blue-800 border border-blue-200"
+                              : b.status === "pending"
+                              ? "bg-amber-50 text-amber-800 border border-amber-200"
+                              : "bg-rose-50 text-rose-800 border border-rose-200"
+                          )}
+                        >
+                          {b.status}
+                        </span>
+                      </div>
+
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0">
+                          <h4 className="font-bold text-brand-charcoal text-xs">
+                            {b.residentName}
+                          </h4>
+                          <p className="text-[10px] text-brand-muted">
+                            {b.phone}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[10px] text-brand-muted block">Token Advance</span>
+                          <span className="font-extrabold text-emerald-700 text-xs">
                             {formatINR(b.advanceAmount)}
-                          </td>
-                          <td className="p-3">
-                            <span
-                              className={cn(
-                                "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase",
-                                b.status === "confirmed"
-                                  ? "bg-emerald-50 text-emerald-800"
-                                  : b.status === "converted"
-                                  ? "bg-blue-50 text-blue-800"
-                                  : b.status === "pending"
-                                  ? "bg-amber-50 text-amber-800"
-                                  : "bg-rose-50 text-rose-800"
-                              )}
-                            >
-                              {b.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="pt-2 border-t border-dashed border-slate-100 flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-2 text-[11px] text-brand-muted">
+                          <span className="font-bold text-brand-charcoal">Bed {b.bedNumber}</span>
+                          <span>•</span>
+                          <span>Check-in: {b.checkInDate}</span>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const match = residents.find(
+                              (r) => r.name.toLowerCase() === b.residentName.toLowerCase()
+                            );
+                            if (match) onSelectResident(match.id);
+                          }}
+                          className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-brand-obsidian text-brand-lime text-[11px] font-bold shadow-2xs hover:bg-black transition-colors"
+                        >
+                          <Eye className="w-3 h-3 text-brand-lime" />
+                          <span>View Details</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                /* Table View with guaranteed overflow scroll & Quick Arrow Navigation */
+                <div className="space-y-2 w-full min-w-0 max-w-full">
+                  {/* Scroll Bar Controls */}
+                  <div className="flex items-center justify-between gap-2 px-1 text-xs">
+                    <span className="text-[11px] text-brand-muted font-medium flex items-center gap-1">
+                      <span>Swipe table or use arrows to scroll:</span>
+                    </span>
+
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => scrollContainer(bookingTableRef, "left")}
+                        className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-brand-charcoal flex items-center gap-1 text-[11px] font-bold transition-all active:scale-95 shadow-2xs"
+                        title="Scroll Left"
+                      >
+                        <ChevronLeft className="w-4 h-4 text-brand-charcoal" />
+                        <span className="hidden sm:inline">Left</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollContainer(bookingTableRef, "right")}
+                        className="p-1.5 px-2 rounded-lg bg-brand-obsidian hover:bg-brand-obsidian-hover text-brand-lime flex items-center gap-1 text-[11px] font-bold transition-all active:scale-95 shadow-2xs"
+                        title="Scroll Right"
+                      >
+                        <span className="hidden sm:inline">Right</span>
+                        <ChevronRight className="w-4 h-4 text-brand-lime" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="border border-brand-border rounded-2xl overflow-hidden shadow-2xs w-full min-w-0 max-w-full bg-white">
+                    <div
+                      ref={bookingTableRef}
+                      className="overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x w-full min-w-0 max-w-full pb-2"
+                      style={{ WebkitOverflowScrolling: "touch" }}
+                    >
+                      <table className="w-full text-left text-xs min-w-[660px]">
+                        <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
+                          <tr>
+                            <th className="p-3 whitespace-nowrap">Booking Code</th>
+                            <th className="p-3 whitespace-nowrap">Resident</th>
+                            <th className="p-3 whitespace-nowrap">Bed</th>
+                            <th className="p-3 whitespace-nowrap">Check-In Date</th>
+                            <th className="p-3 whitespace-nowrap text-right">Token Advance</th>
+                            <th className="p-3 whitespace-nowrap text-center">Status</th>
+                            <th className="p-3 whitespace-nowrap text-right">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {filteredBookings.map((b) => (
+                            <tr key={b.id} className="hover:bg-slate-50/60 transition-colors">
+                              <td className="p-3 font-mono font-bold text-brand-charcoal whitespace-nowrap">
+                                {b.bookingCode}
+                              </td>
+                              <td className="p-3 whitespace-nowrap">
+                                <span className="font-bold text-brand-charcoal block">{b.residentName}</span>
+                                <span className="text-[10px] text-brand-muted">{b.phone}</span>
+                              </td>
+                              <td className="p-3 font-medium text-brand-muted whitespace-nowrap">
+                                Bed {b.bedNumber}
+                              </td>
+                              <td className="p-3 font-medium text-brand-charcoal whitespace-nowrap">
+                                {b.checkInDate}
+                              </td>
+                              <td className="p-3 font-bold text-emerald-700 whitespace-nowrap text-right">
+                                {formatINR(b.advanceAmount)}
+                              </td>
+                              <td className="p-3 whitespace-nowrap text-center">
+                                <span
+                                  className={cn(
+                                    "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase",
+                                    b.status === "confirmed"
+                                      ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                                      : b.status === "converted"
+                                      ? "bg-blue-50 text-blue-800 border border-blue-200"
+                                      : b.status === "pending"
+                                      ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                      : "bg-rose-50 text-rose-800 border border-rose-200"
+                                  )}
+                                >
+                                  {b.status}
+                                </span>
+                              </td>
+                              <td className="p-3 whitespace-nowrap text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const match = residents.find(
+                                      (r) => r.name.toLowerCase() === b.residentName.toLowerCase()
+                                    );
+                                    if (match) onSelectResident(match.id);
+                                  }}
+                                  className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-brand-charcoal text-[11px] font-bold transition-colors shadow-2xs"
+                                >
+                                  <Eye className="w-3.5 h-3.5 text-blue-600" />
+                                  <span>View Details</span>
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -598,100 +777,276 @@ export function RoomDetailsDrawer({
               TAB 4: PAYMENTS & DEPOSITS
              ========================================================================= */}
           {activeTab === "payments" && (
-            <div className="space-y-5">
+            <div className="space-y-5 w-full min-w-0 max-w-full">
               {/* Rent Payment History */}
-              <div>
-                <h4 className="font-extrabold text-brand-charcoal uppercase text-[10px] tracking-wider text-brand-muted mb-2">
-                  Operating Rent Collections
-                </h4>
+              <div className="w-full min-w-0 max-w-full space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-extrabold text-brand-charcoal uppercase text-[10px] tracking-wider text-brand-muted">
+                      Operating Rent Collections
+                    </h4>
+                  </div>
+
+                  {/* Scroll & View Controls */}
+                  <div className="flex items-center gap-2 self-end sm:self-auto">
+                    {/* View Switcher */}
+                    <div className="bg-slate-100 p-0.5 rounded-lg flex items-center border border-slate-200">
+                      <button
+                        type="button"
+                        onClick={() => setPaymentViewMode("table")}
+                        className={cn(
+                          "px-2 py-0.5 rounded-md text-[10px] font-bold flex items-center gap-1 transition-colors",
+                          paymentViewMode === "table"
+                            ? "bg-white text-brand-charcoal shadow-2xs"
+                            : "text-brand-muted hover:text-brand-charcoal"
+                        )}
+                        title="Table View"
+                      >
+                        <List className="w-3 h-3" />
+                        <span>Table</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPaymentViewMode("card")}
+                        className={cn(
+                          "px-2 py-0.5 rounded-md text-[10px] font-bold flex items-center gap-1 transition-colors",
+                          paymentViewMode === "card"
+                            ? "bg-white text-brand-charcoal shadow-2xs"
+                            : "text-brand-muted hover:text-brand-charcoal"
+                        )}
+                        title="Cards View"
+                      >
+                        <LayoutGrid className="w-3 h-3" />
+                        <span>Cards</span>
+                      </button>
+                    </div>
+
+                    {paymentViewMode === "table" && (
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() => scrollContainer(rentTableRef, "left")}
+                          className="p-1 rounded-md bg-slate-100 hover:bg-slate-200 border border-slate-200 text-brand-charcoal"
+                          title="Scroll Left"
+                        >
+                          <ChevronLeft className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => scrollContainer(rentTableRef, "right")}
+                          className="p-1 rounded-md bg-brand-obsidian hover:bg-brand-obsidian-hover text-brand-lime"
+                          title="Scroll Right"
+                        >
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
                 {payments.length === 0 ? (
                   <p className="text-xs text-brand-muted italic py-3">No rent collection records found.</p>
+                ) : paymentViewMode === "card" ? (
+                  /* Payments Card View */
+                  <div className="space-y-2.5">
+                    {payments.map((p) => (
+                      <div
+                        key={p.id}
+                        className="bg-white p-3 rounded-xl border border-brand-border space-y-2 shadow-2xs"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-mono text-[11px] text-brand-muted font-bold">
+                            {p.invoiceNumber}
+                          </span>
+                          <span
+                            className={cn(
+                              "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase",
+                              p.status === "completed"
+                                ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                                : p.status === "pending"
+                                ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                : "bg-rose-50 text-rose-800 border border-rose-200"
+                            )}
+                          >
+                            {p.status}
+                          </span>
+                        </div>
+
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <p className="font-bold text-brand-charcoal text-xs">{p.residentName}</p>
+                            <p className="text-[10px] text-brand-muted">Bed {p.bedNumber} • {p.date}</p>
+                          </div>
+                          <div className="text-right">
+                            <span className="font-black text-brand-charcoal text-sm block">
+                              {formatINR(p.amount)}
+                            </span>
+                            <span className="text-[10px] text-brand-muted">{p.method || "Direct"}</span>
+                          </div>
+                        </div>
+
+                        <div className="pt-2 border-t border-dashed border-slate-100 flex items-center justify-end">
+                          <button
+                            type="button"
+                            onClick={() => onSelectResident(p.residentId)}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-brand-charcoal text-[11px] font-bold transition-colors"
+                          >
+                            <Receipt className="w-3 h-3 text-emerald-600" />
+                            <span>View Receipt</span>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="border border-brand-border rounded-2xl overflow-hidden shadow-2xs">
-                    <table className="w-full text-left text-xs">
-                      <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
-                        <tr>
-                          <th className="p-3">Date</th>
-                          <th className="p-3">Resident</th>
-                          <th className="p-3">Invoice</th>
-                          <th className="p-3">Amount</th>
-                          <th className="p-3">Method</th>
-                          <th className="p-3">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100">
-                        {payments.map((p) => (
-                          <tr key={p.id} className="hover:bg-slate-50/60">
-                            <td className="p-3 font-medium text-brand-charcoal">{p.date}</td>
-                            <td className="p-3">
-                              <span className="font-bold text-brand-charcoal block">{p.residentName}</span>
-                              <span className="text-[10px] text-brand-muted">Bed {p.bedNumber}</span>
-                            </td>
-                            <td className="p-3 font-mono text-brand-muted">{p.invoiceNumber}</td>
-                            <td className="p-3 font-bold text-brand-charcoal">{formatINR(p.amount)}</td>
-                            <td className="p-3 text-brand-muted">{p.method || "Direct"}</td>
-                            <td className="p-3">
-                              <span
-                                className={cn(
-                                  "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase",
-                                  p.status === "completed"
-                                    ? "bg-emerald-50 text-emerald-800"
-                                    : p.status === "pending"
-                                    ? "bg-amber-50 text-amber-800"
-                                    : "bg-rose-50 text-rose-800"
-                                )}
-                              >
-                                {p.status}
-                              </span>
-                            </td>
+                  /* Payments Table View with scroll buttons */
+                  <div className="border border-brand-border rounded-2xl overflow-hidden shadow-2xs w-full min-w-0 max-w-full bg-white">
+                    <div
+                      ref={rentTableRef}
+                      className="overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x w-full min-w-0 max-w-full pb-2"
+                      style={{ WebkitOverflowScrolling: "touch" }}
+                    >
+                      <table className="w-full text-left text-xs min-w-[640px]">
+                        <thead className="bg-slate-50 border-b border-brand-border text-[10px] font-bold uppercase text-brand-muted">
+                          <tr>
+                            <th className="p-3 whitespace-nowrap">Date</th>
+                            <th className="p-3 whitespace-nowrap">Resident</th>
+                            <th className="p-3 whitespace-nowrap">Invoice</th>
+                            <th className="p-3 whitespace-nowrap text-right">Amount</th>
+                            <th className="p-3 whitespace-nowrap">Method</th>
+                            <th className="p-3 whitespace-nowrap text-center">Status</th>
+                            <th className="p-3 whitespace-nowrap text-right">Action</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {payments.map((p) => (
+                            <tr key={p.id} className="hover:bg-slate-50/60 transition-colors">
+                              <td className="p-3 font-medium text-brand-charcoal whitespace-nowrap">{p.date}</td>
+                              <td className="p-3 whitespace-nowrap">
+                                <span className="font-bold text-brand-charcoal block">{p.residentName}</span>
+                                <span className="text-[10px] text-brand-muted">Bed {p.bedNumber}</span>
+                              </td>
+                              <td className="p-3 font-mono text-brand-muted whitespace-nowrap">{p.invoiceNumber}</td>
+                              <td className="p-3 font-bold text-brand-charcoal whitespace-nowrap text-right">{formatINR(p.amount)}</td>
+                              <td className="p-3 text-brand-muted whitespace-nowrap">{p.method || "Direct"}</td>
+                              <td className="p-3 whitespace-nowrap text-center">
+                                <span
+                                  className={cn(
+                                    "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase",
+                                    p.status === "completed"
+                                      ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                                      : p.status === "pending"
+                                      ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                      : "bg-rose-50 text-rose-800 border border-rose-200"
+                                  )}
+                                >
+                                  {p.status}
+                                </span>
+                              </td>
+                              <td className="p-3 whitespace-nowrap text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => onSelectResident(p.residentId)}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-brand-charcoal text-[11px] font-bold transition-colors shadow-2xs"
+                                >
+                                  <Receipt className="w-3.5 h-3.5 text-emerald-600" />
+                                  <span>Receipt</span>
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </div>
 
               {/* Security Deposits Ledger (STRICTLY ISOLATED FROM RENT REVENUE) */}
-              <div className="pt-2 border-t border-brand-border">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-extrabold text-brand-charcoal uppercase text-[10px] tracking-wider text-purple-800 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-purple-700" />
-                    <span>Security Deposits Held (Separate Escrow Liability)</span>
-                  </h4>
-                  <span className="text-xs font-black text-purple-800 bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-full">
-                    Total Held: {formatINR(financial.securityDepositsHeld)}
-                  </span>
+              <div className="pt-2 border-t border-brand-border w-full min-w-0 max-w-full space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-purple-700 flex-shrink-0" />
+                    <h4 className="font-extrabold text-brand-charcoal uppercase text-[10px] tracking-wider text-purple-800">
+                      Security Deposits Held (Separate Escrow Liability)
+                    </h4>
+                  </div>
+                  <div className="flex items-center gap-2 self-start sm:self-auto">
+                    <span className="text-xs font-black text-purple-800 bg-purple-50 border border-purple-200 px-2.5 py-0.5 rounded-full whitespace-nowrap">
+                      Total Held: {formatINR(financial.securityDepositsHeld)}
+                    </span>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => scrollContainer(depositTableRef, "left")}
+                        className="p-1 rounded-md bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-900"
+                        title="Scroll Left"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => scrollContainer(depositTableRef, "right")}
+                        className="p-1 rounded-md bg-purple-900 hover:bg-purple-950 text-white"
+                        title="Scroll Right"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 {deposits.length === 0 ? (
                   <p className="text-xs text-brand-muted italic py-3">No security deposits on file for this room.</p>
                 ) : (
-                  <div className="border border-purple-200/80 rounded-2xl overflow-hidden shadow-2xs">
-                    <table className="w-full text-left text-xs">
-                      <thead className="bg-purple-50/60 border-b border-purple-200/80 text-[10px] font-bold uppercase text-purple-900">
-                        <tr>
-                          <th className="p-3">Resident</th>
-                          <th className="p-3">Bed</th>
-                          <th className="p-3">Received Amount</th>
-                          <th className="p-3">Deposit Date</th>
-                          <th className="p-3">Adjustments</th>
-                          <th className="p-3">Current Balance Held</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-purple-100">
-                        {deposits.map((d) => (
-                          <tr key={d.id} className="hover:bg-purple-50/30">
-                            <td className="p-3 font-bold text-brand-charcoal">{d.residentName}</td>
-                            <td className="p-3 text-brand-muted">Bed {d.bedNumber}</td>
-                            <td className="p-3 font-semibold text-brand-charcoal">{formatINR(d.receivedAmount ?? 0)}</td>
-                            <td className="p-3 text-brand-muted">{d.receivedDate}</td>
-                            <td className="p-3 text-brand-muted">{formatINR(d.adjustments ?? 0)}</td>
-                            <td className="p-3 font-black text-purple-800">{formatINR(d.currentHeld)}</td>
+                  <div className="border border-purple-200/80 rounded-2xl overflow-hidden shadow-2xs w-full min-w-0 max-w-full bg-white">
+                    <div
+                      ref={depositTableRef}
+                      className="overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x w-full min-w-0 max-w-full pb-2"
+                      style={{ WebkitOverflowScrolling: "touch" }}
+                    >
+                      <table className="w-full text-left text-xs min-w-[700px]">
+                        <thead className="bg-purple-50/60 border-b border-purple-200/80 text-[10px] font-bold uppercase text-purple-900">
+                          <tr>
+                            <th className="p-3 whitespace-nowrap">Resident</th>
+                            <th className="p-3 whitespace-nowrap">Bed</th>
+                            <th className="p-3 whitespace-nowrap text-right">Received Amount</th>
+                            <th className="p-3 whitespace-nowrap">Deposit Date</th>
+                            <th className="p-3 whitespace-nowrap text-right">Adjustments</th>
+                            <th className="p-3 whitespace-nowrap text-right">Current Balance Held</th>
+                            <th className="p-3 whitespace-nowrap text-center">Status</th>
+                            <th className="p-3 whitespace-nowrap text-right">Action</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody className="divide-y divide-purple-100">
+                          {deposits.map((d) => (
+                            <tr key={d.id} className="hover:bg-purple-50/30 transition-colors">
+                              <td className="p-3 font-bold text-brand-charcoal whitespace-nowrap">{d.residentName}</td>
+                              <td className="p-3 text-brand-muted whitespace-nowrap">Bed {d.bedNumber}</td>
+                              <td className="p-3 font-semibold text-brand-charcoal whitespace-nowrap text-right">{formatINR(d.receivedAmount ?? 0)}</td>
+                              <td className="p-3 text-brand-muted whitespace-nowrap">{d.receivedDate}</td>
+                              <td className="p-3 text-brand-muted whitespace-nowrap text-right">{formatINR(d.adjustments ?? 0)}</td>
+                              <td className="p-3 font-black text-purple-800 whitespace-nowrap text-right">{formatINR(d.currentHeld)}</td>
+                              <td className="p-3 whitespace-nowrap text-center">
+                                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-purple-50 text-purple-800 border border-purple-200">
+                                  Escrow Held
+                                </span>
+                              </td>
+                              <td className="p-3 whitespace-nowrap text-right">
+                                <button
+                                  type="button"
+                                  onClick={() => onSelectResident(d.residentId)}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 text-[11px] font-bold transition-colors shadow-2xs"
+                                >
+                                  <ShieldCheck className="w-3.5 h-3.5 text-purple-700" />
+                                  <span>Ledger</span>
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
                 <p className="text-[10px] text-brand-muted italic mt-1.5">
