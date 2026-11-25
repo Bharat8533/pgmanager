@@ -63,7 +63,15 @@ export function ProfileDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-[calc(100vw-24px)] max-w-xs sm:w-64 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-1.5 animate-fadeIn">
+        <>
+          {/* Mobile backdrop */}
+          <div
+            className="fixed inset-0 z-40 bg-black/25 sm:hidden animate-fadeIn"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+
+          <div className="fixed left-3 right-3 top-16 max-w-xs mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-64 sm:max-w-none rounded-2xl bg-white border border-brand-border shadow-2xl p-1.5 animate-fadeIn">
           {/* User details header */}
           <div className="p-2.5 pb-3 border-b border-brand-border/70">
             <p className="text-xs font-bold text-brand-charcoal">{ownerProfile.name}</p>
@@ -118,7 +126,8 @@ export function ProfileDropdown() {
               <span>Log out</span>
             </button>
           </div>
-        </div>
+          </div>
+        </>
       )}
     </div>
   );
