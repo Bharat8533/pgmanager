@@ -66,7 +66,7 @@ export function ProfileDropdown() {
         <>
           {/* Mobile backdrop */}
           <div
-            className="fixed inset-0 z-40 bg-black/25 sm:hidden animate-fadeIn"
+            className="fixed inset-0 z-40 sm:hidden animate-fadeIn"
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
