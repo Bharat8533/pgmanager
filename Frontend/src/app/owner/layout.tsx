@@ -32,8 +32,8 @@ export default function OwnerLayout({
             </Suspense>
 
             {/* Main Content Area */}
-            <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
-              <div className="max-w-7xl mx-auto w-full">
+            <main className="flex-1 p-3.5 sm:p-6 lg:p-8 overflow-y-auto overflow-x-hidden min-w-0">
+              <div className="max-w-7xl mx-auto w-full min-w-0">
                 <Suspense fallback={<div className="p-8 text-center text-xs text-brand-muted">Loading content...</div>}>
                   {children}
                 </Suspense>

@@ -67,11 +67,13 @@ export function QuickActionsBar() {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
-        {actions.map((act) => (
+        {actions.map((act, index) => (
           <Link
             key={act.title}
             href={act.href}
-            className={`p-3 rounded-xl border border-slate-200/70 bg-slate-50/50 transition-all group flex flex-col justify-between ${act.bg} shadow-2xs`}
+            className={`p-3 rounded-xl border border-slate-200/70 bg-slate-50/50 transition-all group flex flex-col justify-between ${act.bg} shadow-2xs ${
+              index === 4 ? "col-span-2 sm:col-span-1" : ""
+            }`}
           >
             <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center mb-2 shadow-2xs group-hover:scale-105 transition-transform">
               {act.icon}

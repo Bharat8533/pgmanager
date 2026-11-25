@@ -146,7 +146,7 @@ export function DashboardHeader({
                   className="fixed inset-0 z-40"
                   onClick={() => setIsDropdownOpen(false)}
                 />
-                <div className="absolute right-0 mt-1.5 w-56 bg-white rounded-xl shadow-xl border border-brand-border py-1.5 z-50 animate-fadeIn">
+                <div className="absolute left-0 sm:left-auto sm:right-0 mt-1.5 w-56 max-w-[calc(100vw-32px)] bg-white rounded-xl shadow-xl border border-brand-border py-1.5 z-50 animate-fadeIn">
                   <div className="px-3 py-1.5 text-[10px] uppercase font-bold text-brand-muted tracking-wider border-b border-brand-border/50">
                     Filter Dashboard By Period
                   </div>

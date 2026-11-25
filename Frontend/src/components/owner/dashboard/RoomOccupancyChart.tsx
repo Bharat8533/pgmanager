@@ -33,10 +33,10 @@ export function RoomOccupancyChart({ data }: RoomOccupancyChartProps) {
   return (
     <div className="bg-white rounded-2xl border border-brand-border/80 p-5 shadow-xs flex flex-col justify-between h-full">
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
               <BedDouble className="w-4 h-4" />
             </div>
             <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal tracking-tight">
@@ -48,8 +48,8 @@ export function RoomOccupancyChart({ data }: RoomOccupancyChartProps) {
           </p>
         </div>
 
-        <div className="text-right">
-          <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-2.5 py-1 rounded-full">
+        <div className="self-start sm:self-auto flex-shrink-0">
+          <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-2.5 py-1 rounded-full whitespace-nowrap">
             {data.occupancyRate}% Occupied
           </span>
         </div>

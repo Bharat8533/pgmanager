@@ -105,7 +105,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="space-y-6 sm:space-y-7 animate-fadeIn pb-10">
+    <div className="space-y-6 sm:space-y-7 animate-fadeIn pb-10 w-full min-w-0 max-w-full overflow-x-hidden">
       {/* SECTION 1: Welcome Header & Quick Filter Bar */}
       <DashboardHeader
         dateRange={dateRange}
@@ -119,20 +119,24 @@ export default function DashboardPage() {
       <QuickActionsBar />
 
       {/* SECTION 2: Six Primary KPI Summary Cards */}
-      <section aria-label="Primary KPIs">
+      <section aria-label="Primary KPIs" className="min-w-0">
         <PrimaryKPICards cards={kpiCards} />
       </section>
 
       {/* SECTION 3: Occupancy Analytics (Room Donut + Bed Capacity Horizontal Stack) */}
-      <section aria-label="Occupancy Analytics" className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
-        <RoomOccupancyChart data={roomOccupancy} />
-        <BedOccupancyChart data={bedOccupancy} />
+      <section aria-label="Occupancy Analytics" className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 min-w-0">
+        <div className="min-w-0">
+          <RoomOccupancyChart data={roomOccupancy} />
+        </div>
+        <div className="min-w-0">
+          <BedOccupancyChart data={bedOccupancy} />
+        </div>
       </section>
 
       {/* SECTION 4: Financial Overview (Collection Trend Area Chart + 4 Financial Cards) */}
-      <section aria-label="Financial Overview" className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+      <section aria-label="Financial Overview" className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 min-w-0">
         {/* Collection Trend Chart (7 cols on lg) */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 min-w-0">
           <CollectionTrendChart
             trendPoints={collectionOverview.trendPoints}
             dateRange={dateRange}
@@ -140,31 +144,31 @@ export default function DashboardPage() {
         </div>
 
         {/* 4 Financial Summary Cards with Strict Deposit Liability (5 cols on lg) */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 min-w-0">
           <FinancialSummaryCards summary={collectionOverview.summary} />
         </div>
       </section>
 
       {/* SECTION 5: Recent Bookings Table & Live Activity Stream */}
-      <section aria-label="Bookings and Activities" className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+      <section aria-label="Bookings and Activities" className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 min-w-0">
         {/* Bookings Table (7 cols on lg) */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 min-w-0">
           <RecentBookingsTable bookings={recentBookings} />
         </div>
 
         {/* Recent Activities Timeline (5 cols on lg) */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 min-w-0">
           <RecentActivitiesTimeline activities={recentActivities} />
         </div>
       </section>
 
       {/* SECTION 6: Recent Transactions & Payment Ledger */}
-      <section aria-label="Recent Transactions">
+      <section aria-label="Recent Transactions" className="min-w-0">
         <RecentTransactionsTable transactions={recentTransactions} />
       </section>
 
       {/* SECTION 8: Operational Widgets (Upcoming Check-ins, Check-outs & Complaints) */}
-      <section aria-label="Operational Schedule">
+      <section aria-label="Operational Schedule" className="min-w-0">
         <OperationsWidgets
           checkIns={checkIns}
           checkOuts={checkOuts}

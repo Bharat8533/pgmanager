@@ -60,7 +60,7 @@ export function CollectionTrendChart({
       </div>
 
       {/* Area Chart Container */}
-      <div className="w-full h-64 sm:h-72 my-2">
+      <div className="w-full h-64 sm:h-72 my-2 min-w-0">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={trendPoints}
@@ -175,25 +175,25 @@ export function CollectionTrendChart({
       </div>
 
       {/* Custom Clean Legend */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs">
-        <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-3 border-t border-slate-100 text-xs">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <span className="text-brand-charcoal font-semibold">Rent Collected</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 flex-shrink-0" />
+            <span className="text-brand-charcoal font-semibold text-[11px]">Rent Collected</span>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-            <span className="text-brand-charcoal font-semibold">Pending Balance</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500 flex-shrink-0" />
+            <span className="text-brand-charcoal font-semibold text-[11px]">Pending Balance</span>
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-            <span className="text-brand-charcoal font-semibold">Other Collections</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 flex-shrink-0" />
+            <span className="text-brand-charcoal font-semibold text-[11px]">Other Collections</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-1 text-[11px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">
+        <div className="flex items-center gap-1 text-[11px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full self-start sm:self-auto flex-shrink-0">
           <ArrowUpRight className="w-3.5 h-3.5" />
           <span>95.6% On-Time Collection</span>
         </div>

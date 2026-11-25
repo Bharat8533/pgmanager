@@ -33,10 +33,10 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
   return (
     <div className="bg-white rounded-2xl border border-brand-border/80 p-5 shadow-xs flex flex-col justify-between h-full">
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
               <Layers className="w-4 h-4" />
             </div>
             <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal tracking-tight">
@@ -48,46 +48,46 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2.5 py-1 rounded-full">
+        <div className="flex items-center gap-2 self-start sm:self-auto flex-shrink-0">
+          <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2.5 py-1 rounded-full whitespace-nowrap">
             {data.occupancyRate}% Bed Occ.
           </span>
-          <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200/60 px-2 py-1 rounded-full">
+          <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200/60 px-2 py-1 rounded-full whitespace-nowrap">
             {data.capacityUtilization} Utilization
           </span>
         </div>
       </div>
 
       {/* Primary Capacity Metric Cards (Occupied vs Available vs Total) */}
-      <div className="grid grid-cols-3 gap-3 my-3">
-        <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/70">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted block">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3 my-3">
+        <div className="p-2 sm:p-3 rounded-xl bg-slate-50 border border-slate-200/70 min-w-0">
+          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-muted block truncate">
             Total Beds
           </span>
-          <span className="text-xl sm:text-2xl font-black text-brand-charcoal">
+          <span className="text-lg sm:text-2xl font-black text-brand-charcoal block leading-tight">
             {data.totalBeds}
           </span>
-          <span className="text-[10px] text-brand-muted block mt-0.5">Full Capacity</span>
+          <span className="text-[9px] sm:text-[10px] text-brand-muted block mt-0.5 truncate">Full Capacity</span>
         </div>
 
-        <div className="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/70">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">
+        <div className="p-2 sm:p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/70 min-w-0">
+          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-700 block truncate">
             Occupied Beds
           </span>
-          <span className="text-xl sm:text-2xl font-black text-emerald-700">
+          <span className="text-lg sm:text-2xl font-black text-emerald-700 block leading-tight">
             {data.occupiedBeds}
           </span>
-          <span className="text-[10px] text-emerald-600 block mt-0.5">Generating Rent</span>
+          <span className="text-[9px] sm:text-[10px] text-emerald-600 block mt-0.5 truncate">Generating Rent</span>
         </div>
 
-        <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-200/70">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">
+        <div className="p-2 sm:p-3 rounded-xl bg-blue-50/60 border border-blue-200/70 min-w-0">
+          <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-blue-700 block truncate">
             Available Beds
           </span>
-          <span className="text-xl sm:text-2xl font-black text-blue-700">
+          <span className="text-lg sm:text-2xl font-black text-blue-700 block leading-tight">
             {data.availableBeds}
           </span>
-          <span className="text-[10px] text-blue-600 block mt-0.5">Ready for Rent</span>
+          <span className="text-[9px] sm:text-[10px] text-blue-600 block mt-0.5 truncate">Ready for Rent</span>
         </div>
       </div>
 
