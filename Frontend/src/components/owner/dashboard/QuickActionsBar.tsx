@@ -7,7 +7,7 @@ import {
   CalendarCheck,
   Building2,
   CreditCard,
-  BarChart3,
+  Receipt,
   Sparkles,
 } from "lucide-react";
 
@@ -42,11 +42,11 @@ export function QuickActionsBar() {
       bg: "hover:border-amber-300 hover:bg-amber-50/40",
     },
     {
-      title: "View Reports",
-      description: "Revenue, P&L & audit logs",
-      href: "/owner/reports",
-      icon: <BarChart3 className="w-4 h-4 text-indigo-600" />,
-      bg: "hover:border-indigo-300 hover:bg-indigo-50/40",
+      title: "Record Expense",
+      description: "Log utility, repair & staff bill",
+      href: "/owner/expenses",
+      icon: <Receipt className="w-4 h-4 text-rose-600" />,
+      bg: "hover:border-rose-300 hover:bg-rose-50/40",
     },
   ];
 

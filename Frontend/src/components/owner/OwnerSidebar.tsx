@@ -122,14 +122,15 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
       className="relative flex flex-col gap-1 py-3.5 w-full select-none"
     >
       {/* =========================================================================
-          SLIDING ACTIVE WHITE TAB CUTOUT
+          SLIDING ACTIVE TAB CUTOUT
           - Moves vertically with silky-smooth cubic-bezier transition
           - Top and bottom concave curves slide seamlessly with it
-          - Merges flush with main content area (#F8FAFC)
+          - In light mode: matches main content area (#F8FAFC)
+          - In dark mode: pure white (#FFFFFF) for high contrast as requested
           ========================================================================= */} 
       <div
         className={cn(
-          "absolute right-0 top-0 w-[calc(100%-14px)] bg-[#F8FAFC] rounded-l-2xl shadow-xs pointer-events-none z-0",
+          "absolute right-0 top-0 w-[calc(100%-14px)] bg-[#F8FAFC] dark:bg-white sidebar-active-tab rounded-l-2xl shadow-xs pointer-events-none z-0",
           indicator.ready ? "opacity-100" : "opacity-0"
         )}
         style={{
@@ -144,7 +145,7 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
         <div className="absolute -top-3.5 right-0 w-3.5 h-3.5 pointer-events-none z-10">
           <svg
             viewBox="0 0 14 14"
-            className="w-3.5 h-3.5 text-[#F8FAFC]"
+            className="w-3.5 h-3.5 text-[#F8FAFC] dark:text-white sidebar-active-tab-curve"
             fill="currentColor"
           >
             <path d="M 14 0 L 14 14 L 0 14 A 14 14 0 0 0 14 0 Z" />
@@ -155,7 +156,7 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
         <div className="absolute -bottom-3.5 right-0 w-3.5 h-3.5 pointer-events-none z-10">
           <svg
             viewBox="0 0 14 14"
-            className="w-3.5 h-3.5 text-[#F8FAFC]"
+            className="w-3.5 h-3.5 text-[#F8FAFC] dark:text-white sidebar-active-tab-curve"
             fill="currentColor"
           >
             <path d="M 14 14 L 14 0 L 0 0 A 14 14 0 0 1 14 14 Z" />
@@ -200,7 +201,7 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
                   className={cn(
                     "relative w-[calc(100%-14px)] h-11 ml-auto mr-0 rounded-l-2xl flex items-center justify-center pr-3.5 transition-colors duration-200 select-none group",
                     isActive
-                      ? "text-brand-obsidian font-bold"
+                      ? "text-brand-obsidian font-bold sidebar-active-item"
                       : "text-white/70 hover:text-white hover:bg-white/10 font-medium"
                   )}
                 >
@@ -245,7 +246,7 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
               className={cn(
                 "relative w-[calc(100%-14px)] h-11 ml-auto mr-0 rounded-l-2xl pl-3.5 pr-2.5 flex items-center transition-colors duration-200 select-none group",
                 isActive
-                  ? "text-brand-obsidian font-bold"
+                  ? "text-brand-obsidian font-bold sidebar-active-item"
                   : "text-white/70 hover:text-white hover:bg-white/10 font-medium"
               )}
             >

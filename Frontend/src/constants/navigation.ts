@@ -54,12 +54,6 @@ export const OWNER_NAVIGATION: NavItem[] = [
     iconName: "UserCheck",
   },
   {
-    id: "reports",
-    label: "Reports",
-    href: "/owner/reports",
-    iconName: "BarChart3",
-  },
-  {
     id: "settings",
     label: "Settings",
     href: "/owner/settings",
@@ -127,11 +121,6 @@ export function getOwnerPageMetadata(pathname: string): PageMetadata {
       title: "Staff",
       description: "Manage property caretakers, cooks, housekeeping, and security personnel.",
       breadcrumbs: [{ label: "Owner Panel", href: "/owner/dashboard" }, { label: "Staff" }],
-    },
-    "/owner/reports": {
-      title: "Reports & Analytics",
-      description: "Analyze occupancy rates, revenue collection, and expense trends.",
-      breadcrumbs: [{ label: "Owner Panel", href: "/owner/dashboard" }, { label: "Reports" }],
     },
     "/owner/settings": {
       title: "Settings",
