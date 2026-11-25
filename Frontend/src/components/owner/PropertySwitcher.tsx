@@ -30,6 +30,19 @@ export function PropertySwitcher() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close modal on Escape key press
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [isOpen]);
+
   const handleSelect = (id: string) => {
     selectProperty(id);
     setIsOpen(false);
@@ -56,14 +69,7 @@ export function PropertySwitcher() {
         </button>
 
         {isOpen && (
-          <>
-            {/* Mobile Backdrop Overlay */}
-            <div
-              className="fixed inset-0 bg-black/30 backdrop-blur-2xs z-40 sm:hidden"
-              onClick={() => setIsOpen(false)}
-              aria-hidden="true"
-            />
-            <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-72 rounded-2xl bg-white border border-brand-border p-4 shadow-2xl animate-fadeIn">
+          <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-72 rounded-2xl bg-white border border-brand-border p-4 shadow-2xl animate-fadeIn">
               <div className="text-center py-2 space-y-2">
                 <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mx-auto text-amber-700">
                   <Building className="w-5 h-5" />
@@ -105,7 +111,6 @@ export function PropertySwitcher() {
                 </div>
               </div>
             </div>
-          </>
         )}
       </div>
     );
@@ -145,14 +150,7 @@ export function PropertySwitcher() {
       </button>
 
       {isOpen && (
-        <>
-          {/* Mobile Backdrop Overlay */}
-          <div
-            className="fixed inset-0 bg-black/30 backdrop-blur-2xs z-40 sm:hidden"
-            onClick={() => setIsOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-80 rounded-2xl bg-white border border-brand-border shadow-2xl p-2.5 animate-fadeIn">
+        <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-80 rounded-2xl bg-white border border-brand-border shadow-2xl p-2.5 animate-fadeIn">
             {/* Dropdown Header */}
             <div className="px-3 py-2 border-b border-brand-border/70 flex items-center justify-between">
               <div>
@@ -280,8 +278,7 @@ export function PropertySwitcher() {
               </div>
             </div>
           </div>
-        </>
-      )}
+        )}
     </div>
   );
 }
