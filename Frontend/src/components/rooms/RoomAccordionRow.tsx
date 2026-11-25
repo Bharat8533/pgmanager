@@ -86,37 +86,78 @@ export function RoomAccordionRow({
       }`}
     >
       {/* =========================================================================
-          ACCORDION HEADER ROW (Compact ~56px)
+          ACCORDION HEADER ROW (Mobile Optimized 2-line layout / Desktop single row)
           Click anywhere to expand/collapse
           ========================================================================= */}
       <div
         onClick={onToggle}
-        className="px-4 py-3 sm:py-3.5 flex items-center justify-between gap-3 cursor-pointer select-none bg-white hover:bg-[#F8FAFC]/80 transition-colors"
+        className="p-3 sm:px-4 sm:py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 cursor-pointer select-none bg-white hover:bg-[#F8FAFC]/80 transition-colors"
       >
-        {/* Left: Room Number, Floor & Sharing Type */}
-        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-          {/* Room Number Badge */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-obsidian text-white font-black text-xs sm:text-sm shadow-2xs flex-shrink-0">
-            <DoorClosed className="w-3.5 h-3.5 text-brand-lime" />
-            <span>Room {room.roomNumber}</span>
-          </div>
+        {/* Mobile: Top line / Desktop: Left section */}
+        <div className="flex items-center justify-between sm:justify-start gap-2 sm:gap-3 min-w-0">
+          <div className="flex items-center gap-2 min-w-0">
+            {/* Room Number Badge */}
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-brand-obsidian text-white font-black text-xs sm:text-sm shadow-2xs shrink-0">
+              <DoorClosed className="w-3.5 h-3.5 text-brand-lime" />
+              <span>Room {room.roomNumber}</span>
+            </div>
 
-          {/* Floor & Type */}
-          <div className="flex items-center gap-1.5 text-xs">
-            <span className="font-semibold text-brand-muted hidden sm:inline-block">
-              {room.floor}
-            </span>
-            <span className="text-brand-border hidden sm:inline-block">·</span>
-            <span className="font-bold px-2 py-0.5 rounded-md bg-[#F8FAFC] border border-brand-border text-brand-charcoal text-[11px] truncate">
+            {/* Sharing Type Pill (Never truncated!) */}
+            <span className="font-bold px-2 py-0.5 rounded-md bg-[#F8FAFC] border border-brand-border text-brand-charcoal text-[11px] whitespace-nowrap">
               {room.roomType}
             </span>
+
+            <span className="font-semibold text-brand-muted hidden sm:inline-block text-xs">
+              · {room.floor}
+            </span>
+          </div>
+
+          {/* Quick Actions (Visible on Mobile Top-Right) */}
+          <div className="flex sm:hidden items-center gap-1 shrink-0">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onViewDetails(room);
+              }}
+              className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5"
+              title="View Full Room Details"
+            >
+              <Eye className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onEditRoom(room);
+              }}
+              className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5"
+              title="Edit Room Specs"
+            >
+              <Edit className="w-4 h-4" />
+            </button>
+            <div
+              className={`w-6 h-6 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${
+                isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
+              }`}
+            >
+              <ChevronDown className="w-4 h-4" />
+            </div>
           </div>
         </div>
 
-        {/* Center: Available Status & Bed Dot Indicators */}
-        <div className="flex items-center gap-3">
+        {/* Mobile: Bottom line / Desktop: Center & Right sections */}
+        <div className="flex items-center justify-between sm:justify-end gap-3 min-w-0">
           {/* Status Badge */}
-          <div>{getStatusBadge()}</div>
+          <div className="shrink-0">{getStatusBadge()}</div>
+
+          {/* Monthly Rent on Mobile & Floor */}
+          <div className="flex sm:hidden items-center gap-2 text-right">
+            <span className="text-[10px] text-brand-muted font-medium">{room.floor}</span>
+            <span className="text-xs font-black text-brand-charcoal">
+              ₹{room.defaultMonthlyRent.toLocaleString("en-IN")}/mo
+            </span>
+          </div>
 
           {/* Mini Bed Indicator Dots (Desktop) */}
           <div className="hidden md:flex items-center gap-1 px-2 py-1 bg-[#F8FAFC] rounded-lg border border-brand-border/60">
@@ -143,47 +184,47 @@ export function RoomAccordionRow({
             )}
           </div>
 
-          {/* Monthly Rent */}
+          {/* Monthly Rent (Desktop) */}
           <div className="hidden lg:block text-right">
             <span className="text-xs font-black text-brand-charcoal">
               ₹{room.defaultMonthlyRent.toLocaleString("en-IN")}
             </span>
             <span className="text-[10px] text-brand-muted font-normal">/mo</span>
           </div>
-        </div>
 
-        {/* Right: Quick Actions & Chevron */}
-        <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onViewDetails(room);
-            }}
-            className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5 transition-all"
-            title="View Full Room Details"
-          >
-            <Eye className="w-4 h-4" />
-          </button>
+          {/* Quick Actions (Desktop) */}
+          <div className="hidden sm:flex items-center gap-1 sm:gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onViewDetails(room);
+              }}
+              className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5 transition-all"
+              title="View Full Room Details"
+            >
+              <Eye className="w-4 h-4" />
+            </button>
 
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onEditRoom(room);
-            }}
-            className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5 transition-all"
-            title="Edit Room Specs"
-          >
-            <Edit className="w-4 h-4" />
-          </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onEditRoom(room);
+              }}
+              className="p-1.5 rounded-lg text-brand-muted hover:text-brand-charcoal hover:bg-black/5 transition-all"
+              title="Edit Room Specs"
+            >
+              <Edit className="w-4 h-4" />
+            </button>
 
-          <div
-            className={`w-7 h-7 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${
-              isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
-            }`}
-          >
-            <ChevronDown className="w-4 h-4" />
+            <div
+              className={`w-7 h-7 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${
+                isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
+              }`}
+            >
+              <ChevronDown className="w-4 h-4" />
+            </div>
           </div>
         </div>
       </div>
@@ -366,20 +407,20 @@ export function RoomAccordionRow({
               </div>
 
               {/* Action Buttons Row */}
-              <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-brand-border/60">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-2.5 pt-2 border-t border-brand-border/60">
                 <button
                   type="button"
                   onClick={() => onViewDetails(room)}
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold bg-white hover:bg-slate-50 text-brand-charcoal border border-brand-border rounded-xl transition-all shadow-2xs"
+                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-2 text-xs font-bold bg-white hover:bg-slate-50 text-brand-charcoal border border-brand-border rounded-xl transition-all shadow-2xs w-full sm:w-auto"
                 >
                   <Eye className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Full Room Details Drawer</span>
+                  <span>Full Room Details</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => onEditRoom(room)}
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold bg-brand-obsidian hover:bg-black text-white rounded-xl transition-all shadow-2xs"
+                  className="flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-2 text-xs font-bold bg-brand-obsidian hover:bg-black text-white rounded-xl transition-all shadow-2xs w-full sm:w-auto"
                 >
                   <Edit className="w-3.5 h-3.5 text-brand-lime" />
                   <span>Edit Room</span>

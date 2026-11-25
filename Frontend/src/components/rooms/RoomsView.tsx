@@ -235,14 +235,14 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
         </div>
 
         {/* Primary Action: + Add Room Button */}
-        <div className="flex items-center gap-2.5 flex-shrink-0">
+        <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
           <button
             type="button"
             onClick={() => {
               setRoomToEdit(null);
               setIsAddModalOpen(true);
             }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-lime hover:bg-brand-lime-hover text-brand-obsidian font-extrabold text-xs sm:text-sm shadow-xs hover:shadow-sm active:scale-98 transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-lime hover:bg-brand-lime-hover text-brand-obsidian font-extrabold text-xs sm:text-sm shadow-xs hover:shadow-sm active:scale-98 transition-all"
           >
             <Plus className="w-4 h-4 stroke-[3]" />
             <span>+ Add Room</span>
@@ -278,22 +278,22 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
       {/* =========================================================================
           VIEW MODE TOGGLE BAR (Dropdown/Accordion List vs Visual Grid Cards)
           ========================================================================= */}
-      <div className="flex items-center justify-between pt-1">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-brand-charcoal uppercase tracking-wider">
+      <div className="flex items-center justify-between pt-1 gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          <span className="text-xs font-bold text-brand-charcoal uppercase tracking-wider truncate">
             Room Inventory ({filteredRooms.length})
           </span>
-          <span className="text-[11px] text-brand-muted hidden sm:inline-block">
+          <span className="text-[11px] text-brand-muted hidden md:inline-block">
             · Click any room row to expand details
           </span>
         </div>
 
         {/* View Mode Switcher */}
-        <div className="flex items-center p-1 bg-white border border-brand-border rounded-xl shadow-2xs">
+        <div className="flex items-center p-1 bg-white border border-brand-border rounded-xl shadow-2xs shrink-0">
           <button
             type="button"
             onClick={() => setViewMode("accordion")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               viewMode === "accordion"
                 ? "bg-brand-obsidian text-brand-lime shadow-xs"
                 : "text-brand-muted hover:text-brand-charcoal"
@@ -301,13 +301,13 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
             title="Expandable Dropdown List View (Optimized for 20-50+ rooms)"
           >
             <List className="w-3.5 h-3.5" />
-            <span>List & Dropdown</span>
+            <span>List<span className="hidden sm:inline"> & Dropdown</span></span>
           </button>
 
           <button
             type="button"
             onClick={() => setViewMode("grid")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               viewMode === "grid"
                 ? "bg-brand-obsidian text-brand-lime shadow-xs"
                 : "text-brand-muted hover:text-brand-charcoal"
@@ -315,7 +315,7 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
             title="Visual Grid Cards View"
           >
             <LayoutGrid className="w-3.5 h-3.5" />
-            <span>Grid Cards</span>
+            <span>Grid<span className="hidden sm:inline"> Cards</span></span>
           </button>
         </div>
       </div>

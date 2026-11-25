@@ -254,9 +254,9 @@ export function RoomAccordionList({
             return (
               <div key={group.floor} className="space-y-2.5">
                 {/* Floor Section Header */}
-                <div className="flex items-center justify-between px-2 pt-1">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 px-1 sm:px-2 pt-1">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-brand-obsidian" />
+                    <div className="w-2 h-2 rounded-full bg-brand-obsidian shrink-0" />
                     <h3 className="text-xs font-black uppercase tracking-wider text-brand-charcoal">
                       {group.floor}
                     </h3>
@@ -266,11 +266,11 @@ export function RoomAccordionList({
                   </div>
 
                   {floorFreeBeds > 0 ? (
-                    <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 self-start sm:self-auto">
                       {floorFreeBeds} Beds Available on {group.floor}
                     </span>
                   ) : (
-                    <span className="text-xs font-semibold text-brand-muted">
+                    <span className="text-[11px] font-semibold text-brand-muted self-start sm:self-auto">
                       All Beds Occupied
                     </span>
                   )}
