@@ -56,48 +56,56 @@ export function PropertySwitcher() {
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-24px)] max-w-[300px] sm:w-72 rounded-xl bg-white border border-brand-border p-4 shadow-xl z-50 animate-fadeIn">
-            <div className="text-center py-2 space-y-2">
-              <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mx-auto text-amber-700">
-                <Building className="w-5 h-5" />
+          <>
+            {/* Mobile Backdrop Overlay */}
+            <div
+              className="fixed inset-0 bg-black/30 backdrop-blur-2xs z-40 sm:hidden"
+              onClick={() => setIsOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-72 rounded-2xl bg-white border border-brand-border p-4 shadow-2xl animate-fadeIn">
+              <div className="text-center py-2 space-y-2">
+                <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mx-auto text-amber-700">
+                  <Building className="w-5 h-5" />
+                </div>
+                <h4 className="text-sm font-semibold text-brand-charcoal">
+                  No Properties Found
+                </h4>
+                <p className="text-xs text-brand-muted leading-relaxed">
+                  Add your first PG property to begin managing rooms, beds, and residents.
+                </p>
+                <button
+                  type="button"
+                  onClick={handleAddProperty}
+                  className="w-full mt-2 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-brand-obsidian text-white text-xs font-semibold hover:bg-brand-obsidian-hover transition-colors"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  Add Your First Property
+                </button>
               </div>
-              <h4 className="text-sm font-semibold text-brand-charcoal">
-                No Properties Found
-              </h4>
-              <p className="text-xs text-brand-muted leading-relaxed">
-                Add your first PG property to begin managing rooms, beds, and residents.
-              </p>
-              <button
-                type="button"
-                onClick={handleAddProperty}
-                className="w-full mt-2 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-brand-obsidian text-white text-xs font-semibold hover:bg-brand-obsidian-hover transition-colors"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                Add Your First Property
-              </button>
-            </div>
 
-            {/* Demo Scenario Switcher for Reviewer */}
-            <div className="mt-3 pt-3 border-t border-brand-border/60 text-[10px] text-brand-muted">
-              <span className="font-semibold block mb-1">Testing Demo Scenarios:</span>
-              <div className="flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => setPropertyScenario("multiple")}
-                  className="px-2 py-0.5 rounded bg-brand-offwhite hover:bg-brand-border text-brand-charcoal"
-                >
-                  3 Properties
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPropertyScenario("single")}
-                  className="px-2 py-0.5 rounded bg-brand-offwhite hover:bg-brand-border text-brand-charcoal"
-                >
-                  1 Property
-                </button>
+              {/* Demo Scenario Switcher for Reviewer */}
+              <div className="mt-3 pt-3 border-t border-brand-border/60 text-[10px] text-brand-muted">
+                <span className="font-semibold block mb-1">Testing Demo Scenarios:</span>
+                <div className="flex gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setPropertyScenario("multiple")}
+                    className="px-2 py-0.5 rounded bg-brand-offwhite hover:bg-brand-border text-brand-charcoal"
+                  >
+                    3 Properties
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPropertyScenario("single")}
+                    className="px-2 py-0.5 rounded bg-brand-offwhite hover:bg-brand-border text-brand-charcoal"
+                  >
+                    1 Property
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     );
@@ -137,134 +145,142 @@ export function PropertySwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-24px)] max-w-[320px] sm:w-80 rounded-xl bg-white border border-brand-border shadow-xl z-50 p-2 animate-fadeIn">
-          {/* Dropdown Header */}
-          <div className="px-3 py-2 border-b border-brand-border/70 flex items-center justify-between">
-            <div>
-              <p className="text-xs font-bold text-brand-charcoal">Switch Property</p>
-              <p className="text-[10px] text-brand-muted">
-                {isSingleProperty ? "1 Property Available" : `${properties.length} Active Properties`}
-              </p>
+        <>
+          {/* Mobile Backdrop Overlay */}
+          <div
+            className="fixed inset-0 bg-black/30 backdrop-blur-2xs z-40 sm:hidden"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="fixed left-3 right-3 top-16 max-w-sm mx-auto z-50 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mx-0 sm:mt-2 sm:w-80 rounded-2xl bg-white border border-brand-border shadow-2xl p-2.5 animate-fadeIn">
+            {/* Dropdown Header */}
+            <div className="px-3 py-2 border-b border-brand-border/70 flex items-center justify-between">
+              <div>
+                <p className="text-xs font-bold text-brand-charcoal">Switch Property</p>
+                <p className="text-[10px] text-brand-muted">
+                  {isSingleProperty ? "1 Property Available" : `${properties.length} Active Properties`}
+                </p>
+              </div>
+              <span className="text-[10px] font-medium bg-brand-lime/30 text-brand-charcoal px-2 py-0.5 rounded-full border border-brand-lime">
+                Owner Mode
+              </span>
             </div>
-            <span className="text-[10px] font-medium bg-brand-lime/30 text-brand-charcoal px-2 py-0.5 rounded-full border border-brand-lime">
-              Owner Mode
-            </span>
-          </div>
 
-          {/* Properties List */}
-          <div className="py-1.5 max-h-60 overflow-y-auto space-y-1">
-            {properties.map((property) => {
-              const isSelected = property.id === selectedProperty.id;
-              return (
-                <button
-                  key={property.id}
-                  type="button"
-                  onClick={() => handleSelect(property.id)}
-                  className={cn(
-                    "w-full flex items-start justify-between p-2.5 rounded-lg text-left transition-colors",
-                    isSelected
-                      ? "bg-brand-offwhite border border-brand-border text-brand-charcoal"
-                      : "hover:bg-brand-offwhite/60 text-brand-charcoal border border-transparent"
-                  )}
-                >
-                  <div className="flex items-start gap-2.5 min-w-0">
-                    <div
-                      className={cn(
-                        "w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5",
-                        isSelected
-                          ? "bg-brand-obsidian text-white"
-                          : "bg-brand-offwhite border border-brand-border text-brand-charcoal"
-                      )}
-                    >
-                      <Building2 className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-brand-charcoal truncate">
-                        {property.name}
-                      </p>
-                      <p className="text-[10px] text-brand-muted flex items-center gap-1 mt-0.5">
-                        <span>{property.address}, {property.city}</span>
-                      </p>
-                      <div className="flex items-center gap-2 mt-1 text-[10px] text-brand-muted">
-                        <span>{property.totalRooms} Rooms</span>
-                        <span>•</span>
-                        <span>
-                          {property.occupiedBeds}/{property.totalBeds} Beds Filled
-                        </span>
+            {/* Properties List */}
+            <div className="py-1.5 max-h-60 sm:max-h-64 overflow-y-auto space-y-1">
+              {properties.map((property) => {
+                const isSelected = property.id === selectedProperty.id;
+                return (
+                  <button
+                    key={property.id}
+                    type="button"
+                    onClick={() => handleSelect(property.id)}
+                    className={cn(
+                      "w-full flex items-start justify-between p-2.5 rounded-xl text-left transition-colors",
+                      isSelected
+                        ? "bg-brand-offwhite border border-brand-border text-brand-charcoal"
+                        : "hover:bg-brand-offwhite/60 text-brand-charcoal border border-transparent"
+                    )}
+                  >
+                    <div className="flex items-start gap-2.5 min-w-0 pr-2">
+                      <div
+                        className={cn(
+                          "w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5",
+                          isSelected
+                            ? "bg-brand-obsidian text-white"
+                            : "bg-brand-offwhite border border-brand-border text-brand-charcoal"
+                        )}
+                      >
+                        <Building2 className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs font-semibold text-brand-charcoal truncate">
+                          {property.name}
+                        </p>
+                        <p className="text-[10px] text-brand-muted flex items-center gap-1 mt-0.5 truncate">
+                          <span className="truncate">{property.address}, {property.city}</span>
+                        </p>
+                        <div className="flex items-center gap-2 mt-1 text-[10px] text-brand-muted">
+                          <span>{property.totalRooms} Rooms</span>
+                          <span>•</span>
+                          <span>
+                            {property.occupiedBeds}/{property.totalBeds} Beds Filled
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-brand-lime flex items-center justify-center flex-shrink-0 mt-1 border border-[#b4e655]">
-                      <Check className="w-3 h-3 text-brand-charcoal stroke-[3]" />
-                    </div>
-                  )}
-                </button>
-              );
-            })}
-          </div>
+                    {isSelected && (
+                      <div className="w-5 h-5 rounded-full bg-brand-lime flex items-center justify-center flex-shrink-0 mt-1 border border-[#b4e655]">
+                        <Check className="w-3 h-3 text-brand-charcoal stroke-[3]" />
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
 
-          {/* Footer Action */}
-          <div className="pt-2 mt-1 border-t border-brand-border/70">
-            <button
-              type="button"
-              onClick={handleAddProperty}
-              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold text-brand-charcoal hover:bg-brand-offwhite transition-colors"
-            >
-              <Plus className="w-3.5 h-3.5 text-brand-charcoal" />
-              <span>Add New Property</span>
-            </button>
-          </div>
+            {/* Footer Action */}
+            <div className="pt-2 mt-1 border-t border-brand-border/70">
+              <button
+                type="button"
+                onClick={handleAddProperty}
+                className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold text-brand-charcoal hover:bg-brand-offwhite transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5 text-brand-charcoal" />
+                <span>Add New Property</span>
+              </button>
+            </div>
 
-          {/* Demo Scenario Toggles for testing all three states */}
-          <div className="pt-2 mt-1 border-t border-brand-border/40 px-2 py-1 bg-brand-offwhite/50 rounded-b-lg">
-            <div className="flex items-center justify-between text-[10px] text-brand-muted">
-              <span className="flex items-center gap-1">
-                <Sparkles className="w-2.5 h-2.5" />
-                <span>Test Scenario:</span>
-              </span>
-              <div className="flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => setPropertyScenario("multiple")}
-                  className={cn(
-                    "px-1.5 py-0.5 rounded text-[9px] font-medium",
-                    propertyScenario === "multiple"
-                      ? "bg-brand-obsidian text-white"
-                      : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
-                  )}
-                >
-                  Multi (3)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPropertyScenario("single")}
-                  className={cn(
-                    "px-1.5 py-0.5 rounded text-[9px] font-medium",
-                    propertyScenario === "single"
-                      ? "bg-brand-obsidian text-white"
-                      : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
-                  )}
-                >
-                  Single (1)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPropertyScenario("empty")}
-                  className={cn(
-                    "px-1.5 py-0.5 rounded text-[9px] font-medium",
-                    propertyScenario === "empty"
-                      ? "bg-brand-obsidian text-white"
-                      : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
-                  )}
-                >
-                  Empty (0)
-                </button>
+            {/* Demo Scenario Toggles for testing all three states */}
+            <div className="pt-2 mt-1 border-t border-brand-border/40 px-2 py-1.5 bg-brand-offwhite/50 rounded-b-xl">
+              <div className="flex items-center justify-between text-[10px] text-brand-muted">
+                <span className="flex items-center gap-1 shrink-0">
+                  <Sparkles className="w-2.5 h-2.5" />
+                  <span>Test Scenario:</span>
+                </span>
+                <div className="flex gap-1 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setPropertyScenario("multiple")}
+                    className={cn(
+                      "px-1.5 py-0.5 rounded text-[9px] font-medium",
+                      propertyScenario === "multiple"
+                        ? "bg-brand-obsidian text-white"
+                        : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
+                    )}
+                  >
+                    Multi (3)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPropertyScenario("single")}
+                    className={cn(
+                      "px-1.5 py-0.5 rounded text-[9px] font-medium",
+                      propertyScenario === "single"
+                        ? "bg-brand-obsidian text-white"
+                        : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
+                    )}
+                  >
+                    Single (1)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPropertyScenario("empty")}
+                    className={cn(
+                      "px-1.5 py-0.5 rounded text-[9px] font-medium",
+                      propertyScenario === "empty"
+                        ? "bg-brand-obsidian text-white"
+                        : "bg-white text-brand-muted hover:text-brand-charcoal border border-brand-border"
+                    )}
+                  >
+                    Empty (0)
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
