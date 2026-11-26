@@ -13,7 +13,7 @@ import {
   Legend,
 } from "recharts";
 import { TrendingUp, ArrowUpRight, IndianRupee, Filter } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 
 interface CollectionTrendChartProps {
   trendPoints: CollectionDataPoint[];

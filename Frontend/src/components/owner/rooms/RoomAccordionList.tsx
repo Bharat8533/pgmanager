@@ -163,15 +163,15 @@ export function RoomAccordionList({
       {/* =========================================================================
           TOOLBAR: FLOOR QUICK-JUMP TABS & EXPAND/COLLAPSE CONTROLS
           ========================================================================= */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-brand-border/80 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-[#111622] p-3 rounded-2xl border border-brand-border/80 dark:border-[#222E42] shadow-2xs">
         {/* Floor Quick-Jump Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
           <button
             type="button"
             onClick={() => onSelectFloorFilter("all")}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${activeFloorFilter === "all"
-                ? "bg-brand-obsidian text-brand-lime shadow-xs"
-                : "bg-[#F8FAFC] text-brand-charcoal hover:bg-slate-100 border border-brand-border"
+                ? "bg-brand-obsidian text-brand-lime dark:bg-brand-lime dark:text-brand-obsidian shadow-xs"
+                : "bg-[#F8FAFC] dark:bg-[#151D2A] text-brand-charcoal dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#1E293B] border border-brand-border dark:border-[#263346]"
               }`}
           >
             <Building className="w-3.5 h-3.5" />
@@ -190,21 +190,21 @@ export function RoomAccordionList({
                 type="button"
                 onClick={() => onSelectFloorFilter(fl)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${activeFloorFilter === fl
-                    ? "bg-brand-obsidian text-brand-lime shadow-xs"
-                    : "bg-[#F8FAFC] text-brand-charcoal hover:bg-slate-100 border border-brand-border"
+                    ? "bg-brand-obsidian text-brand-lime dark:bg-brand-lime dark:text-brand-obsidian shadow-xs"
+                    : "bg-[#F8FAFC] dark:bg-[#151D2A] text-brand-charcoal dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-[#1E293B] border border-brand-border dark:border-[#263346]"
                   }`}
               >
                 <span>{fl}</span>
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeFloorFilter === fl
-                      ? "bg-brand-lime text-brand-obsidian"
-                      : "bg-slate-200 text-slate-700"
+                      ? "bg-brand-lime text-brand-obsidian dark:bg-brand-obsidian dark:text-brand-lime"
+                      : "bg-slate-200 dark:bg-[#1E293B] text-slate-700 dark:text-slate-300"
                     }`}
                 >
                   {count}
                 </span>
                 {freeBeds > 0 && (
-                  <span className="text-[10px] text-emerald-600 font-extrabold hidden md:inline-block">
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-extrabold hidden md:inline-block">
                     ({freeBeds} free)
                   </span>
                 )}
@@ -215,22 +215,22 @@ export function RoomAccordionList({
 
         {/* Expand / Collapse All Control */}
         <div className="flex items-center justify-end gap-2 flex-shrink-0">
-          <span className="text-xs text-brand-muted font-medium hidden md:inline-block">
+          <span className="text-xs text-brand-muted dark:text-slate-300 font-medium hidden md:inline-block">
             {rooms.length} rooms listed
           </span>
           <button
             type="button"
             onClick={isAllExpanded ? handleCollapseAll : handleExpandAll}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F8FAFC] hover:bg-slate-100 text-brand-charcoal text-xs font-bold border border-brand-border transition-all shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F8FAFC] dark:bg-[#151D2A] hover:bg-slate-100 dark:hover:bg-[#1E293B] text-brand-charcoal dark:text-slate-200 text-xs font-bold border border-brand-border dark:border-[#263346] transition-all shadow-2xs"
           >
             {isAllExpanded ? (
               <>
-                <ChevronUp className="w-3.5 h-3.5 text-brand-muted" />
+                <ChevronUp className="w-3.5 h-3.5 text-brand-muted dark:text-slate-400" />
                 <span>Collapse All</span>
               </>
             ) : (
               <>
-                <ChevronDown className="w-3.5 h-3.5 text-brand-muted" />
+                <ChevronDown className="w-3.5 h-3.5 text-brand-muted dark:text-slate-400" />
                 <span>Expand All</span>
               </>
             )}
