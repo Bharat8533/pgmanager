@@ -459,14 +459,14 @@ function RentPaymentsPageContent() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#171A18] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#171A18] dark:text-white tracking-tight">
               Rent & Payments
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#C6F36B] text-[#171A18]">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#C6F36B] text-[#171A18] dark:bg-brand-lime dark:text-brand-obsidian">
               Finance
             </span>
           </div>
-          <p className="text-xs sm:text-sm text-[#777D78]">
+          <p className="text-xs sm:text-sm text-[#777D78] dark:text-slate-400">
             Manage monthly rent, track collections, monitor pending dues, and export financial reports.
           </p>
         </div>
@@ -475,27 +475,27 @@ function RentPaymentsPageContent() {
           <button
             type="button"
             onClick={() => setIsMonthlyBillingOpen(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 bg-white hover:bg-[#FAFAF8] border border-[#E2E5DF] rounded-xl text-xs sm:text-sm font-semibold text-[#171A18] transition-all shadow-2xs cursor-pointer active:scale-98"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-white dark:bg-[#151D2A] hover:bg-[#FAFAF8] dark:hover:bg-[#1E293B] border border-[#E2E5DF] dark:border-[#263346] rounded-xl text-xs sm:text-sm font-semibold text-[#171A18] dark:text-white transition-all shadow-2xs cursor-pointer active:scale-98"
           >
-            <CalendarPlus className="w-4 h-4 text-[#171A18]" />
+            <CalendarPlus className="w-4 h-4 text-[#171A18] dark:text-brand-lime" />
             <span>Monthly Billing</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsExportDialogOpen(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 bg-white hover:bg-[#FAFAF8] border border-[#E2E5DF] rounded-xl text-xs sm:text-sm font-semibold text-[#171A18] transition-all shadow-2xs cursor-pointer active:scale-98"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-white dark:bg-[#151D2A] hover:bg-[#FAFAF8] dark:hover:bg-[#1E293B] border border-[#E2E5DF] dark:border-[#263346] rounded-xl text-xs sm:text-sm font-semibold text-[#171A18] dark:text-white transition-all shadow-2xs cursor-pointer active:scale-98"
           >
-            <FileSpreadsheet className="w-4 h-4 text-[#171A18]" />
+            <FileSpreadsheet className="w-4 h-4 text-[#171A18] dark:text-brand-lime" />
             <span>Export CA Reports</span>
           </button>
 
           <button
             type="button"
             onClick={() => handleOpenRecordPayment()}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#C6F36B] hover:bg-[#bbf057] text-[#171A18] rounded-xl text-xs sm:text-sm font-black transition-all shadow-xs cursor-pointer active:scale-98"
+            className="flex items-center gap-1.5 px-4 py-2 bg-[#C6F36B] dark:bg-brand-lime hover:bg-[#bbf057] dark:hover:bg-[#BCE600] text-[#171A18] dark:text-brand-obsidian rounded-xl text-xs sm:text-sm font-black transition-all shadow-xs cursor-pointer active:scale-98"
           >
-            <Plus className="w-4 h-4 text-[#171A18]" />
+            <Plus className="w-4 h-4 text-[#171A18] dark:text-brand-obsidian" />
             <span>Record Payment</span>
           </button>
         </div>
@@ -512,19 +512,19 @@ function RentPaymentsPageContent() {
       />
 
       {/* Modern Segmented Navigation Tabs */}
-      <div className="flex flex-wrap items-center gap-2 p-1 bg-[#EBECE7] rounded-2xl w-full sm:w-fit">
+      <div className="flex flex-wrap items-center gap-2 p-1 bg-[#EBECE7] dark:bg-[#111622] border border-transparent dark:border-[#222E42] rounded-2xl w-full sm:w-fit">
         <button
           type="button"
           onClick={() => setActiveTab("ledger")}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === "ledger"
-              ? "bg-white text-[#171A18] shadow-xs"
-              : "text-[#777D78] hover:text-[#171A18]"
+              ? "bg-white dark:bg-[#151D2A] text-[#171A18] dark:text-white shadow-xs border border-transparent dark:border-[#263346]"
+              : "text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white"
           }`}
         >
-          <CreditCard className="w-4 h-4 text-[#171A18]" />
+          <CreditCard className="w-4 h-4 text-[#171A18] dark:text-brand-lime" />
           <span>Rent Ledger</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#F4F5F2] text-[#171A18]">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#F4F5F2] dark:bg-[#1E2638] text-[#171A18] dark:text-slate-200">
             {currentPropertyLedger.length}
           </span>
         </button>
@@ -534,17 +534,17 @@ function RentPaymentsPageContent() {
           onClick={() => setActiveTab("pending")}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === "pending"
-              ? "bg-white text-[#B91C1C] shadow-xs"
-              : "text-[#777D78] hover:text-[#B91C1C]"
+              ? "bg-white dark:bg-[#151D2A] text-[#B91C1C] dark:text-rose-400 shadow-xs border border-transparent dark:border-[#263346]"
+              : "text-[#777D78] dark:text-slate-400 hover:text-[#B91C1C] dark:hover:text-rose-400"
           }`}
         >
-          <Clock className="w-4 h-4 text-[#B91C1C]" />
+          <Clock className="w-4 h-4 text-[#B91C1C] dark:text-rose-400" />
           <span>Pending Dues</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-red-100 text-red-700">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-red-100 dark:bg-rose-500/20 text-red-700 dark:text-rose-300">
             {currentPropertyLedger.filter((l) => l.pendingAmount > 0).length}
           </span>
           {summaryStats.totalPendingRent > 0 && (
-            <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-black bg-red-600 text-white">
+            <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-black bg-red-600 dark:bg-rose-600 text-white">
               ₹{(summaryStats.totalPendingRent / 1000).toFixed(0)}k
             </span>
           )}
@@ -555,13 +555,13 @@ function RentPaymentsPageContent() {
           onClick={() => setActiveTab("deposits")}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
             activeTab === "deposits"
-              ? "bg-white text-[#171A18] shadow-xs"
-              : "text-[#777D78] hover:text-[#171A18]"
+              ? "bg-white dark:bg-[#151D2A] text-[#171A18] dark:text-white shadow-xs border border-transparent dark:border-[#263346]"
+              : "text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white"
           }`}
         >
-          <Shield className="w-4 h-4 text-[#171A18]" />
+          <Shield className="w-4 h-4 text-[#171A18] dark:text-purple-400" />
           <span>Security Deposits</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#F4F5F2] text-[#171A18]">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#F4F5F2] dark:bg-[#1E2638] text-[#171A18] dark:text-slate-200">
             {currentPropertyDeposits.length}
           </span>
         </button>

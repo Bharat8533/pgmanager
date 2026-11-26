@@ -24,26 +24,26 @@ interface RentLedgerTableProps {
 const STATUS_BADGES: Record<RentLedgerStatus, { label: string; bg: string; text: string; icon: any }> = {
   paid: {
     label: "Paid in Full",
-    bg: "bg-[#DCFCE7] border-[#86EFAC]/60",
-    text: "text-[#15803D]",
+    bg: "bg-[#DCFCE7] dark:bg-emerald-500/15 border-[#86EFAC]/60 dark:border-emerald-500/30",
+    text: "text-[#15803D] dark:text-emerald-300",
     icon: CheckCircle2,
   },
   partial: {
     label: "Partially Paid",
-    bg: "bg-[#FEF3C7] border-[#FDE68A]/60",
-    text: "text-[#B45309]",
+    bg: "bg-[#FEF3C7] dark:bg-amber-500/15 border-[#FDE68A]/60 dark:border-amber-500/30",
+    text: "text-[#B45309] dark:text-amber-300",
     icon: Clock,
   },
   pending: {
     label: "Pending",
-    bg: "bg-[#F4F5F2] border-[#E2E5DF]",
-    text: "text-[#171A18]",
+    bg: "bg-[#F4F5F2] dark:bg-slate-800 border-[#E2E5DF] dark:border-slate-700",
+    text: "text-[#171A18] dark:text-slate-300",
     icon: Clock,
   },
   overdue: {
     label: "Overdue",
-    bg: "bg-[#FEE2E2] border-[#FCA5A5]/60",
-    text: "text-[#B91C1C]",
+    bg: "bg-[#FEE2E2] dark:bg-rose-500/15 border-[#FCA5A5]/60 dark:border-rose-500/30",
+    text: "text-[#B91C1C] dark:text-rose-300",
     icon: AlertTriangle,
   },
 };
@@ -55,12 +55,12 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
 }) => {
   if (ledger.length === 0) {
     return (
-      <div className="py-16 text-center bg-white rounded-2xl border border-[#E2E5DF] p-8">
-        <div className="w-14 h-14 mx-auto rounded-2xl bg-[#F4F5F2] text-[#777D78] flex items-center justify-center mb-3">
-          <AlertCircle className="w-7 h-7 text-[#777D78]" />
+      <div className="py-16 text-center bg-white dark:bg-[#111622] rounded-2xl border border-[#E2E5DF] dark:border-[#222E42] p-8">
+        <div className="w-14 h-14 mx-auto rounded-2xl bg-[#F4F5F2] dark:bg-[#1E2638] text-[#777D78] dark:text-slate-400 flex items-center justify-center mb-3">
+          <AlertCircle className="w-7 h-7 text-[#777D78] dark:text-slate-400" />
         </div>
-        <h3 className="text-base font-bold text-[#171A18] mb-1">No Ledger Records Found</h3>
-        <p className="text-xs text-[#777D78] max-w-sm mx-auto mb-4">
+        <h3 className="text-base font-bold text-[#171A18] dark:text-white mb-1">No Ledger Records Found</h3>
+        <p className="text-xs text-[#777D78] dark:text-slate-400 max-w-sm mx-auto mb-4">
           No records match your active filters or search terms. Try resetting filters to view all records.
         </p>
       </div>
@@ -77,12 +77,12 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-[#E2E5DF] shadow-xs overflow-hidden">
+    <div className="bg-white dark:bg-[#111622] rounded-2xl border border-[#E2E5DF] dark:border-[#222E42] shadow-xs overflow-hidden">
       {/* Desktop & Tablet Table (md+) - Clean 7-column layout with zero forced horizontal scroll */}
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-[#F0F2EE] bg-[#FAFAF8] text-[11px] font-bold text-[#777D78] uppercase tracking-wider">
+            <tr className="border-b border-[#F0F2EE] dark:border-[#1E2638] bg-[#FAFAF8] dark:bg-[#151D2A] text-[11px] font-bold text-[#777D78] dark:text-slate-400 uppercase tracking-wider">
               <th className="py-3.5 px-5">Resident & Room</th>
               <th className="py-3.5 px-4">Billing Cycle</th>
               <th className="py-3.5 px-4 text-right">Rent Billed</th>
@@ -92,7 +92,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
               <th className="py-3.5 px-5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F0F2EE] text-xs">
+          <tbody className="divide-y divide-[#F0F2EE] dark:divide-[#1E2638] text-xs">
             {ledger.map((item) => {
               const badge = STATUS_BADGES[item.paymentStatus] || STATUS_BADGES.pending;
               const StatusIcon = badge.icon;
@@ -101,25 +101,25 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                 <tr
                   key={item.id}
                   onClick={() => onViewDetails(item)}
-                  className="hover:bg-[#F9FAF8] transition-colors cursor-pointer group"
+                  className="hover:bg-[#F9FAF8] dark:hover:bg-[#1E293B]/50 transition-colors cursor-pointer group"
                 >
                   {/* Column 1: Resident & Room Composite */}
                   <td className="py-4 px-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#171A18] text-[#C6F36B] font-extrabold flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
+                      <div className="w-9 h-9 rounded-xl bg-[#171A18] dark:bg-[#1E2638] text-[#C6F36B] dark:text-brand-lime font-extrabold flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform shadow-2xs border border-transparent dark:border-[#263346]">
                         {item.residentName.charAt(0)}
                       </div>
                       <div className="min-w-0">
-                        <div className="font-extrabold text-[#171A18] text-sm group-hover:text-[#171A18] transition-colors truncate">
+                        <div className="font-extrabold text-[#171A18] dark:text-white text-sm group-hover:text-[#171A18] dark:group-hover:text-brand-lime transition-colors truncate">
                           {item.residentName}
                         </div>
-                        <div className="flex items-center gap-2 text-[11px] text-[#777D78] mt-0.5">
-                          <span className="font-semibold text-[#171A18]">
+                        <div className="flex items-center gap-2 text-[11px] text-[#777D78] dark:text-slate-400 mt-0.5">
+                          <span className="font-semibold text-[#171A18] dark:text-slate-200">
                             Room {item.roomNumber} ({item.bedNumber})
                           </span>
                           <span>•</span>
-                          <span className="flex items-center gap-0.5 text-[#777D78]">
-                            <Phone className="w-3 h-3 text-[#777D78]" />
+                          <span className="flex items-center gap-0.5 text-[#777D78] dark:text-slate-400">
+                            <Phone className="w-3 h-3 text-[#777D78] dark:text-slate-400" />
                             {item.residentPhone}
                           </span>
                         </div>
@@ -129,33 +129,33 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
 
                   {/* Column 2: Billing Month & Due Date Composite */}
                   <td className="py-4 px-4 whitespace-nowrap">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-[#FAFAF8] border border-[#E2E5DF] text-[#171A18]">
-                      <Calendar className="w-3 h-3 text-[#777D78]" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-[#FAFAF8] dark:bg-[#151D2A] border border-[#E2E5DF] dark:border-[#263346] text-[#171A18] dark:text-slate-200">
+                      <Calendar className="w-3 h-3 text-[#777D78] dark:text-slate-400" />
                       <span>{item.billingMonth}</span>
                     </span>
-                    <span className="text-[11px] text-[#777D78] block mt-1 font-medium">
+                    <span className="text-[11px] text-[#777D78] dark:text-slate-400 block mt-1 font-medium">
                       Due: {item.dueDate}
                     </span>
                   </td>
 
                   {/* Column 3: Rent Billed */}
-                  <td className="py-4 px-4 text-right whitespace-nowrap font-bold text-[#171A18]">
+                  <td className="py-4 px-4 text-right whitespace-nowrap font-bold text-[#171A18] dark:text-white">
                     ₹{item.rentAmount.toLocaleString("en-IN")}
                   </td>
 
                   {/* Column 4: Paid Amount */}
-                  <td className="py-4 px-4 text-right whitespace-nowrap font-bold text-[#15803D]">
+                  <td className="py-4 px-4 text-right whitespace-nowrap font-bold text-[#15803D] dark:text-emerald-400">
                     ₹{item.paidAmount.toLocaleString("en-IN")}
                   </td>
 
                   {/* Column 5: Pending Amount */}
                   <td className="py-4 px-4 text-right whitespace-nowrap">
                     {item.pendingAmount > 0 ? (
-                      <span className="font-black text-[#B91C1C]">
+                      <span className="font-black text-[#B91C1C] dark:text-rose-400">
                         ₹{item.pendingAmount.toLocaleString("en-IN")}
                       </span>
                     ) : (
-                      <span className="text-[#15803D] font-bold">₹0</span>
+                      <span className="text-[#15803D] dark:text-emerald-400 font-bold">₹0</span>
                     )}
                   </td>
 
@@ -177,7 +177,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                           <button
                             type="button"
                             onClick={() => onRecordPaymentForResident(item)}
-                            className="px-3 py-1.5 rounded-xl bg-[#C6F36B] hover:bg-[#bbf057] text-[#171A18] text-xs font-extrabold flex items-center gap-1 transition-all shadow-2xs active:scale-95 cursor-pointer"
+                            className="px-3 py-1.5 rounded-xl bg-[#C6F36B] dark:bg-brand-lime hover:bg-[#bbf057] dark:hover:bg-[#BCE600] text-[#171A18] dark:text-brand-obsidian text-xs font-extrabold flex items-center gap-1 transition-all shadow-2xs active:scale-95 cursor-pointer"
                             title="Record payment against this invoice"
                           >
                             <Plus className="w-3.5 h-3.5" />
@@ -187,10 +187,10 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                           <button
                             type="button"
                             onClick={(e) => handleWhatsAppReminder(item, e)}
-                            className="p-1.5 text-[#047857] hover:bg-[#ECFDF5] border border-transparent hover:border-[#A7F3D0] rounded-xl transition-all"
+                            className="p-1.5 text-[#047857] dark:text-emerald-400 hover:bg-[#ECFDF5] dark:hover:bg-emerald-500/15 border border-transparent hover:border-[#A7F3D0] dark:hover:border-emerald-500/30 rounded-xl transition-all"
                             title="Send WhatsApp payment reminder"
                           >
-                            <MessageSquare className="w-4 h-4 text-[#047857]" />
+                            <MessageSquare className="w-4 h-4 text-[#047857] dark:text-emerald-400" />
                           </button>
                         </>
                       )}
@@ -198,7 +198,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                       <button
                         type="button"
                         onClick={() => onViewDetails(item)}
-                        className="p-1.5 text-[#777D78] hover:text-[#171A18] hover:bg-[#F4F5F2] rounded-xl transition-all"
+                        className="p-1.5 text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white hover:bg-[#F4F5F2] dark:hover:bg-[#1E2638] rounded-xl transition-all"
                         title="View Audit Ledger & Payment History"
                       >
                         <Eye className="w-4 h-4" />
@@ -213,7 +213,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
       </div>
 
       {/* Mobile Card View (md:hidden) */}
-      <div className="md:hidden divide-y divide-[#F0F2EE]">
+      <div className="md:hidden divide-y divide-[#F0F2EE] dark:divide-[#1E2638]">
         {ledger.map((item) => {
           const badge = STATUS_BADGES[item.paymentStatus] || STATUS_BADGES.pending;
           const StatusIcon = badge.icon;
@@ -222,17 +222,17 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
             <div
               key={`mob-${item.id}`}
               onClick={() => onViewDetails(item)}
-              className="p-4 space-y-3 cursor-pointer hover:bg-[#F9FAF8] transition-colors"
+              className="p-4 space-y-3 cursor-pointer hover:bg-[#F9FAF8] dark:hover:bg-[#1E293B]/50 transition-colors"
             >
               {/* Card Header: Resident & Status */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#171A18] text-[#C6F36B] font-extrabold flex items-center justify-center text-xs shrink-0 shadow-2xs">
+                  <div className="w-9 h-9 rounded-xl bg-[#171A18] dark:bg-[#1E2638] text-[#C6F36B] dark:text-brand-lime font-extrabold flex items-center justify-center text-xs shrink-0 shadow-2xs border border-transparent dark:border-[#263346]">
                     {item.residentName.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-sm text-[#171A18]">{item.residentName}</h4>
-                    <span className="text-[11px] text-[#777D78] font-medium">
+                    <h4 className="font-extrabold text-sm text-[#171A18] dark:text-white">{item.residentName}</h4>
+                    <span className="text-[11px] text-[#777D78] dark:text-slate-400 font-medium">
                       Room {item.roomNumber} ({item.bedNumber}) • {item.residentPhone}
                     </span>
                   </div>
@@ -247,18 +247,18 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
               </div>
 
               {/* Financial Breakdown Micro-Strip */}
-              <div className="grid grid-cols-3 gap-2 p-2.5 bg-[#FAFAF8] rounded-xl border border-[#E2E5DF] text-center text-xs">
+              <div className="grid grid-cols-3 gap-2 p-2.5 bg-[#FAFAF8] dark:bg-[#151D2A] rounded-xl border border-[#E2E5DF] dark:border-[#263346] text-center text-xs">
                 <div>
-                  <span className="text-[10px] text-[#777D78] uppercase font-bold block">Billed</span>
-                  <span className="font-bold text-[#171A18]">₹{item.rentAmount.toLocaleString("en-IN")}</span>
+                  <span className="text-[10px] text-[#777D78] dark:text-slate-400 uppercase font-bold block">Billed</span>
+                  <span className="font-bold text-[#171A18] dark:text-white">₹{item.rentAmount.toLocaleString("en-IN")}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#777D78] uppercase font-bold block">Paid</span>
-                  <span className="font-bold text-[#15803D]">₹{item.paidAmount.toLocaleString("en-IN")}</span>
+                  <span className="text-[10px] text-[#777D78] dark:text-slate-400 uppercase font-bold block">Paid</span>
+                  <span className="font-bold text-[#15803D] dark:text-emerald-400">₹{item.paidAmount.toLocaleString("en-IN")}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-[#777D78] uppercase font-bold block">Pending</span>
-                  <span className={`font-black ${item.pendingAmount > 0 ? "text-[#B91C1C]" : "text-[#15803D]"}`}>
+                  <span className="text-[10px] text-[#777D78] dark:text-slate-400 uppercase font-bold block">Pending</span>
+                  <span className={`font-black ${item.pendingAmount > 0 ? "text-[#B91C1C] dark:text-rose-400" : "text-[#15803D] dark:text-emerald-400"}`}>
                     ₹{item.pendingAmount.toLocaleString("en-IN")}
                   </span>
                 </div>
@@ -269,8 +269,8 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                 className="flex items-center justify-between text-xs pt-1"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="text-[11px] text-[#777D78]">
-                  <span>Due: <strong className="text-[#171A18]">{item.dueDate}</strong></span>
+                <div className="text-[11px] text-[#777D78] dark:text-slate-400">
+                  <span>Due: <strong className="text-[#171A18] dark:text-white">{item.dueDate}</strong></span>
                   <span className="mx-1">•</span>
                   <span>{item.billingMonth}</span>
                 </div>
@@ -281,7 +281,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                       <button
                         type="button"
                         onClick={(e) => handleWhatsAppReminder(item, e)}
-                        className="p-1.5 text-[#047857] hover:bg-[#ECFDF5] rounded-lg transition-colors"
+                        className="p-1.5 text-[#047857] dark:text-emerald-400 hover:bg-[#ECFDF5] dark:hover:bg-emerald-500/15 rounded-lg transition-colors"
                         title="WhatsApp reminder"
                       >
                         <MessageSquare className="w-4 h-4" />
@@ -289,7 +289,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                       <button
                         type="button"
                         onClick={() => onRecordPaymentForResident(item)}
-                        className="px-3 py-1.5 bg-[#C6F36B] hover:bg-[#bbf057] text-[#171A18] font-black rounded-xl text-xs flex items-center gap-1 shadow-2xs active:scale-95"
+                        className="px-3 py-1.5 bg-[#C6F36B] dark:bg-brand-lime hover:bg-[#bbf057] dark:hover:bg-[#BCE600] text-[#171A18] dark:text-brand-obsidian font-black rounded-xl text-xs flex items-center gap-1 shadow-2xs active:scale-95"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Pay</span>
@@ -299,7 +299,7 @@ export const RentLedgerTable: React.FC<RentLedgerTableProps> = ({
                   <button
                     type="button"
                     onClick={() => onViewDetails(item)}
-                    className="p-1.5 text-[#777D78] hover:text-[#171A18] hover:bg-[#F4F5F2] rounded-lg"
+                    className="p-1.5 text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white hover:bg-[#F4F5F2] dark:hover:bg-[#1E2638] rounded-lg"
                   >
                     <Eye className="w-4 h-4" />
                   </button>
