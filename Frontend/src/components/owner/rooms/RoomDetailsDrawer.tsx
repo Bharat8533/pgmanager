@@ -30,7 +30,7 @@ import {
   LayoutGrid,
   List,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getNameInitials } from "@/lib/utils";
 
 interface RoomDetailsDrawerProps {
   room: Room | null;
@@ -468,11 +468,9 @@ export function RoomDetailsDrawer({
                     className="bg-white dark:bg-[#151D2A] p-3.5 sm:p-4 rounded-2xl border border-brand-border dark:border-[#263346] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs hover:border-slate-300 dark:hover:border-slate-600 transition-all"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <img
-                        src={res.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"}
-                        alt={res.name}
-                        className="w-10 h-10 rounded-xl object-cover ring-1 ring-brand-border dark:ring-[#2C384C] flex-shrink-0"
-                      />
+                      <div className="w-10 h-10 rounded-xl bg-brand-obsidian dark:bg-[#182232] text-brand-lime font-black flex items-center justify-center text-xs flex-shrink-0 border border-brand-border dark:border-[#2C384C] tracking-wider">
+                        {getNameInitials(res.name)}
+                      </div>
                       <div className="min-w-0">
                         <h4 className="font-bold text-brand-charcoal dark:text-white text-sm truncate">
                           {res.name}

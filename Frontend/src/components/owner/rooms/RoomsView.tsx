@@ -294,8 +294,8 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
             type="button"
             onClick={() => setViewMode("accordion")}
             className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === "accordion"
-                ? "bg-brand-obsidian text-brand-lime shadow-xs"
-                : "text-brand-muted hover:text-brand-charcoal"
+              ? "bg-brand-obsidian text-brand-lime shadow-xs"
+              : "text-brand-muted hover:text-brand-charcoal"
               }`}
             title="Expandable Dropdown List View (Optimized for 20-50+ rooms)"
           >
@@ -307,8 +307,8 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
             type="button"
             onClick={() => setViewMode("grid")}
             className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === "grid"
-                ? "bg-brand-obsidian text-brand-lime shadow-xs"
-                : "text-brand-muted hover:text-brand-charcoal"
+              ? "bg-brand-obsidian text-brand-lime shadow-xs"
+              : "text-brand-muted hover:text-brand-charcoal"
               }`}
             title="Visual Grid Cards View"
           >

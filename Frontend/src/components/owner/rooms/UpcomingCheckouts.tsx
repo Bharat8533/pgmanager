@@ -16,7 +16,7 @@ import {
   Columns,
   Sparkles,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getNameInitials } from "@/lib/utils";
 
 interface UpcomingCheckoutsProps {
   items: UpcomingCheckoutItem[];
@@ -205,11 +205,9 @@ export function UpcomingCheckouts({ items, onSelectResident }: UpcomingCheckouts
                 className="w-full sm:w-[320px] lg:w-[350px] flex-shrink-0 snap-start bg-white dark:bg-[#151D2A] rounded-xl border border-amber-200/70 dark:border-[#263346] p-3 flex items-center justify-between gap-3 hover:border-amber-400 dark:hover:border-amber-500/50 hover:shadow-xs transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <img
-                    src={resident.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80"}
-                    alt={resident.name}
-                    className="w-9 h-9 rounded-xl object-cover ring-1 ring-slate-200 dark:ring-[#2C384C] flex-shrink-0"
-                  />
+                  <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-[#182232] text-amber-900 dark:text-amber-400 font-black flex items-center justify-center text-xs flex-shrink-0 border border-amber-200 dark:border-[#2C384C] tracking-wider">
+                    {getNameInitials(resident.name)}
+                  </div>
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-brand-charcoal dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       {resident.name}
@@ -257,11 +255,9 @@ export function UpcomingCheckouts({ items, onSelectResident }: UpcomingCheckouts
                 className="bg-white dark:bg-[#151D2A] rounded-xl border border-amber-200/70 dark:border-[#263346] p-3 flex items-center justify-between gap-3 hover:border-amber-400 dark:hover:border-amber-500/50 hover:shadow-xs transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <img
-                    src={resident.avatar || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80"}
-                    alt={resident.name}
-                    className="w-9 h-9 rounded-xl object-cover ring-1 ring-slate-200 dark:ring-[#2C384C] flex-shrink-0"
-                  />
+                  <div className="w-9 h-9 rounded-xl bg-amber-100 dark:bg-[#182232] text-amber-900 dark:text-amber-400 font-black flex items-center justify-center text-xs flex-shrink-0 border border-amber-200 dark:border-[#2C384C] tracking-wider">
+                    {getNameInitials(resident.name)}
+                  </div>
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-brand-charcoal dark:text-white truncate group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       {resident.name}

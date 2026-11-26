@@ -27,32 +27,32 @@ export function StaffStatusTabs({
       label: "All Staff",
       count: counts.all,
       icon: <Users className="w-3.5 h-3.5" />,
-      activeColor: "bg-brand-obsidian text-white border-brand-obsidian",
-      badgeColor: "bg-white/20 text-white",
+      activeColor: "bg-brand-obsidian text-white border-brand-obsidian dark:bg-[#1E293B] dark:text-brand-lime dark:border-[#C6F36B]/40",
+      badgeColor: "bg-white/20 dark:bg-black/40 text-white dark:text-brand-lime",
     },
     {
       id: "active" as const,
       label: "Active",
       count: counts.active,
       icon: <UserCheck className="w-3.5 h-3.5" />,
-      activeColor: "bg-emerald-600 text-white border-emerald-600",
-      badgeColor: "bg-white/20 text-white",
+      activeColor: "bg-emerald-600 text-white border-emerald-600 dark:bg-emerald-600/90 dark:border-emerald-500",
+      badgeColor: "bg-white/20 dark:bg-black/40 text-white",
     },
     {
       id: "on_leave" as const,
       label: "On Leave",
       count: counts.on_leave,
       icon: <Clock className="w-3.5 h-3.5" />,
-      activeColor: "bg-amber-600 text-white border-amber-600",
-      badgeColor: "bg-white/20 text-white",
+      activeColor: "bg-amber-600 text-white border-amber-600 dark:bg-amber-600/90 dark:border-amber-500",
+      badgeColor: "bg-white/20 dark:bg-black/40 text-white",
     },
     {
       id: "inactive" as const,
       label: "Inactive",
       count: counts.inactive,
       icon: <UserX className="w-3.5 h-3.5" />,
-      activeColor: "bg-slate-700 text-white border-slate-700",
-      badgeColor: "bg-white/20 text-white",
+      activeColor: "bg-slate-700 text-white border-slate-700 dark:bg-slate-700/90 dark:border-slate-600",
+      badgeColor: "bg-white/20 dark:bg-black/40 text-white",
     },
   ];
 
@@ -69,7 +69,7 @@ export function StaffStatusTabs({
               "inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all whitespace-nowrap active:scale-95 shadow-2xs",
               isActive
                 ? tab.activeColor
-                : "bg-white text-brand-charcoal border-brand-border hover:bg-slate-50"
+                : "bg-white dark:bg-[#111622] text-brand-charcoal dark:text-slate-300 border-brand-border dark:border-[#222E42] hover:bg-slate-50 dark:hover:bg-[#182232]"
             )}
           >
             {tab.icon}
@@ -77,7 +77,7 @@ export function StaffStatusTabs({
             <span
               className={cn(
                 "px-2 py-0.5 rounded-full text-[10px] font-extrabold",
-                isActive ? tab.badgeColor : "bg-slate-100 text-brand-muted"
+                isActive ? tab.badgeColor : "bg-slate-100 dark:bg-[#182232] text-brand-muted dark:text-slate-400"
               )}
             >
               {tab.count}

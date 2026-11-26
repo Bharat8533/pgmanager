@@ -127,7 +127,7 @@ function NavList({ isMobile = false, isCollapsed = false, onItemClick }: NavList
           - Top and bottom concave curves slide seamlessly with it
           - In light mode: matches main content area (#F8FAFC)
           - In dark mode: pure white (#FFFFFF) for high contrast as requested
-          ========================================================================= */} 
+          ========================================================================= */}
       <div
         className={cn(
           "absolute right-0 top-0 w-[calc(100%-14px)] bg-[#F8FAFC] dark:bg-white sidebar-active-tab rounded-l-2xl shadow-xs pointer-events-none z-0",

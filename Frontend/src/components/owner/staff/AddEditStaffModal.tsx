@@ -445,19 +445,19 @@ export function AddEditStaffModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-brand-obsidian/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5">
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-brand-border flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-brand-obsidian/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5">
+      <div className="relative w-full max-w-3xl bg-white dark:bg-[#111622] rounded-3xl shadow-2xl border border-brand-border dark:border-[#222E42] flex flex-col max-h-[92vh] overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         {/* Modal Header */}
-        <div className="p-4 sm:p-5 border-b border-brand-border flex items-center justify-between shrink-0 bg-white">
+        <div className="p-4 sm:p-5 border-b border-brand-border dark:border-[#1E2638] flex items-center justify-between shrink-0 bg-white dark:bg-[#111622]">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-brand-obsidian text-brand-lime flex items-center justify-center font-bold shadow-xs">
               <User className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-bold text-brand-charcoal">
+              <h2 className="text-base sm:text-lg font-bold text-brand-charcoal dark:text-white">
                 {isEditing ? `Edit Staff: ${staffToEdit?.name}` : "Add New Staff Member"}
               </h2>
-              <p className="text-xs text-brand-muted">
+              <p className="text-xs text-brand-muted dark:text-slate-400">
                 {isEditing
                   ? `Updating employee profile record (${staffToEdit?.employeeId})`
                   : `Assign responsibilities and register details (${formData.employeeId})`}
@@ -468,22 +468,22 @@ export function AddEditStaffModal({
           <button
             type="button"
             onClick={handleClose}
-            className="p-1.5 rounded-xl hover:bg-brand-offwhite text-brand-muted hover:text-brand-charcoal transition-colors"
+            className="p-1.5 rounded-xl hover:bg-brand-offwhite dark:hover:bg-[#182232] text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Section Navigation Tabs */}
-        <div className="px-4 border-b border-brand-border bg-white flex items-center gap-1 overflow-x-auto no-scrollbar shrink-0">
+        <div className="px-4 border-b border-brand-border dark:border-[#1E2638] bg-white dark:bg-[#0D111A] flex items-center gap-1 overflow-x-auto no-scrollbar shrink-0">
           <button
             type="button"
             onClick={() => setActiveFormTab("personal")}
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "personal"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <User className="w-3.5 h-3.5" />
@@ -499,8 +499,8 @@ export function AddEditStaffModal({
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "employment"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <Briefcase className="w-3.5 h-3.5" />
@@ -516,8 +516,8 @@ export function AddEditStaffModal({
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "salary"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <IndianRupee className="w-3.5 h-3.5" />
@@ -531,8 +531,8 @@ export function AddEditStaffModal({
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "emergency"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <HeartPulse className="w-3.5 h-3.5" />
@@ -548,8 +548,8 @@ export function AddEditStaffModal({
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "documents"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <FileText className="w-3.5 h-3.5" />
@@ -562,8 +562,8 @@ export function AddEditStaffModal({
             className={cn(
               "flex items-center gap-1.5 py-2.5 px-3 text-xs font-semibold whitespace-nowrap border-b-2 transition-colors",
               activeFormTab === "additional"
-                ? "border-brand-obsidian text-brand-charcoal"
-                : "border-transparent text-brand-muted hover:text-brand-charcoal"
+                ? "border-brand-obsidian dark:border-brand-lime text-brand-charcoal dark:text-brand-lime font-bold"
+                : "border-transparent text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-slate-200"
             )}
           >
             <GraduationCap className="w-3.5 h-3.5" />
@@ -1433,11 +1433,11 @@ export function AddEditStaffModal({
           )}
 
           {/* Modal Footer (Sticky) */}
-          <div className="pt-4 border-t border-brand-border flex flex-col-reverse sm:flex-row items-center justify-between gap-3 sticky bottom-0 bg-white">
+          <div className="pt-4 border-t border-brand-border dark:border-[#1E2638] flex flex-col-reverse sm:flex-row items-center justify-between gap-3 sticky bottom-0 bg-white dark:bg-[#111622]">
             <button
               type="button"
               onClick={handleClose}
-              className="w-full sm:w-auto px-4 py-2 rounded-xl border border-brand-border bg-brand-offwhite hover:bg-neutral-200 text-brand-charcoal text-xs font-semibold transition-colors"
+              className="w-full sm:w-auto px-4 py-2 rounded-xl border border-brand-border dark:border-[#263346] bg-brand-offwhite dark:bg-[#182232] hover:bg-neutral-200 dark:hover:bg-[#222E42] text-brand-charcoal dark:text-slate-200 text-xs font-semibold transition-colors"
             >
               Cancel
             </button>
@@ -1445,7 +1445,7 @@ export function AddEditStaffModal({
             <div className="w-full sm:w-auto flex items-center justify-end gap-2">
               <button
                 type="submit"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-obsidian text-brand-lime hover:bg-brand-obsidian/90 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-obsidian text-brand-lime hover:bg-black dark:bg-brand-lime dark:text-[#0A0D12] dark:hover:bg-[#b8e85c] text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>{isEditing ? "Save Staff Changes" : "Register Staff Member"}</span>
@@ -1456,20 +1456,20 @@ export function AddEditStaffModal({
 
         {/* Unsaved Changes Discard Confirmation Dialog */}
         {showDiscardConfirm && (
-          <div className="absolute inset-0 z-60 bg-brand-obsidian/60 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-brand-border text-center">
+          <div className="absolute inset-0 z-60 bg-brand-obsidian/60 backdrop-blur-xs flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-[#151D2A] rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-brand-border dark:border-[#263346] text-center">
               <AlertCircle className="w-10 h-10 text-amber-500 mx-auto mb-2" />
-              <h3 className="text-sm font-bold text-brand-charcoal mb-1">
+              <h3 className="text-sm font-bold text-brand-charcoal dark:text-white mb-1">
                 Discard Unsaved Changes?
               </h3>
-              <p className="text-xs text-brand-muted mb-4">
+              <p className="text-xs text-brand-muted dark:text-slate-400 mb-4">
                 You have modified information on this staff form. Discarding will lose all unsaved inputs.
               </p>
               <div className="flex items-center justify-center gap-2">
                 <button
                   type="button"
                   onClick={() => setShowDiscardConfirm(false)}
-                  className="px-3.5 py-1.5 text-xs font-semibold rounded-xl border border-brand-border bg-white hover:bg-brand-offwhite text-brand-charcoal"
+                  className="px-3.5 py-1.5 text-xs font-semibold rounded-xl border border-brand-border dark:border-[#263346] bg-white dark:bg-[#182232] hover:bg-brand-offwhite dark:hover:bg-[#222E42] text-brand-charcoal dark:text-slate-200"
                 >
                   Keep Editing
                 </button>
