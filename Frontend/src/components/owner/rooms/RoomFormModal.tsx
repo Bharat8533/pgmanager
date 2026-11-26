@@ -328,14 +328,14 @@ export function RoomFormModal({
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
       {/* Modal Card */}
-      <div className="relative w-full max-w-2xl max-h-[92vh] bg-white rounded-3xl border border-brand-border shadow-2xl overflow-y-auto z-10 animate-scaleUp no-scrollbar">
+      <div className="relative w-full max-w-2xl max-h-[92vh] bg-white dark:bg-[#111622] rounded-3xl border border-brand-border dark:border-[#222E42] shadow-2xl overflow-y-auto z-10 animate-scaleUp no-scrollbar">
         {/* Header */}
-        <div className="sticky top-0 bg-white/95 backdrop-blur-md px-5 sm:px-6 py-4 border-b border-brand-border flex items-center justify-between z-20">
+        <div className="sticky top-0 bg-white/95 dark:bg-[#111622]/95 backdrop-blur-md px-5 sm:px-6 py-4 border-b border-brand-border dark:border-[#1E2638] flex items-center justify-between z-20">
           <div>
-            <h3 className="text-base sm:text-lg font-black text-brand-charcoal">
+            <h3 className="text-base sm:text-lg font-black text-brand-charcoal dark:text-white">
               {isEdit ? `Edit Room ${roomToEdit?.roomNumber}` : "Add New Room"}
             </h3>
-            <p className="text-xs text-brand-muted mt-0.5">
+            <p className="text-xs text-brand-muted dark:text-slate-400 mt-0.5">
               {isEdit
                 ? "Update room specifications, sharing capacity, pricing, and facilities."
                 : "Add a room to any floor (1st, 10th story, custom wing) and configure capacity."}
@@ -345,7 +345,7 @@ export function RoomFormModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-brand-charcoal flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-slate-100 dark:bg-[#1E2638] hover:bg-slate-200 dark:hover:bg-[#253248] text-brand-charcoal dark:text-white flex items-center justify-center transition-colors shadow-2xs"
             aria-label="Close modal"
           >
             <X className="w-4 h-4" />
@@ -356,16 +356,16 @@ export function RoomFormModal({
         <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4 sm:space-y-5">
           {/* Validation Error Alert */}
           {errorMsg && (
-            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200/80 flex items-start gap-2.5 text-rose-800 text-xs animate-fadeIn">
-              <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200/80 dark:border-rose-500/30 flex items-start gap-2.5 text-rose-800 dark:text-rose-300 text-xs animate-fadeIn shadow-2xs">
+              <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" />
               <div className="flex-1 leading-relaxed">{errorMsg}</div>
             </div>
           )}
 
           {/* Bed Capacity Safety Rule Warning (Edit Mode) */}
           {isEdit && minAllowedBeds > 0 && (
-            <div className="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-800 text-xs flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div className="p-3 rounded-xl bg-amber-50/80 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs flex items-start gap-2 shadow-2xs">
+              <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
               <div className="leading-relaxed">
                 <strong>Bed Capacity Safety:</strong> This room has{" "}
                 <strong>{currentOccupiedBeds} occupied</strong> and{" "}
@@ -379,7 +379,7 @@ export function RoomFormModal({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
             {/* Room Number */}
             <div>
-              <label className="text-xs font-bold text-brand-charcoal block mb-1">
+              <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
                 Room Number <span className="text-rose-500">*</span>
               </label>
               <input
@@ -388,9 +388,9 @@ export function RoomFormModal({
                 value={roomNumber}
                 onChange={(e) => handleRoomNumberChange(e.target.value)}
                 placeholder="e.g. 101, 1002, 1004"
-                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal"
+                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 focus:border-brand-obsidian dark:focus:border-brand-lime font-semibold text-brand-charcoal dark:text-white"
               />
-              <span className="text-[10px] text-brand-muted mt-0.5 block">
+              <span className="text-[10px] text-brand-muted dark:text-slate-400 mt-0.5 block">
                 Type room number (e.g. 1002 auto-detects 10th Floor)
               </span>
             </div>
@@ -398,7 +398,7 @@ export function RoomFormModal({
             {/* Floor Selection / Custom Floor Input */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-bold text-brand-charcoal">
+                <label className="text-xs font-bold text-brand-charcoal dark:text-white">
                   Floor <span className="text-rose-500">*</span>
                 </label>
                 <button
@@ -409,7 +409,7 @@ export function RoomFormModal({
                       setCustomFloorInput(floor !== "custom" ? floor : "10th Floor");
                     }
                   }}
-                  className="text-[11px] font-bold text-blue-600 hover:text-blue-700 underline"
+                  className="text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline"
                 >
                   {isCustomFloor ? "Choose from Presets" : "+ Custom / 10th+ Floor"}
                 </button>
@@ -423,9 +423,9 @@ export function RoomFormModal({
                     value={customFloorInput}
                     onChange={(e) => setCustomFloorInput(e.target.value)}
                     placeholder="e.g. 10th Floor, Tower B - 8th Floor, Mezzanine"
-                    className="w-full h-10 px-3 text-xs bg-white rounded-xl border-2 border-brand-obsidian focus:outline-none focus:ring-2 focus:ring-brand-lime font-bold text-brand-charcoal"
+                    className="w-full h-10 px-3 text-xs bg-white dark:bg-[#151D2A] rounded-xl border-2 border-brand-obsidian dark:border-brand-lime focus:outline-none focus:ring-2 focus:ring-brand-lime font-bold text-brand-charcoal dark:text-white"
                   />
-                  <span className="text-[10px] text-brand-muted block">
+                  <span className="text-[10px] text-brand-muted dark:text-slate-400 block">
                     Supports any story building (e.g. 10th Floor, 15th Floor, Tower 2)
                   </span>
                 </div>
@@ -440,20 +440,20 @@ export function RoomFormModal({
                       setFloor(e.target.value);
                     }
                   }}
-                  className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal cursor-pointer"
+                  className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-semibold text-brand-charcoal dark:text-white cursor-pointer"
                 >
                   {PRESET_FLOORS.map((f) => (
-                    <option key={f} value={f}>
+                    <option key={f} value={f} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                       {f}
                     </option>
                   ))}
-                  <option value="custom">✍️ + Type Custom Floor Name...</option>
+                  <option value="custom" className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">✍️ + Type Custom Floor Name...</option>
                 </select>
               )}
 
               {autoDetectedFloor && !isCustomFloor && (
-                <div className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1 mt-1">
-                  <Sparkles className="w-3 h-3 text-emerald-600 flex-shrink-0" />
+                <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1 mt-1">
+                  <Sparkles className="w-3 h-3 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
                   <span>Auto-detected {autoDetectedFloor} from room number</span>
                 </div>
               )}
@@ -461,16 +461,16 @@ export function RoomFormModal({
 
             {/* Room Type */}
             <div>
-              <label className="text-xs font-bold text-brand-charcoal block mb-1">
+              <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
                 Room Sharing Type <span className="text-rose-500">*</span>
               </label>
               <select
                 value={roomType}
                 onChange={(e) => handleRoomTypeChange(e.target.value as RoomType)}
-                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal cursor-pointer"
+                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-semibold text-brand-charcoal dark:text-white cursor-pointer"
               >
                 {ROOM_TYPES.map((rt) => (
-                  <option key={rt.type} value={rt.type}>
+                  <option key={rt.type} value={rt.type} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                     {rt.type}
                   </option>
                 ))}
@@ -479,7 +479,7 @@ export function RoomFormModal({
 
             {/* Total Beds */}
             <div>
-              <label className="text-xs font-bold text-brand-charcoal block mb-1">
+              <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
                 Total Beds <span className="text-rose-500">*</span>
               </label>
               <input
@@ -488,9 +488,9 @@ export function RoomFormModal({
                 max={12}
                 value={totalBeds}
                 onChange={(e) => setTotalBeds(Math.max(1, parseInt(e.target.value) || 1))}
-                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal"
+                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-semibold text-brand-charcoal dark:text-white"
               />
-              <span className="text-[10px] text-brand-muted mt-0.5 block">
+              <span className="text-[10px] text-brand-muted dark:text-slate-400 mt-0.5 block">
                 {roomType === "Custom"
                   ? "Specify custom bed count"
                   : `Default for ${roomType}`}
@@ -499,11 +499,11 @@ export function RoomFormModal({
 
             {/* Default Monthly Rent Per Bed */}
             <div>
-              <label className="text-xs font-bold text-brand-charcoal block mb-1">
+              <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
                 Default Monthly Rent Per Bed (₹) <span className="text-rose-500">*</span>
               </label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted text-xs font-bold">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted dark:text-slate-400 text-xs font-bold">
                   ₹
                 </span>
                 <input
@@ -513,31 +513,31 @@ export function RoomFormModal({
                   required
                   value={defaultMonthlyRent}
                   onChange={(e) => setDefaultMonthlyRent(Math.max(0, parseInt(e.target.value) || 0))}
-                  className="w-full h-10 pl-7 pr-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal"
+                  className="w-full h-10 pl-7 pr-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-semibold text-brand-charcoal dark:text-white"
                 />
               </div>
             </div>
 
             {/* Initial Room Status */}
             <div>
-              <label className="text-xs font-bold text-brand-charcoal block mb-1">
+              <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
                 Initial Room Status
               </label>
               <select
                 value={roomStatus}
                 onChange={(e) => setRoomStatus(e.target.value as RoomStatus)}
-                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-semibold text-brand-charcoal cursor-pointer"
+                className="w-full h-10 px-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-semibold text-brand-charcoal dark:text-white cursor-pointer"
               >
-                <option value="available">Available for Bookings</option>
-                <option value="under_maintenance">Under Maintenance</option>
-                <option value="inactive">Inactive</option>
+                <option value="available" className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">Available for Bookings</option>
+                <option value="under_maintenance" className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">Under Maintenance</option>
+                <option value="inactive" className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">Inactive</option>
               </select>
             </div>
           </div>
 
           {/* Description */}
           <div>
-            <label className="text-xs font-bold text-brand-charcoal block mb-1">
+            <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-1">
               Room Description & Special Features
             </label>
             <textarea
@@ -545,13 +545,13 @@ export function RoomFormModal({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="e.g. 10th floor corner room with city skyline view, dedicated work desks, balcony access, and inverter backup..."
-              className="w-full p-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 text-brand-charcoal resize-none placeholder:text-brand-muted/70"
+              className="w-full p-3 text-xs bg-slate-50 hover:bg-slate-100/70 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 text-brand-charcoal dark:text-white resize-none placeholder:text-brand-muted/70 dark:placeholder:text-slate-500"
             />
           </div>
 
           {/* Amenities Selector */}
           <div>
-            <label className="text-xs font-bold text-brand-charcoal block mb-2">
+            <label className="text-xs font-bold text-brand-charcoal dark:text-white block mb-2">
               Room Amenities ({amenities.length} selected)
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -565,14 +565,14 @@ export function RoomFormModal({
                     className={cn(
                       "flex items-center gap-2 p-2.5 rounded-xl border text-xs font-medium transition-all text-left",
                       isSelected
-                        ? "bg-brand-obsidian text-white border-brand-obsidian shadow-2xs font-semibold"
-                        : "bg-slate-50/80 hover:bg-slate-100/80 border-brand-border/80 text-brand-charcoal"
+                        ? "bg-brand-obsidian dark:bg-[#1E2638] text-white border-brand-obsidian dark:border-brand-lime/40 shadow-2xs font-semibold"
+                        : "bg-slate-50/80 hover:bg-slate-100/80 dark:bg-[#151D2A] dark:hover:bg-[#1A2332] border-brand-border/80 dark:border-[#263346] text-brand-charcoal dark:text-slate-200"
                     )}
                   >
                     <div
                       className={cn(
                         "w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0 text-[10px]",
-                        isSelected ? "bg-brand-lime text-brand-obsidian" : "bg-white border border-brand-border"
+                        isSelected ? "bg-brand-lime text-brand-obsidian" : "bg-white dark:bg-[#111622] border border-brand-border dark:border-[#263346]"
                       )}
                     >
                       {isSelected ? <Check className="w-3 h-3 stroke-[3]" /> : null}
@@ -596,12 +596,12 @@ export function RoomFormModal({
                   }
                 }}
                 placeholder="+ Add custom facility (e.g. Microwave, Smart Door Lock)..."
-                className="flex-1 h-9 px-3 text-xs bg-slate-50 rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 text-brand-charcoal"
+                className="flex-1 h-9 px-3 text-xs bg-slate-50 dark:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 text-brand-charcoal dark:text-white placeholder:text-brand-muted/70 dark:placeholder:text-slate-500"
               />
               <button
                 type="button"
                 onClick={handleAddCustomAmenity}
-                className="h-9 px-3.5 bg-slate-100 hover:bg-slate-200 text-brand-charcoal rounded-xl text-xs font-bold transition-colors"
+                className="h-9 px-3.5 bg-slate-100 hover:bg-slate-200 dark:bg-[#1E2638] dark:hover:bg-[#253248] text-brand-charcoal dark:text-white rounded-xl text-xs font-bold transition-colors shadow-2xs"
               >
                 Add
               </button>
@@ -609,12 +609,12 @@ export function RoomFormModal({
           </div>
 
           {/* Modal Footer Actions */}
-          <div className="pt-3 border-t border-brand-border flex items-center justify-end gap-2.5">
+          <div className="pt-3 border-t border-brand-border dark:border-[#1E2638] flex items-center justify-end gap-2.5">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 text-xs font-bold text-brand-muted hover:text-brand-charcoal hover:bg-slate-100 rounded-xl transition-colors"
+              className="px-4 py-2 text-xs font-bold text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#1E2638] rounded-xl transition-colors"
             >
               Cancel
             </button>

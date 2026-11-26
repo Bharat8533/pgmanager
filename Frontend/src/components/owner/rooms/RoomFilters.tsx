@@ -65,24 +65,24 @@ export function RoomFilters({
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 p-3 sm:p-4 shadow-2xs space-y-3">
+    <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border/80 dark:border-[#222E42] p-3 sm:p-4 shadow-2xs space-y-3">
       {/* Top Search & Primary Action Row */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
         {/* Search Bar */}
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-brand-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <Search className="w-4 h-4 text-brand-muted dark:text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
             value={filters.searchQuery}
             onChange={(e) => onFilterChange({ searchQuery: e.target.value })}
             placeholder="Search by room number, floor, sharing type, or resident name..."
-            className="w-full h-10 pl-9 pr-8 text-xs bg-slate-50 hover:bg-slate-100/80 focus:bg-white rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 focus:border-brand-obsidian transition-all placeholder:text-brand-muted/70 text-brand-charcoal"
+            className="w-full h-10 pl-9 pr-8 text-xs bg-slate-50 hover:bg-slate-100/80 focus:bg-white dark:bg-[#151D2A] dark:hover:bg-[#1A2332] dark:focus:bg-[#151D2A] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 focus:border-brand-obsidian dark:focus:border-brand-lime transition-all placeholder:text-brand-muted/70 dark:placeholder:text-slate-500 text-brand-charcoal dark:text-white"
           />
           {filters.searchQuery && (
             <button
               type="button"
               onClick={() => onFilterChange({ searchQuery: "" })}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-muted hover:text-brand-charcoal p-0.5"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-muted hover:text-brand-charcoal dark:text-slate-400 dark:hover:text-white p-0.5"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -92,14 +92,14 @@ export function RoomFilters({
         {/* Sorting Dropdown */}
         <div className="flex items-center gap-2">
           <div className="relative flex-1 sm:flex-initial sm:w-48">
-            <ArrowUpDown className="w-3.5 h-3.5 text-brand-muted absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <ArrowUpDown className="w-3.5 h-3.5 text-brand-muted dark:text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <select
               value={filters.sortBy}
               onChange={(e) => onFilterChange({ sortBy: e.target.value as RoomFiltersState["sortBy"] })}
-              className="w-full h-10 pl-8 pr-7 text-xs bg-slate-50 hover:bg-slate-100/80 rounded-xl border border-brand-border/80 focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 font-medium text-brand-charcoal cursor-pointer appearance-none"
+              className="w-full h-10 pl-8 pr-7 text-xs bg-slate-50 hover:bg-slate-100/80 dark:bg-[#151D2A] dark:hover:bg-[#1A2332] rounded-xl border border-brand-border/80 dark:border-[#263346] focus:outline-none focus:ring-2 focus:ring-brand-obsidian/20 dark:focus:ring-brand-lime/20 font-medium text-brand-charcoal dark:text-white cursor-pointer appearance-none"
             >
               {sortOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
+                <option key={opt.value} value={opt.value} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                   {opt.label}
                 </option>
               ))}
@@ -111,7 +111,7 @@ export function RoomFilters({
             <button
               type="button"
               onClick={onResetFilters}
-              className="h-10 px-3 rounded-xl border border-rose-200 bg-rose-50/70 hover:bg-rose-100/80 text-rose-700 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs flex-shrink-0"
+              className="h-10 px-3 rounded-xl border border-rose-200 dark:border-rose-500/30 bg-rose-50/70 dark:bg-rose-500/15 hover:bg-rose-100/80 dark:hover:bg-rose-500/25 text-rose-700 dark:text-rose-300 text-xs font-bold flex items-center gap-1.5 transition-colors shadow-2xs flex-shrink-0"
               title="Reset all filters"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -122,19 +122,19 @@ export function RoomFilters({
       </div>
 
       {/* Filter Selectors Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-slate-100">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-[#1E2638]">
         {/* Room Type Selector */}
         <div>
-          <label className="text-[10px] font-bold text-brand-muted uppercase tracking-wider block mb-1">
+          <label className="text-[10px] font-bold text-brand-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
             Room Type
           </label>
           <select
             value={filters.roomType}
             onChange={(e) => onFilterChange({ roomType: e.target.value })}
-            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 rounded-lg border border-brand-border/70 text-brand-charcoal font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian"
+            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 dark:bg-[#151D2A] dark:hover:bg-[#1A2332] rounded-lg border border-brand-border/70 dark:border-[#263346] text-brand-charcoal dark:text-white font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian dark:focus:ring-brand-lime"
           >
             {roomTypeOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
+              <option key={opt.value} value={opt.value} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                 {opt.label}
               </option>
             ))}
@@ -143,16 +143,16 @@ export function RoomFilters({
 
         {/* Room Status Selector */}
         <div>
-          <label className="text-[10px] font-bold text-brand-muted uppercase tracking-wider block mb-1">
+          <label className="text-[10px] font-bold text-brand-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
             Occupancy Status
           </label>
           <select
             value={filters.roomStatus}
             onChange={(e) => onFilterChange({ roomStatus: e.target.value })}
-            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 rounded-lg border border-brand-border/70 text-brand-charcoal font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian"
+            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 dark:bg-[#151D2A] dark:hover:bg-[#1A2332] rounded-lg border border-brand-border/70 dark:border-[#263346] text-brand-charcoal dark:text-white font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian dark:focus:ring-brand-lime"
           >
             {statusOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
+              <option key={opt.value} value={opt.value} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                 {opt.label}
               </option>
             ))}
@@ -161,17 +161,17 @@ export function RoomFilters({
 
         {/* Floor Selector */}
         <div className="col-span-2 sm:col-span-1">
-          <label className="text-[10px] font-bold text-brand-muted uppercase tracking-wider block mb-1">
+          <label className="text-[10px] font-bold text-brand-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
             Floor
           </label>
           <select
             value={filters.floor}
             onChange={(e) => onFilterChange({ floor: e.target.value })}
-            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 rounded-lg border border-brand-border/70 text-brand-charcoal font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian"
+            className="w-full h-9 px-2.5 text-xs bg-slate-50 hover:bg-slate-100/70 dark:bg-[#151D2A] dark:hover:bg-[#1A2332] rounded-lg border border-brand-border/70 dark:border-[#263346] text-brand-charcoal dark:text-white font-medium cursor-pointer focus:outline-none focus:ring-1 focus:ring-brand-obsidian dark:focus:ring-brand-lime"
           >
-            <option value="all">All Floors</option>
+            <option value="all" className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">All Floors</option>
             {availableFloors.map((floor) => (
-              <option key={floor} value={floor}>
+              <option key={floor} value={floor} className="bg-white dark:bg-[#151D2A] text-brand-charcoal dark:text-white">
                 {floor}
               </option>
             ))}
@@ -180,14 +180,14 @@ export function RoomFilters({
       </div>
 
       {/* Results Count & Active Pills indicator */}
-      <div className="flex items-center justify-between text-xs text-brand-muted pt-1">
+      <div className="flex items-center justify-between text-xs text-brand-muted dark:text-slate-400 pt-1">
         <p className="text-[11px] font-medium">
-          Showing <strong className="text-brand-charcoal">{filteredCount}</strong> of{" "}
-          <strong>{totalCount}</strong> rooms in this property
+          Showing <strong className="text-brand-charcoal dark:text-white">{filteredCount}</strong> of{" "}
+          <strong className="text-brand-charcoal dark:text-white">{totalCount}</strong> rooms in this property
         </p>
 
         {isFiltered && (
-          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-[#1E2638] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#263346]">
             Filters Active
           </span>
         )}
