@@ -211,7 +211,7 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
       {/* =========================================================================
           PAGE HEADER
           ========================================================================= */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-brand-border/60">
         <div className="space-y-1.5">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white border border-brand-border text-[11px] font-bold text-brand-charcoal shadow-2xs">
