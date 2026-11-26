@@ -47,26 +47,26 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl  shadow-xs flex flex-col justify-between overflow-hidden">
+    <div className="bg-white dark:bg-[#111622] rounded-2xl border border-slate-200/80 dark:border-[#222E42] shadow-xs flex flex-col justify-between overflow-hidden">
       {/* Header */}
-      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ">
+      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-[#1E2638]">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+            <div className="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-500/15 border border-blue-200/60 dark:border-blue-500/30 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0">
               <CalendarCheck className="w-4 h-4" />
             </div>
-            <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal tracking-tight">
+            <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal dark:text-white tracking-tight">
               Recent Bookings & Reservations
             </h3>
           </div>
-          <p className="text-xs text-brand-muted mt-0.5">
+          <p className="text-xs text-brand-muted dark:text-slate-300 mt-0.5">
             Upcoming admissions, room holds, and token deposits
           </p>
         </div>
 
         <Link
           href="/owner/bookings"
-          className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors group flex-shrink-0 self-start sm:self-auto"
+          className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group flex-shrink-0 self-start sm:self-auto"
         >
           <span>View All Bookings</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -134,7 +134,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
       <div className="hidden md:block overflow-x-auto no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[680px]">
           <thead>
-            <tr className="bg-slate-100  text-[10px] uppercase font-bold text-brand-muted tracking-wider">
+            <tr className="bg-slate-100 dark:bg-[#151D2A] text-[10px] uppercase font-bold text-brand-muted dark:text-slate-300 tracking-wider">
               <th className="py-2.5 px-4">Tenant</th>
               <th className="py-2.5 px-4">Property</th>
               <th className="py-2.5 px-4">Room / Bed</th>
@@ -144,7 +144,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
               <th className="py-2.5 px-4 text-center">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 text-xs">
+          <tbody className="divide-y divide-slate-100 dark:divide-[#1E2638] text-xs">
             {bookings.length === 0 ? (
               <tr>
                 <td colSpan={7} className="py-8 text-center text-brand-muted">

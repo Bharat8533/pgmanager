@@ -98,8 +98,8 @@ function KPICardItem({ card }: { card: KPICardMetric }) {
   return (
     <div
       className={cn(
-        "group relative bg-white rounded-2xl p-4 shadow-xs",
-        "flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300"
+        "group relative bg-white dark:bg-[#111622] rounded-2xl p-4 border border-slate-200/80 dark:border-[#222E42] shadow-xs",
+        "flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700"
       )}
     >
       {/* Top Row: Icon Container and Trend Badge */}
@@ -118,8 +118,8 @@ function KPICardItem({ card }: { card: KPICardMetric }) {
             className={cn(
               "inline-flex items-center gap-0.5 text-[10px] font-bold px-2 py-0.5 rounded-full border tracking-tight",
               card.trend.isPositive
-                ? "bg-emerald-50 text-emerald-700 border-emerald-200/60"
-                : "bg-rose-50 text-rose-700 border-rose-200/60"
+                ? "bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-500/30"
+                : "bg-rose-50 dark:bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-200/60 dark:border-rose-500/30"
             )}
           >
             {card.trend.isPositive ? (
@@ -134,15 +134,15 @@ function KPICardItem({ card }: { card: KPICardMetric }) {
 
       {/* Middle: Title & Primary Metric */}
       <div>
-        <p className="text-[11px] font-bold text-brand-muted uppercase tracking-wider mb-1 truncate">
+        <p className="text-[11px] font-bold text-brand-muted dark:text-slate-300 uppercase tracking-wider mb-1 truncate">
           {card.title}
         </p>
         <div className="flex items-baseline gap-1.5 flex-wrap">
-          <span className="text-xl sm:text-2xl font-black text-brand-charcoal tracking-tight">
+          <span className="text-xl sm:text-2xl font-black text-brand-charcoal dark:text-white tracking-tight">
             {card.value}
           </span>
           {card.secondaryMetric && (
-            <span className="text-[11px] font-semibold text-brand-muted truncate">
+            <span className="text-[11px] font-semibold text-brand-muted dark:text-slate-400 truncate">
               {card.secondaryMetric}
             </span>
           )}
@@ -150,16 +150,16 @@ function KPICardItem({ card }: { card: KPICardMetric }) {
       </div>
 
       {/* Bottom: Progress bar (if present) & Supporting Text */}
-      <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-col gap-1.5">
+      <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-[#1E2638] flex flex-col gap-1.5">
         {typeof card.progressPercent === "number" && (
-          <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+          <div className="w-full bg-slate-100 dark:bg-[#1A2332] rounded-full h-1.5 overflow-hidden">
             <div
               className={cn("h-full rounded-full transition-all duration-500", colorStyles.progressBg)}
               style={{ width: `${Math.min(100, Math.max(0, card.progressPercent))}%` }}
             />
           </div>
         )}
-        <p className="text-[11px] text-brand-muted truncate" title={card.supportingText}>
+        <p className="text-[11px] text-brand-muted dark:text-slate-300 truncate" title={card.supportingText}>
           {card.supportingText}
         </p>
       </div>

@@ -94,26 +94,26 @@ export function RecentTransactionsTable({
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xs flex flex-col justify-between overflow-hidden">
+    <div className="bg-white dark:bg-[#111622] rounded-2xl border border-slate-200/80 dark:border-[#222E42] shadow-xs flex flex-col justify-between overflow-hidden">
       {/* Header */}
-      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-[#1E2638]">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-500/15 border border-emerald-200/60 dark:border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
               <CreditCard className="w-4 h-4" />
             </div>
-            <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal tracking-tight">
+            <h3 className="text-sm sm:text-base font-extrabold text-brand-charcoal dark:text-white tracking-tight">
               Recent Transactions & Ledger Inflows
             </h3>
           </div>
-          <p className="text-xs text-brand-muted mt-0.5">
+          <p className="text-xs text-brand-muted dark:text-slate-300 mt-0.5">
             Real-time payments received, receipts generated, and gateway clearances
           </p>
         </div>
 
         <Link
           href="/owner/payments"
-          className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors group flex-shrink-0 self-start sm:self-auto"
+          className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors group flex-shrink-0 self-start sm:self-auto"
         >
           <span>View All Transactions</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -181,7 +181,7 @@ export function RecentTransactionsTable({
       <div className="hidden md:block overflow-x-auto no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[760px]">
           <thead>
-            <tr className="bg-slate-100/10  text-[10px] uppercase font-bold text-brand-muted tracking-wider">
+            <tr className="bg-slate-100 dark:bg-[#151D2A] text-[10px] uppercase font-bold text-brand-muted dark:text-slate-300 tracking-wider">
               <th className="py-2.5 px-4">Transaction ID</th>
               <th className="py-2.5 px-4">Tenant & Room</th>
               <th className="py-2.5 px-4">Type</th>
@@ -191,7 +191,7 @@ export function RecentTransactionsTable({
               <th className="py-2.5 px-4 text-center">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 text-xs">
+          <tbody className="divide-y divide-slate-100 dark:divide-[#1E2638] text-xs">
             {transactions.length === 0 ? (
               <tr>
                 <td colSpan={7} className="py-8 text-center text-brand-muted">
