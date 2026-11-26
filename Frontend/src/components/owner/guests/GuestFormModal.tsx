@@ -259,18 +259,18 @@ export function GuestFormModal({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-fadeIn">
-      <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-brand-border overflow-hidden animate-slideIn">
+      <div className="bg-white dark:bg-[#111622] rounded-3xl max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-brand-border dark:border-[#222E42] overflow-hidden animate-slideIn">
         {/* Modal Header */}
-        <div className="px-6 py-4 border-b border-brand-border bg-[#F8FAFC] flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-brand-border dark:border-[#1E2638] bg-[#F8FAFC] dark:bg-[#0D111A] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-brand-obsidian text-brand-lime flex items-center justify-center shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-brand-obsidian dark:bg-[#1E2638] text-brand-lime border border-transparent dark:border-[#263346] flex items-center justify-center shadow-xs">
               <User className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-black text-brand-charcoal">
+              <h2 className="text-base sm:text-lg font-black text-brand-charcoal dark:text-white">
                 {mode === "add" ? "Add New Resident / Guest" : "Edit Resident Details"}
               </h2>
-              <p className="text-xs text-brand-muted">
+              <p className="text-xs text-brand-muted dark:text-slate-400">
                 {mode === "add"
                   ? `Admit a resident to ${currentPropertyName} and allocate a bed.`
                   : `Update records for ${initialGuest?.name}`}
@@ -281,7 +281,7 @@ export function GuestFormModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-lg bg-white hover:bg-gray-100 text-brand-muted hover:text-brand-charcoal border border-brand-border flex items-center justify-center transition-all"
+            className="w-8 h-8 rounded-lg bg-white dark:bg-[#151D2A] hover:bg-gray-100 dark:hover:bg-[#1E293B] text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white border border-brand-border dark:border-[#263346] flex items-center justify-center transition-all"
           >
             <X className="w-4 h-4" />
           </button>
@@ -290,19 +290,19 @@ export function GuestFormModal({
         {/* Modal Body (Scrollable) */}
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6">
           {error && (
-            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-800 flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 text-xs font-semibold text-rose-800 dark:text-rose-300 flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
 
           {/* SECTION 1: PERSONAL INFORMATION */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 border-b border-brand-border/60 pb-2">
-              <span className="w-5 h-5 rounded-md bg-brand-obsidian text-brand-lime text-[11px] font-black flex items-center justify-center">
+            <div className="flex items-center gap-2 border-b border-brand-border/60 dark:border-[#1E2638] pb-2">
+              <span className="w-5 h-5 rounded-md bg-brand-obsidian dark:bg-[#1E2638] text-brand-lime dark:border dark:border-[#263346] text-[11px] font-black flex items-center justify-center">
                 1
               </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:text-white">
                 Personal Information
               </h3>
             </div>
@@ -310,7 +310,7 @@ export function GuestFormModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {/* Full Name */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -319,13 +319,13 @@ export function GuestFormModal({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Aryan Sehgal"
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Mobile Number */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Mobile Number <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -334,13 +334,13 @@ export function GuestFormModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+91 98765 43210"
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Email Address
                 </label>
                 <input
@@ -348,29 +348,29 @@ export function GuestFormModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. aryan@example.com"
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Gender */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Gender
                 </label>
                 <select
                   value={gender}
                   onChange={(e) => setGender(e.target.value as Gender)}
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
                 >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                  <option value="Male" className="dark:bg-[#151D2A]">Male</option>
+                  <option value="Female" className="dark:bg-[#151D2A]">Female</option>
+                  <option value="Other" className="dark:bg-[#151D2A]">Other</option>
                 </select>
               </div>
 
               {/* Masked Aadhaar / ID */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Government ID / Masked Aadhaar
                 </label>
                 <input
@@ -378,13 +378,13 @@ export function GuestFormModal({
                   value={aadhaarMasked}
                   onChange={(e) => setAadhaarMasked(e.target.value)}
                   placeholder="•••• •••• 8291"
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Workplace / College */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Workplace or College
                 </label>
                 <input
@@ -392,13 +392,13 @@ export function GuestFormModal({
                   value={workOrCollege}
                   onChange={(e) => setWorkOrCollege(e.target.value)}
                   placeholder="e.g. Software Engineer @ Infosys"
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Permanent Address */}
               <div className="sm:col-span-2">
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Permanent Address (Home City / State)
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -407,28 +407,28 @@ export function GuestFormModal({
                     value={permanentAddress}
                     onChange={(e) => setPermanentAddress(e.target.value)}
                     placeholder="Address Line"
-                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                   <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="City (e.g. Jaipur)"
-                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                   <input
                     type="text"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     placeholder="State (e.g. Rajasthan)"
-                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="col-span-1 px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                 </div>
               </div>
 
               {/* Emergency Contact */}
-              <div className="sm:col-span-2 bg-[#F8FAFC] p-3 rounded-xl border border-brand-border space-y-2">
-                <label className="block text-brand-charcoal font-bold text-xs">
+              <div className="sm:col-span-2 bg-[#F8FAFC] dark:bg-[#151D2A] p-3 rounded-xl border border-brand-border dark:border-[#263346] space-y-2">
+                <label className="block text-brand-charcoal dark:text-white font-bold text-xs">
                   Emergency Contact Details <span className="text-rose-500">*</span>
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -438,7 +438,7 @@ export function GuestFormModal({
                     value={emergencyName}
                     onChange={(e) => setEmergencyName(e.target.value)}
                     placeholder="Guardian Name"
-                    className="px-3 py-2 bg-white border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                   <input
                     type="text"
@@ -446,19 +446,19 @@ export function GuestFormModal({
                     value={emergencyPhone}
                     onChange={(e) => setEmergencyPhone(e.target.value)}
                     placeholder="Guardian Phone"
-                    className="px-3 py-2 bg-white border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                   <select
                     value={emergencyRelation}
                     onChange={(e) => setEmergencyRelation(e.target.value)}
-                    className="px-3 py-2 bg-white border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
+                    className="px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
                   >
-                    <option value="Father">Father</option>
-                    <option value="Mother">Mother</option>
-                    <option value="Brother">Brother</option>
-                    <option value="Sister">Sister</option>
-                    <option value="Spouse">Spouse</option>
-                    <option value="Guardian">Guardian</option>
+                    <option value="Father" className="dark:bg-[#151D2A]">Father</option>
+                    <option value="Mother" className="dark:bg-[#151D2A]">Mother</option>
+                    <option value="Brother" className="dark:bg-[#151D2A]">Brother</option>
+                    <option value="Sister" className="dark:bg-[#151D2A]">Sister</option>
+                    <option value="Spouse" className="dark:bg-[#151D2A]">Spouse</option>
+                    <option value="Guardian" className="dark:bg-[#151D2A]">Guardian</option>
                   </select>
                 </div>
               </div>
@@ -467,11 +467,11 @@ export function GuestFormModal({
 
           {/* SECTION 2: ROOM & BED ALLOCATION */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 border-b border-brand-border/60 pb-2">
-              <span className="w-5 h-5 rounded-md bg-brand-obsidian text-brand-lime text-[11px] font-black flex items-center justify-center">
+            <div className="flex items-center gap-2 border-b border-brand-border/60 dark:border-[#1E2638] pb-2">
+              <span className="w-5 h-5 rounded-md bg-brand-obsidian dark:bg-[#1E2638] text-brand-lime dark:border dark:border-[#263346] text-[11px] font-black flex items-center justify-center">
                 2
               </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:text-white">
                 Room & Bed Allocation
               </h3>
             </div>
@@ -479,28 +479,28 @@ export function GuestFormModal({
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               {/* Active Property Info */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Active PG Property
                 </label>
-                <div className="flex items-center gap-2 px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs font-bold text-brand-charcoal">
-                  <Building2 className="w-3.5 h-3.5 text-brand-obsidian flex-shrink-0" />
+                <div className="flex items-center gap-2 px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs font-bold text-brand-charcoal dark:text-white">
+                  <Building2 className="w-3.5 h-3.5 text-brand-obsidian dark:text-brand-lime flex-shrink-0" />
                   <span className="truncate">{currentPropertyName}</span>
                 </div>
               </div>
 
               {/* Room Selector */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Select Room <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={selectedRoomId}
                   onChange={(e) => handleRoomChange(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal font-bold focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white font-bold focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
                 >
-                  <option value="">-- Choose Room --</option>
+                  <option value="" className="dark:bg-[#151D2A]">-- Choose Room --</option>
                   {availableRooms.map((r) => (
-                    <option key={r.id} value={r.id}>
+                    <option key={r.id} value={r.id} className="dark:bg-[#151D2A]">
                       Room {r.roomNumber} ({r.roomType} · {r.availableBeds} free)
                     </option>
                   ))}
@@ -509,18 +509,18 @@ export function GuestFormModal({
 
               {/* Bed Selector */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Select Bed <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={selectedBedId}
                   onChange={(e) => setSelectedBedId(e.target.value)}
                   disabled={!selectedRoomId}
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal font-bold focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer disabled:opacity-50"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white font-bold focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer disabled:opacity-50"
                 >
-                  <option value="">-- Choose Bed --</option>
+                  <option value="" className="dark:bg-[#151D2A]">-- Choose Bed --</option>
                   {availableBeds.map((b) => (
-                    <option key={b.id} value={b.id}>
+                    <option key={b.id} value={b.id} className="dark:bg-[#151D2A]">
                       Bed {b.bedNumber} ({b.status === "available" ? "Free" : b.status})
                     </option>
                   ))}
@@ -531,11 +531,11 @@ export function GuestFormModal({
 
           {/* SECTION 3: STAY & RENT DETAILS */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 border-b border-brand-border/60 pb-2">
-              <span className="w-5 h-5 rounded-md bg-brand-obsidian text-brand-lime text-[11px] font-black flex items-center justify-center">
+            <div className="flex items-center gap-2 border-b border-brand-border/60 dark:border-[#1E2638] pb-2">
+              <span className="w-5 h-5 rounded-md bg-brand-obsidian dark:bg-[#1E2638] text-brand-lime dark:border dark:border-[#263346] text-[11px] font-black flex items-center justify-center">
                 3
               </span>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:text-white">
                 Stay Duration & Rent Agreement
               </h3>
             </div>
@@ -543,7 +543,7 @@ export function GuestFormModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {/* Admission Date */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Admission Date <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -551,10 +551,10 @@ export function GuestFormModal({
                   required
                   value={admissionDate}
                   onChange={(e) => setAdmissionDate(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
                 {isFutureAdmission && (
-                  <p className="text-[11px] text-amber-700 font-semibold mt-1">
+                  <p className="text-[11px] text-amber-700 dark:text-amber-400 font-semibold mt-1">
                     ⚡ Future date selected. Bed will be marked as "Reserved" until check-in.
                   </p>
                 )}
@@ -562,24 +562,24 @@ export function GuestFormModal({
 
               {/* Expected Checkout Date */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Expected Check-out Date (Optional)
                 </label>
                 <input
                   type="date"
                   value={expectedCheckoutDate}
                   onChange={(e) => setExpectedCheckoutDate(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
               {/* Monthly Rent */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Agreed Monthly Rent (₹) <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted font-bold">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted dark:text-slate-400 font-bold">
                     ₹
                   </span>
                   <input
@@ -588,18 +588,18 @@ export function GuestFormModal({
                     min={1}
                     value={monthlyRent}
                     onChange={(e) => setMonthlyRent(Number(e.target.value))}
-                    className="w-full pl-8 pr-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs font-bold text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="w-full pl-8 pr-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs font-bold text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                 </div>
               </div>
 
               {/* Security Deposit */}
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Security Deposit (Refundable Escrow ₹)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted font-bold">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted dark:text-slate-400 font-bold">
                     ₹
                   </span>
                   <input
@@ -607,14 +607,14 @@ export function GuestFormModal({
                     min={0}
                     value={securityDeposit}
                     onChange={(e) => setSecurityDeposit(Number(e.target.value))}
-                    className="w-full pl-8 pr-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs font-bold text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                    className="w-full pl-8 pr-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs font-bold text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                   />
                 </div>
               </div>
 
               {/* Special Notes */}
               <div className="sm:col-span-2">
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-slate-300 font-semibold mb-1">
                   Special Notes or Dietary Preferences
                 </label>
                 <textarea
@@ -622,7 +622,7 @@ export function GuestFormModal({
                   value={specialNotes}
                   onChange={(e) => setSpecialNotes(e.target.value)}
                   placeholder="e.g. Vegetarian only, bike parking slot required, late night access needed."
-                  className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
             </div>
@@ -630,18 +630,18 @@ export function GuestFormModal({
 
           {/* SECTION 4: INITIAL PAYMENT (Add Mode Only) */}
           {mode === "add" && (
-            <div className="space-y-3 bg-[#F8FAFC] p-4 rounded-2xl border border-brand-border">
+            <div className="space-y-3 bg-[#F8FAFC] dark:bg-[#151D2A] p-4 rounded-2xl border border-brand-border dark:border-[#263346]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-md bg-brand-obsidian text-brand-lime text-[11px] font-black flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-md bg-brand-obsidian dark:bg-[#1E2638] text-brand-lime dark:border dark:border-[#263346] text-[11px] font-black flex items-center justify-center">
                     4
                   </span>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:text-white">
                     Record Initial Advance Payment (Optional)
                   </h3>
                 </div>
 
-                <label className="flex items-center gap-2 text-xs font-bold text-brand-charcoal cursor-pointer">
+                <label className="flex items-center gap-2 text-xs font-bold text-brand-charcoal dark:text-slate-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={recordInitialPayment}
@@ -655,44 +655,44 @@ export function GuestFormModal({
               {recordInitialPayment && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
                   <div>
-                    <label className="block text-brand-muted font-medium mb-1">
+                    <label className="block text-brand-muted dark:text-slate-400 font-medium mb-1">
                       Amount Paid (₹)
                     </label>
                     <input
                       type="number"
                       value={paymentAmount}
                       onChange={(e) => setPaymentAmount(Number(e.target.value))}
-                      className="w-full px-3 py-2 bg-white border border-brand-border rounded-xl text-xs font-bold text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                      className="w-full px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs font-bold text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-brand-muted font-medium mb-1">
+                    <label className="block text-brand-muted dark:text-slate-400 font-medium mb-1">
                       Payment Towards
                     </label>
                     <select
                       value={paymentType}
                       onChange={(e) => setPaymentType(e.target.value as any)}
-                      className="w-full px-3 py-2 bg-white border border-brand-border rounded-xl text-xs text-brand-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
+                      className="w-full px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
                     >
-                      <option value="rent">1st Month Rent</option>
-                      <option value="security_deposit">Security Deposit Escrow</option>
+                      <option value="rent" className="dark:bg-[#151D2A]">1st Month Rent</option>
+                      <option value="security_deposit" className="dark:bg-[#151D2A]">Security Deposit Escrow</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-brand-muted font-medium mb-1">
+                    <label className="block text-brand-muted dark:text-slate-400 font-medium mb-1">
                       Payment Mode
                     </label>
                     <select
                       value={paymentMethod}
                       onChange={(e) => setPaymentMethod(e.target.value as any)}
-                      className="w-full px-3 py-2 bg-white border border-brand-border rounded-xl text-xs text-brand-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
+                      className="w-full px-3 py-2 bg-white dark:bg-[#0D111A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-brand-lime cursor-pointer"
                     >
-                      <option value="UPI">UPI / Google Pay</option>
-                      <option value="Cash">Cash</option>
-                      <option value="Bank Transfer">Bank Transfer (IMPS/NEFT)</option>
-                      <option value="Other">Cheque / Card</option>
+                      <option value="UPI" className="dark:bg-[#151D2A]">UPI / Google Pay</option>
+                      <option value="Cash" className="dark:bg-[#151D2A]">Cash</option>
+                      <option value="Bank Transfer" className="dark:bg-[#151D2A]">Bank Transfer (IMPS/NEFT)</option>
+                      <option value="Other" className="dark:bg-[#151D2A]">Cheque / Card</option>
                     </select>
                   </div>
                 </div>
@@ -701,12 +701,12 @@ export function GuestFormModal({
           )}
 
           {/* Form Action Buttons */}
-          <div className="pt-4 border-t border-brand-border flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-brand-border dark:border-[#1E2638] flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-5 py-2.5 text-xs font-bold bg-[#F8FAFC] hover:bg-black/5 text-brand-charcoal border border-brand-border rounded-xl transition-all"
+              className="px-5 py-2.5 text-xs font-bold bg-[#F8FAFC] dark:bg-[#151D2A] hover:bg-black/5 dark:hover:bg-[#1E293B] text-brand-charcoal dark:text-slate-200 border border-brand-border dark:border-[#263346] rounded-xl transition-all"
             >
               Cancel
             </button>
@@ -714,13 +714,13 @@ export function GuestFormModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-2.5 text-xs font-bold bg-brand-obsidian text-white hover:bg-black rounded-xl transition-all shadow-xs"
+              className="flex items-center gap-2 px-6 py-2.5 text-xs font-bold bg-brand-obsidian dark:bg-brand-lime text-white dark:text-brand-obsidian hover:bg-black dark:hover:bg-[#BCE600] rounded-xl transition-all shadow-xs"
             >
               {isSubmitting ? (
                 <span>Saving...</span>
               ) : (
                 <>
-                  <Check className="w-4 h-4 text-brand-lime" />
+                  <Check className="w-4 h-4 text-brand-lime dark:text-brand-obsidian" />
                   <span>
                     {mode === "add" ? "Admit Resident & Assign Bed" : "Save Changes"}
                   </span>

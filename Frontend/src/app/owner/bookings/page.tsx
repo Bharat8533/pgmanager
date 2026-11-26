@@ -334,16 +334,16 @@ export default function BookingsAndResidentsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="text-2xl sm:text-3xl font-black text-brand-charcoal tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-brand-charcoal dark:text-white tracking-tight">
               Bookings & Residents
             </h1>
             <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-brand-lime text-brand-obsidian shadow-2xs">
               Live Registry
             </span>
           </div>
-          <p className="text-xs sm:text-sm text-brand-muted mt-1 flex items-center gap-1.5">
-            <Building2 className="w-3.5 h-3.5 text-brand-obsidian flex-shrink-0" />
-            <span>Showing resident records for <strong>{currentPropertyName}</strong></span>
+          <p className="text-xs sm:text-sm text-brand-muted dark:text-slate-400 mt-1 flex items-center gap-1.5">
+            <Building2 className="w-3.5 h-3.5 text-brand-obsidian dark:text-brand-lime flex-shrink-0" />
+            <span>Showing resident records for <strong className="text-brand-charcoal dark:text-white">{currentPropertyName}</strong></span>
           </p>
         </div>
 
@@ -352,9 +352,9 @@ export default function BookingsAndResidentsPage() {
           <button
             type="button"
             onClick={handleOpenAdd}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-brand-obsidian text-white font-bold text-xs sm:text-sm hover:bg-black transition-all shadow-xs hover:shadow hover:scale-[1.02] active:scale-[0.98]"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-brand-obsidian dark:bg-brand-lime text-white dark:text-brand-obsidian font-bold text-xs sm:text-sm hover:bg-black dark:hover:bg-[#c9ef3b] transition-all shadow-xs hover:shadow hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Plus className="w-4 h-4 text-brand-lime" />
+            <Plus className="w-4 h-4 text-brand-lime dark:text-brand-obsidian" />
             <span>+ Add Guest</span>
           </button>
         </div>
@@ -395,18 +395,18 @@ export default function BookingsAndResidentsPage() {
       {/* Mobile & Tablet View: Rich Cards (With Pagination) */}
       <div className="lg:hidden space-y-4">
         {filteredGuests.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-brand-border p-8 text-center shadow-xs">
-            <Users className="w-8 h-8 text-brand-muted mx-auto mb-2" />
-            <h4 className="text-sm font-bold text-brand-charcoal">
+          <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border dark:border-[#222E42] p-8 text-center shadow-xs">
+            <Users className="w-8 h-8 text-brand-muted dark:text-slate-400 mx-auto mb-2" />
+            <h4 className="text-sm font-bold text-brand-charcoal dark:text-white">
               No residents found
             </h4>
-            <p className="text-xs text-brand-muted mt-1 mb-4">
+            <p className="text-xs text-brand-muted dark:text-slate-400 mt-1 mb-4">
               Try adjusting your search query or status filters.
             </p>
             <button
               type="button"
               onClick={handleOpenAdd}
-              className="px-4 py-2 text-xs font-bold bg-brand-obsidian text-white rounded-xl shadow-xs"
+              className="px-4 py-2 text-xs font-bold bg-brand-obsidian dark:bg-brand-lime text-white dark:text-brand-obsidian rounded-xl shadow-xs"
             >
               + Add Guest
             </button>
@@ -428,7 +428,7 @@ export default function BookingsAndResidentsPage() {
 
             {/* Mobile Pagination Bar */}
             {totalPages > 1 && (
-              <div className="bg-white rounded-2xl border border-brand-border p-3 flex items-center justify-between text-xs text-brand-muted shadow-xs">
+              <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border dark:border-[#222E42] p-3 flex items-center justify-between text-xs text-brand-muted dark:text-slate-400 shadow-xs">
                 <span>
                   Page {currentPage} of {totalPages} ({filteredGuests.length} total)
                 </span>
@@ -437,7 +437,7 @@ export default function BookingsAndResidentsPage() {
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage <= 1}
-                    className="p-1.5 rounded-lg border border-brand-border bg-[#F8FAFC] disabled:opacity-40"
+                    className="p-1.5 rounded-lg border border-brand-border dark:border-[#263346] bg-[#F8FAFC] dark:bg-[#151D2A] text-brand-charcoal dark:text-white disabled:opacity-40"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -445,7 +445,7 @@ export default function BookingsAndResidentsPage() {
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage >= totalPages}
-                    className="p-1.5 rounded-lg border border-brand-border bg-[#F8FAFC] disabled:opacity-40"
+                    className="p-1.5 rounded-lg border border-brand-border dark:border-[#263346] bg-[#F8FAFC] dark:bg-[#151D2A] text-brand-charcoal dark:text-white disabled:opacity-40"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>
@@ -480,17 +480,17 @@ export default function BookingsAndResidentsPage() {
       {/* Checkout Confirmation Modal */}
       {guestToCheckout && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-brand-border space-y-4 animate-slideIn">
+          <div className="bg-white dark:bg-[#111622] rounded-3xl max-w-md w-full p-6 shadow-2xl border border-brand-border dark:border-[#222E42] space-y-4 animate-slideIn">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-500/15 border border-amber-200 dark:border-amber-500/30 text-amber-700 dark:text-amber-400 flex items-center justify-center">
                   <LogOut className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-black text-brand-charcoal">
+                  <h3 className="text-base font-black text-brand-charcoal dark:text-white">
                     Check Out Resident
                   </h3>
-                  <p className="text-xs text-brand-muted">
+                  <p className="text-xs text-brand-muted dark:text-slate-400">
                     {guestToCheckout.name} · Room {guestToCheckout.roomNumber} ({guestToCheckout.bedNumber})
                   </p>
                 </div>
@@ -498,7 +498,7 @@ export default function BookingsAndResidentsPage() {
               <button
                 type="button"
                 onClick={() => setGuestToCheckout(null)}
-                className="text-brand-muted hover:text-brand-charcoal p-1"
+                className="text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white p-1"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -506,8 +506,8 @@ export default function BookingsAndResidentsPage() {
 
             {/* Warning if rent is pending */}
             {guestToCheckout.pendingAmount > 0 && (
-              <div className="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs font-semibold text-amber-900 flex items-start gap-2">
-                <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="p-3 bg-amber-50 dark:bg-amber-500/15 rounded-xl border border-amber-200 dark:border-amber-500/30 text-xs font-semibold text-amber-900 dark:text-amber-300 flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                 <span>
                   Notice: Resident has outstanding rent of ₹
                   {guestToCheckout.pendingAmount.toLocaleString("en-IN")}. Please collect dues before settling deposit.
@@ -516,16 +516,16 @@ export default function BookingsAndResidentsPage() {
             )}
 
             {/* Escrow Settlement Details */}
-            <div className="bg-[#F8FAFC] rounded-2xl border border-brand-border p-4 space-y-3 text-xs">
+            <div className="bg-[#F8FAFC] dark:bg-[#151D2A] rounded-2xl border border-brand-border dark:border-[#263346] p-4 space-y-3 text-xs shadow-2xs">
               <div className="flex items-center justify-between">
-                <span className="text-brand-muted">Security Deposit Held:</span>
-                <span className="font-black text-indigo-700 text-sm">
+                <span className="text-brand-muted dark:text-slate-400">Security Deposit Held:</span>
+                <span className="font-black text-indigo-700 dark:text-purple-300 text-sm">
                   ₹{guestToCheckout.securityDeposit.toLocaleString("en-IN")}
                 </span>
               </div>
 
               <div>
-                <label className="block text-brand-charcoal font-semibold mb-1">
+                <label className="block text-brand-charcoal dark:text-white font-semibold mb-1">
                   Deductions / Damage Adjustments (₹)
                 </label>
                 <input
@@ -534,15 +534,15 @@ export default function BookingsAndResidentsPage() {
                   value={depositDeductions}
                   onChange={(e) => setDepositDeductions(Number(e.target.value))}
                   placeholder="0"
-                  className="w-full px-3 py-2 bg-white border border-brand-border rounded-xl font-bold text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                  className="w-full px-3 py-2 bg-white dark:bg-[#111622] border border-brand-border dark:border-[#263346] rounded-xl font-bold text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
                 />
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-brand-border/60">
-                <span className="font-bold text-brand-charcoal">
+              <div className="flex items-center justify-between pt-2 border-t border-brand-border/60 dark:border-[#1E2638]">
+                <span className="font-bold text-brand-charcoal dark:text-white">
                   Net Refund to Resident:
                 </span>
-                <span className="text-base font-black text-emerald-700">
+                <span className="text-base font-black text-emerald-700 dark:text-emerald-400">
                   ₹
                   {Math.max(
                     0,
@@ -554,20 +554,20 @@ export default function BookingsAndResidentsPage() {
 
             {/* Actual Checkout Date */}
             <div className="text-xs">
-              <label className="block text-brand-charcoal font-semibold mb-1">
+              <label className="block text-brand-charcoal dark:text-white font-semibold mb-1">
                 Actual Check-out Date
               </label>
               <input
                 type="date"
                 value={checkoutDate}
                 onChange={(e) => setCheckoutDate(e.target.value)}
-                className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs font-semibold text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs font-semibold text-brand-charcoal dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-lime"
               />
             </div>
 
             {/* Remarks */}
             <div className="text-xs">
-              <label className="block text-brand-charcoal font-semibold mb-1">
+              <label className="block text-brand-charcoal dark:text-white font-semibold mb-1">
                 Settlement & Inspection Notes
               </label>
               <textarea
@@ -575,19 +575,19 @@ export default function BookingsAndResidentsPage() {
                 value={checkoutNotes}
                 onChange={(e) => setCheckoutNotes(e.target.value)}
                 placeholder="e.g. Keys handed over. Room inspected. Deposit refunded via UPI."
-                className="w-full px-3 py-2 bg-[#F8FAFC] border border-brand-border rounded-xl text-xs text-brand-charcoal focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                className="w-full px-3 py-2 bg-[#F8FAFC] dark:bg-[#151D2A] border border-brand-border dark:border-[#263346] rounded-xl text-xs text-brand-charcoal dark:text-white placeholder:text-brand-muted/70 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-lime"
               />
             </div>
 
-            <p className="text-[11px] text-brand-muted">
+            <p className="text-[11px] text-brand-muted dark:text-slate-400">
               * Checking out will release Bed {guestToCheckout.bedNumber} back to available inventory and archive the stay record permanently in their history.
             </p>
 
-            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-brand-border">
+            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-brand-border dark:border-[#1E2638]">
               <button
                 type="button"
                 onClick={() => setGuestToCheckout(null)}
-                className="px-4 py-2 text-xs font-bold bg-[#F8FAFC] hover:bg-black/5 text-brand-charcoal border border-brand-border rounded-xl transition-all"
+                className="px-4 py-2 text-xs font-bold bg-[#F8FAFC] dark:bg-[#151D2A] hover:bg-black/5 dark:hover:bg-[#1E293B] text-brand-charcoal dark:text-white border border-brand-border dark:border-[#263346] rounded-xl transition-all shadow-2xs"
               >
                 Cancel
               </button>
@@ -606,17 +606,17 @@ export default function BookingsAndResidentsPage() {
       {/* Delete Resident Confirmation Modal */}
       {guestToDelete && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-brand-border space-y-4 animate-slideIn">
+          <div className="bg-white dark:bg-[#111622] rounded-3xl max-w-md w-full p-6 shadow-2xl border border-brand-border dark:border-[#222E42] space-y-4 animate-slideIn">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-500/15 border border-rose-200 dark:border-rose-500/30 text-rose-600 dark:text-rose-400 flex items-center justify-center">
                   <Trash2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-black text-brand-charcoal">
+                  <h3 className="text-base font-black text-brand-charcoal dark:text-white">
                     Delete Resident Record
                   </h3>
-                  <p className="text-xs text-brand-muted">
+                  <p className="text-xs text-brand-muted dark:text-slate-400">
                     {guestToDelete.name} ({guestToDelete.stayStatus === "checked_out" ? "Left Guest" : "Active Resident"})
                   </p>
                 </div>
@@ -624,29 +624,29 @@ export default function BookingsAndResidentsPage() {
               <button
                 type="button"
                 onClick={() => setGuestToDelete(null)}
-                className="text-brand-muted hover:text-brand-charcoal p-1"
+                className="text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white p-1"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="p-3.5 bg-rose-50/70 rounded-2xl border border-rose-200/80 text-xs text-rose-900 space-y-1.5">
+            <div className="p-3.5 bg-rose-50/70 dark:bg-rose-500/10 rounded-2xl border border-rose-200/80 dark:border-rose-500/30 text-xs text-rose-900 dark:text-rose-300 space-y-1.5 shadow-2xs">
               <p className="font-bold">Are you sure you want to permanently delete this record?</p>
-              <p className="text-[11px] text-rose-800/90 leading-relaxed">
+              <p className="text-[11px] text-rose-800/90 dark:text-rose-300/90 leading-relaxed">
                 This will completely remove <strong>{guestToDelete.name}</strong> from your PG database. All stay histories, admission logs, and financial records associated with this resident will be deleted.
                 {guestToDelete.stayStatus === "active" && (
-                  <span className="block mt-1 font-semibold text-rose-950">
+                  <span className="block mt-1 font-semibold text-rose-950 dark:text-rose-200">
                     * Their assigned bed ({guestToDelete.bedNumber}) will be automatically released back to available inventory.
                   </span>
                 )}
               </p>
             </div>
 
-            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-brand-border">
+            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-brand-border dark:border-[#1E2638]">
               <button
                 type="button"
                 onClick={() => setGuestToDelete(null)}
-                className="px-4 py-2 text-xs font-bold bg-[#F8FAFC] hover:bg-black/5 text-brand-charcoal border border-brand-border rounded-xl transition-all"
+                className="px-4 py-2 text-xs font-bold bg-[#F8FAFC] dark:bg-[#151D2A] hover:bg-black/5 dark:hover:bg-[#1E293B] text-brand-charcoal dark:text-white border border-brand-border dark:border-[#263346] rounded-xl transition-all shadow-2xs"
               >
                 Cancel
               </button>
