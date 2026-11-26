@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Room, BookingStatus } from "@/types/room";
 import { useRoom } from "@/contexts/RoomContext";
-import { getRoomAmenityIcon } from "@/components/rooms/RoomCard";
+import { getRoomAmenityIcon } from "@/components/owner/rooms/RoomCard";
 import {
   X,
   BedDouble,
@@ -612,10 +612,10 @@ export function RoomDetailsDrawer({
                             b.status === "confirmed"
                               ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                               : b.status === "converted"
-                              ? "bg-blue-50 text-blue-800 border border-blue-200"
-                              : b.status === "pending"
-                              ? "bg-amber-50 text-amber-800 border border-amber-200"
-                              : "bg-rose-50 text-rose-800 border border-rose-200"
+                                ? "bg-blue-50 text-blue-800 border border-blue-200"
+                                : b.status === "pending"
+                                  ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                  : "bg-rose-50 text-rose-800 border border-rose-200"
                           )}
                         >
                           {b.status}
@@ -738,10 +738,10 @@ export function RoomDetailsDrawer({
                                     b.status === "confirmed"
                                       ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                                       : b.status === "converted"
-                                      ? "bg-blue-50 text-blue-800 border border-blue-200"
-                                      : b.status === "pending"
-                                      ? "bg-amber-50 text-amber-800 border border-amber-200"
-                                      : "bg-rose-50 text-rose-800 border border-rose-200"
+                                        ? "bg-blue-50 text-blue-800 border border-blue-200"
+                                        : b.status === "pending"
+                                          ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                          : "bg-rose-50 text-rose-800 border border-rose-200"
                                   )}
                                 >
                                   {b.status}
@@ -864,8 +864,8 @@ export function RoomDetailsDrawer({
                               p.status === "completed"
                                 ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                                 : p.status === "pending"
-                                ? "bg-amber-50 text-amber-800 border border-amber-200"
-                                : "bg-rose-50 text-rose-800 border border-rose-200"
+                                  ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                  : "bg-rose-50 text-rose-800 border border-rose-200"
                             )}
                           >
                             {p.status}
@@ -936,8 +936,8 @@ export function RoomDetailsDrawer({
                                     p.status === "completed"
                                       ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
                                       : p.status === "pending"
-                                      ? "bg-amber-50 text-amber-800 border border-amber-200"
-                                      : "bg-rose-50 text-rose-800 border border-rose-200"
+                                        ? "bg-amber-50 text-amber-800 border border-amber-200"
+                                        : "bg-rose-50 text-rose-800 border border-rose-200"
                                   )}
                                 >
                                   {p.status}

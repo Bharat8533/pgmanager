@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Room } from "@/types/room";
-import { RoomAccordionRow } from "@/components/rooms/RoomAccordionRow";
+import { RoomAccordionRow } from "@/components/owner/rooms/RoomAccordionRow";
 import {
   Layers,
   ChevronDown,
@@ -169,11 +169,10 @@ export function RoomAccordionList({
           <button
             type="button"
             onClick={() => onSelectFloorFilter("all")}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
-              activeFloorFilter === "all"
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${activeFloorFilter === "all"
                 ? "bg-brand-obsidian text-brand-lime shadow-xs"
                 : "bg-[#F8FAFC] text-brand-charcoal hover:bg-slate-100 border border-brand-border"
-            }`}
+              }`}
           >
             <Building className="w-3.5 h-3.5" />
             <span>All Floors ({rooms.length})</span>
@@ -190,19 +189,17 @@ export function RoomAccordionList({
                 key={fl}
                 type="button"
                 onClick={() => onSelectFloorFilter(fl)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
-                  activeFloorFilter === fl
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${activeFloorFilter === fl
                     ? "bg-brand-obsidian text-brand-lime shadow-xs"
                     : "bg-[#F8FAFC] text-brand-charcoal hover:bg-slate-100 border border-brand-border"
-                }`}
+                  }`}
               >
                 <span>{fl}</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${
-                    activeFloorFilter === fl
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${activeFloorFilter === fl
                       ? "bg-brand-lime text-brand-obsidian"
                       : "bg-slate-200 text-slate-700"
-                  }`}
+                    }`}
                 >
                   {count}
                 </span>

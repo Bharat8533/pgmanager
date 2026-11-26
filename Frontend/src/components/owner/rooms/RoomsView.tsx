@@ -5,14 +5,14 @@ import Link from "next/link";
 import { useOwner } from "@/contexts/OwnerContext";
 import { useRoom } from "@/contexts/RoomContext";
 import { Room, RoomFiltersState } from "@/types/room";
-import { RoomStats } from "@/components/rooms/RoomStats";
-import { UpcomingCheckouts } from "@/components/rooms/UpcomingCheckouts";
-import { RoomFilters } from "@/components/rooms/RoomFilters";
-import { RoomList } from "@/components/rooms/RoomList";
-import { RoomAccordionList } from "@/components/rooms/RoomAccordionList";
-import { RoomFormModal } from "@/components/rooms/RoomFormModal";
-import { RoomDetailsDrawer } from "@/components/rooms/RoomDetailsDrawer";
-import { ResidentDetailsModal } from "@/components/rooms/ResidentDetailsModal";
+import { RoomStats } from "@/components/owner/rooms/RoomStats";
+import { UpcomingCheckouts } from "@/components/owner/rooms/UpcomingCheckouts";
+import { RoomFilters } from "@/components/owner/rooms/RoomFilters";
+import { RoomList } from "@/components/owner/rooms/RoomList";
+import { RoomAccordionList } from "@/components/owner/rooms/RoomAccordionList";
+import { RoomFormModal } from "@/components/owner/rooms/RoomFormModal";
+import { RoomDetailsDrawer } from "@/components/owner/rooms/RoomDetailsDrawer";
+import { ResidentDetailsModal } from "@/components/owner/rooms/ResidentDetailsModal";
 import {
   BedDouble,
   Plus,
@@ -293,11 +293,10 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
           <button
             type="button"
             onClick={() => setViewMode("accordion")}
-            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              viewMode === "accordion"
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === "accordion"
                 ? "bg-brand-obsidian text-brand-lime shadow-xs"
                 : "text-brand-muted hover:text-brand-charcoal"
-            }`}
+              }`}
             title="Expandable Dropdown List View (Optimized for 20-50+ rooms)"
           >
             <List className="w-3.5 h-3.5" />
@@ -307,11 +306,10 @@ export function RoomsView({ showBackToProperties = false }: RoomsViewProps) {
           <button
             type="button"
             onClick={() => setViewMode("grid")}
-            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              viewMode === "grid"
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${viewMode === "grid"
                 ? "bg-brand-obsidian text-brand-lime shadow-xs"
                 : "text-brand-muted hover:text-brand-charcoal"
-            }`}
+              }`}
             title="Visual Grid Cards View"
           >
             <LayoutGrid className="w-3.5 h-3.5" />

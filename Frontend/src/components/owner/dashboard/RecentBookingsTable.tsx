@@ -47,9 +47,9 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 shadow-xs flex flex-col justify-between overflow-hidden">
+    <div className="bg-white rounded-2xl  shadow-xs flex flex-col justify-between overflow-hidden">
       {/* Header */}
-      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100">
+      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 ">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
@@ -81,7 +81,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
           </div>
         ) : (
           bookings.map((booking) => (
-            <div key={booking.id} className="p-3.5 space-y-2.5">
+            <div key={booking.id} className="p-3.5 space-y-2.5 hover:bg-slate-50/60 dark:hover:bg-[#18212D] transition-colors rounded-xl">
               {/* Tenant Row + Status Badge */}
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2.5 min-w-0">
@@ -134,7 +134,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
       <div className="hidden md:block overflow-x-auto no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[680px]">
           <thead>
-            <tr className="bg-slate-50/80 border-b border-slate-100 text-[10px] uppercase font-bold text-brand-muted tracking-wider">
+            <tr className="bg-slate-100  text-[10px] uppercase font-bold text-brand-muted tracking-wider">
               <th className="py-2.5 px-4">Tenant</th>
               <th className="py-2.5 px-4">Property</th>
               <th className="py-2.5 px-4">Room / Bed</th>
@@ -155,7 +155,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
               bookings.map((booking) => (
                 <tr
                   key={booking.id}
-                  className="hover:bg-slate-50/70 transition-colors"
+                  className="hover:bg-slate-50/70 dark:hover:bg-[#1A2332] transition-colors border-0"
                 >
                   {/* Tenant */}
                   <td className="py-3 px-4">
@@ -221,7 +221,7 @@ export function RecentBookingsTable({ bookings }: RecentBookingsTableProps) {
       </div>
 
       {/* Footer count indicator */}
-      <div className="p-3 bg-slate-50/60 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-brand-muted">
+      <div className="p-3 bg-slate-100 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-brand-muted">
         <span>Showing latest {bookings.length} reservations</span>
         <span className="font-medium text-brand-charcoal">
           Tokens deposited directly into operating account

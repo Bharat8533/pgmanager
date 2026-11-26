@@ -136,7 +136,7 @@ export function StaffTable({
             {staffList.map((staff) => (
               <tr
                 key={staff.id}
-                className="hover:bg-slate-50/70 transition-colors group cursor-pointer"
+                className="hover:bg-slate-50/70 dark:hover:bg-[#1A2332] transition-colors group cursor-pointer"
                 onClick={() => onViewStaff(staff)}
               >
                 {/* 1. Staff Member Avatar & Name */}

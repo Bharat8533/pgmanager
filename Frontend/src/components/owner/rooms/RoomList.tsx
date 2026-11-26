@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Room } from "@/types/room";
-import { RoomCard } from "@/components/rooms/RoomCard";
+import { RoomCard } from "@/components/owner/rooms/RoomCard";
 import { DoorClosed, Plus, RotateCcw, SearchX } from "lucide-react";
 
 interface RoomListProps {

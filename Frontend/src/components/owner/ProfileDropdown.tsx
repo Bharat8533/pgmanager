@@ -93,15 +93,6 @@ export function ProfileDropdown() {
               <span>My Profile</span>
             </Link>
 
-            <Link
-              href="/owner/settings"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2.5 px-3 py-2 text-xs font-medium text-brand-charcoal rounded-lg hover:bg-brand-offwhite transition-colors"
-            >
-              <Settings className="w-4 h-4 text-brand-muted" />
-              <span>Account Settings</span>
-            </Link>
-
             <button
               type="button"
               onClick={() => {

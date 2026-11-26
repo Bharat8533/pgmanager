@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Property, PropertyStatus, PropertyType } from "@/types/owner";
-import { AmenitiesSelector } from "@/components/properties/AmenitiesSelector";
-import { PropertyImageUpload } from "@/components/properties/PropertyImageUpload";
+import { AmenitiesSelector } from "@/components/owner/properties/AmenitiesSelector";
+import { PropertyImageUpload } from "@/components/owner/properties/PropertyImageUpload";
 import {
   Building2,
   MapPin,
@@ -84,8 +84,8 @@ export function PropertyForm({
     initialData?.images && initialData.images.length > 0
       ? initialData.images
       : initialData?.coverImage
-      ? [initialData.coverImage]
-      : ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"]
+        ? [initialData.coverImage]
+        : ["https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"]
   );
 
   const [coverImage, setCoverImage] = useState<string>(

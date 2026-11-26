@@ -94,9 +94,9 @@ export function RecentTransactionsTable({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 shadow-xs flex flex-col justify-between overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-xs flex flex-col justify-between overflow-hidden">
       {/* Header */}
-      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100">
+      <div className="p-4 sm:p-5 pb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
@@ -128,10 +128,10 @@ export function RecentTransactionsTable({
           </div>
         ) : (
           transactions.map((tx) => (
-            <div key={tx.id} className="p-3.5 space-y-2.5">
+            <div key={tx.id} className="p-3.5 space-y-2.5 hover:bg-slate-50/60 dark:hover:bg-[#18212D] transition-colors rounded-xl">
               {/* ID & Status */}
               <div className="flex items-center justify-between gap-2">
-                <span className="font-mono font-bold text-brand-charcoal text-[11px] bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/60">
+                <span className="font-mono font-bold text-brand-charcoal text-[11px] bg-slate-100 px-2 py-0.5 rounded-md ">
                   {tx.transactionId}
                 </span>
                 <div className="flex-shrink-0">
@@ -160,7 +160,7 @@ export function RecentTransactionsTable({
               </div>
 
               {/* Type, Method & Timestamp */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-dashed border-slate-100 text-[11px]">
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 text-[11px]">
                 <div className="flex items-center gap-1.5 flex-wrap">
                   {getTypeBadge(tx.transactionType)}
                   <div className="flex items-center gap-1 text-brand-muted text-[10px]">
@@ -181,7 +181,7 @@ export function RecentTransactionsTable({
       <div className="hidden md:block overflow-x-auto no-scrollbar">
         <table className="w-full text-left border-collapse min-w-[760px]">
           <thead>
-            <tr className="bg-slate-50/80 border-b border-slate-100 text-[10px] uppercase font-bold text-brand-muted tracking-wider">
+            <tr className="bg-slate-100/10  text-[10px] uppercase font-bold text-brand-muted tracking-wider">
               <th className="py-2.5 px-4">Transaction ID</th>
               <th className="py-2.5 px-4">Tenant & Room</th>
               <th className="py-2.5 px-4">Type</th>
@@ -202,7 +202,7 @@ export function RecentTransactionsTable({
               transactions.map((tx) => (
                 <tr
                   key={tx.id}
-                  className="hover:bg-slate-50/70 transition-colors"
+                  className="hover:bg-slate-100/70 dark:hover:bg-[#1A2332] transition-colors border-0"
                 >
                   {/* Transaction ID */}
                   <td className="py-3 px-4 font-mono font-bold text-brand-charcoal text-[11px] whitespace-nowrap">
@@ -261,7 +261,7 @@ export function RecentTransactionsTable({
       </div>
 
       {/* Footer info */}
-      <div className="p-3 bg-slate-50/60 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-brand-muted">
+      <div className="p-3 bg-slate-100/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-brand-muted">
         <span>Instant UPI settlements active via banking webhook</span>
         <span className="font-semibold text-emerald-700">
           98.4% automated reconciliation rate

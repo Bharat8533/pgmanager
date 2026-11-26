@@ -31,9 +31,9 @@ export function RoomOccupancyChart({ data }: RoomOccupancyChartProps) {
   const activeCategory = activeIndex !== null ? chartData[activeIndex] : null;
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 p-5 shadow-xs flex flex-col justify-between h-full">
+    <div className="bg-white rounded-2xl p-5 shadow-xs flex flex-col justify-between h-full">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
@@ -169,7 +169,7 @@ export function RoomOccupancyChart({ data }: RoomOccupancyChartProps) {
       </div>
 
       {/* Bottom Summary Bar */}
-      <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-brand-muted bg-slate-50/70 p-2.5 rounded-xl">
+      <div className="pt-3 flex items-center gap-2 text-xs text-brand-muted bg-slate-50/10 p-2.5 rounded-xl">
         <Info className="w-4 h-4 text-blue-600 flex-shrink-0" />
         <span className="text-[11px] leading-snug">{data.statusSummary}</span>
       </div>

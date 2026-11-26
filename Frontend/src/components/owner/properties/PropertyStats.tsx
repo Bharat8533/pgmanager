@@ -96,10 +96,10 @@ export function PropertyStats({ properties }: PropertyStatsProps) {
       {stats.map((item) => (
         <div
           key={item.id}
-          className="bg-white rounded-2xl border border-brand-border/80 p-3.5 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all"
+          className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border/80 dark:border-[#222E42] p-3.5 shadow-xs flex flex-col justify-between hover:border-slate-300 dark:hover:border-indigo-500/30 transition-all"
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-bold text-brand-muted uppercase tracking-wider truncate">
+            <span className="text-[10px] font-bold text-brand-muted dark:text-slate-300 uppercase tracking-wider truncate">
               {item.label}
             </span>
             <div className={`w-6 h-6 rounded-lg border flex items-center justify-center flex-shrink-0 ${item.bg}`}>
@@ -108,17 +108,17 @@ export function PropertyStats({ properties }: PropertyStatsProps) {
           </div>
 
           <div>
-            <p className="text-xl sm:text-2xl font-black text-brand-charcoal tracking-tight">
+            <p className="text-xl sm:text-2xl font-black text-brand-charcoal dark:text-white tracking-tight">
               {item.value}
             </p>
-            <p className="text-[10px] text-brand-muted font-medium truncate mt-0.5">
+            <p className="text-[10px] text-brand-muted dark:text-slate-300 font-medium truncate mt-0.5">
               {item.subValue}
             </p>
 
             {item.isProgress && (
-              <div className="w-full bg-slate-100 rounded-full h-1.5 mt-2 overflow-hidden">
+              <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 mt-2 overflow-hidden">
                 <div
-                  className="bg-brand-obsidian h-full rounded-full transition-all duration-500"
+                  className="bg-brand-obsidian dark:bg-brand-lime h-full rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, Math.max(0, item.rate || 0))}%` }}
                 />
               </div>

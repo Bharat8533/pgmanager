@@ -104,74 +104,74 @@ html.dark .bg-brand-offwhite {
 }
 
 /* Elevated cards, modals, dropdowns and table surfaces */
-html.dark .bg-white {
+html.dark .bg-white:not([class*="dark:bg-"]) {
   background-color: #131720 !important;
 }
 
 /* Secondary muted surfaces & table header rows */
-html.dark .bg-slate-50,
-html.dark .bg-gray-50 {
+html.dark .bg-slate-50:not([class*="dark:bg-"]):not([class*="bg-emerald-"]):not([class*="bg-blue-"]):not([class*="bg-amber-"]):not([class*="bg-purple-"]):not([class*="bg-indigo-"]):not([class*="bg-sky-"]):not([class*="bg-lime-"]),
+html.dark .bg-gray-50:not([class*="dark:bg-"]) {
   background-color: #171C26 !important;
 }
 
-html.dark .bg-slate-100,
-html.dark .bg-gray-100 {
+html.dark .bg-slate-100:not([class*="dark:bg-"]):not([class*="bg-emerald-"]):not([class*="bg-blue-"]):not([class*="bg-amber-"]):not([class*="bg-purple-"]):not([class*="bg-indigo-"]):not([class*="bg-sky-"]):not([class*="bg-lime-"]),
+html.dark .bg-gray-100:not([class*="dark:bg-"]) {
   background-color: #1D2330 !important;
 }
 
 html.dark .bg-slate-200\/60,
-html.dark .bg-slate-200 {
+html.dark .bg-slate-200:not([class*="dark:bg-"]) {
   background-color: #242B3B !important;
 }
 
 /* Subtle borders for structure */
-html.dark .border-brand-border,
-html.dark .border-slate-200,
-html.dark .border-gray-200 {
+html.dark .border-brand-border:not([class*="dark:border-"]),
+html.dark .border-slate-200:not([class*="dark:border-"]),
+html.dark .border-gray-200:not([class*="dark:border-"]) {
   border-color: #202736 !important;
 }
 
-html.dark .border-slate-100,
-html.dark .border-gray-100 {
+html.dark .border-slate-100:not([class*="dark:border-"]),
+html.dark .border-gray-100:not([class*="dark:border-"]) {
   border-color: #181E2A !important;
 }
 
-html.dark .border-slate-300,
-html.dark .border-gray-300 {
+html.dark .border-slate-300:not([class*="dark:border-"]),
+html.dark .border-gray-300:not([class*="dark:border-"]) {
   border-color: #2A3346 !important;
 }
 
 /* Text Hierarchy in Dark Mode */
-html.dark .text-brand-charcoal,
-html.dark .text-brand-obsidian:not(.sidebar-active-item):not(.sidebar-active-item *),
-html.dark .text-black,
-html.dark .text-slate-900,
-html.dark .text-gray-900,
-html.dark .text-neutral-900 {
+html.dark .text-brand-charcoal:not([class*="dark:text-"]),
+html.dark .text-brand-obsidian:not(.sidebar-active-item):not(.sidebar-active-item *):not([class*="dark:text-"]),
+html.dark .text-black:not([class*="dark:text-"]),
+html.dark .text-slate-900:not([class*="dark:text-"]),
+html.dark .text-gray-900:not([class*="dark:text-"]),
+html.dark .text-neutral-900:not([class*="dark:text-"]) {
   color: #F8FAFC !important;
 }
 
-html.dark .text-slate-800,
-html.dark .text-gray-800 {
+html.dark .text-slate-800:not([class*="dark:text-"]),
+html.dark .text-gray-800:not([class*="dark:text-"]) {
   color: #E2E8F0 !important;
 }
 
-html.dark .text-slate-700,
-html.dark .text-gray-700 {
+html.dark .text-slate-700:not([class*="dark:text-"]),
+html.dark .text-gray-700:not([class*="dark:text-"]) {
   color: #CBD5E1 !important;
 }
 
-html.dark .text-brand-muted,
-html.dark .text-slate-500,
-html.dark .text-gray-500,
-html.dark .text-slate-600,
-html.dark .text-gray-600 {
+html.dark .text-brand-muted:not([class*="dark:text-"]),
+html.dark .text-slate-500:not([class*="dark:text-"]),
+html.dark .text-gray-500:not([class*="dark:text-"]),
+html.dark .text-slate-600:not([class*="dark:text-"]),
+html.dark .text-gray-600:not([class*="dark:text-"]) {
   color: #94A3B8 !important;
 }
 
-html.dark .text-slate-400,
-html.dark .text-gray-400 {
-  color: #64748B !important;
+html.dark .text-slate-400:not([class*="dark:text-"]),
+html.dark .text-gray-400:not([class*="dark:text-"]) {
+  color: #94A3B8 !important;
 }
 
 /* Base typography elements in dark mode */
@@ -194,16 +194,44 @@ html.dark td {
   color: #E2E8F0 !important;
 }
 
-/* Hover surfaces */
+/* Hover surfaces & Table Row Hovers in Dark Mode */
+html.dark tr:hover,
+html.dark tbody tr:hover,
+html.dark [role="row"]:hover,
 html.dark .hover\:bg-brand-offwhite:hover,
+html.dark .hover\:bg-brand-offwhite\/50:hover,
 html.dark .hover\:bg-slate-50:hover,
-html.dark .hover\:bg-gray-50:hover {
-  background-color: #19202C !important;
-}
-
+html.dark .hover\:bg-slate-50\/70:hover,
+html.dark .hover\:bg-slate-50\/80:hover,
+html.dark .hover\:bg-slate-50\/60:hover,
+html.dark .hover\:bg-slate-50\/50:hover,
+html.dark .hover\:bg-slate-50\/40:hover,
+html.dark .hover\:bg-gray-50:hover,
 html.dark .hover\:bg-slate-100:hover,
 html.dark .hover\:bg-gray-100:hover {
-  background-color: #212A3A !important;
+  background-color: #192230 !important;
+}
+
+html.dark tr:hover td {
+  background-color: transparent !important;
+}
+
+/* Ensure text in rows stays high contrast on hover */
+html.dark tr:hover td .text-brand-charcoal,
+html.dark tr:hover td p.font-bold,
+html.dark tr:hover td span.font-bold,
+html.dark tr:hover td .font-extrabold {
+  color: #FFFFFF !important;
+}
+
+html.dark tr:hover td .text-brand-muted {
+  color: #94A3B8 !important;
+}
+
+/* Hover link text in dark mode */
+html.dark .group:hover .group-hover\:text-blue-600,
+html.dark a.group:hover .group-hover\:text-blue-600 {
+  color: #60A5FA !important;
 }
 
 /* Form inputs, textareas & select menus */

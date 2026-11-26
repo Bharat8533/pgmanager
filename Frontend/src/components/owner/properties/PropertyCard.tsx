@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Property, PropertyStatus } from "@/types/owner";
-import { getAmenityIcon } from "@/components/properties/AmenitiesSelector";
+import { getAmenityIcon } from "@/components/owner/properties/AmenitiesSelector";
 import {
   MapPin,
   Building2,
@@ -75,10 +75,10 @@ export function PropertyCard({
 
   return (
     <>
-      <div className="bg-white rounded-2xl border border-brand-border/80 shadow-xs hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col justify-between group">
+      <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border/80 dark:border-[#222E42] shadow-xs hover:shadow-lg dark:hover:shadow-indigo-950/20 transition-all duration-200 overflow-hidden flex flex-col justify-between group">
         <div>
           {/* Cover Image Container */}
-          <div className="relative aspect-16/9 bg-slate-100 overflow-hidden">
+          <div className="relative aspect-16/9 bg-slate-100 dark:bg-[#141A26] overflow-hidden">
             <img
               src={property.coverImage || "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80"}
               alt={property.name}
@@ -110,7 +110,7 @@ export function PropertyCard({
                 <button
                   type="button"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="w-7 h-7 rounded-full bg-white/90 hover:bg-white text-brand-charcoal flex items-center justify-center shadow-xs transition-colors"
+                  className="w-7 h-7 rounded-full bg-white/90 dark:bg-[#111622]/90 hover:bg-white dark:hover:bg-[#182030] text-brand-charcoal dark:text-white border border-slate-200/60 dark:border-white/10 flex items-center justify-center shadow-xs transition-colors"
                   aria-label="Property actions"
                 >
                   <MoreVertical className="w-3.5 h-3.5" />
@@ -122,38 +122,38 @@ export function PropertyCard({
                       className="fixed inset-0 z-30"
                       onClick={() => setIsMenuOpen(false)}
                     />
-                    <div className="absolute right-0 mt-1 w-48 bg-white rounded-xl shadow-xl border border-brand-border py-1.5 z-40 animate-fadeIn text-xs">
+                    <div className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#151D2C] rounded-xl shadow-xl border border-brand-border dark:border-[#253246] py-1.5 z-40 animate-fadeIn text-xs">
                       <button
                         type="button"
                         onClick={() => {
                           setIsMenuOpen(false);
                           onViewDetails(property);
                         }}
-                        className="w-full text-left px-3 py-2 text-brand-charcoal hover:bg-slate-50 flex items-center gap-2 font-medium"
+                        className="w-full text-left px-3 py-2 text-brand-charcoal dark:text-white hover:bg-slate-50 dark:hover:bg-[#1E293B] flex items-center gap-2 font-medium"
                       >
-                        <Eye className="w-3.5 h-3.5 text-blue-600" />
+                        <Eye className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                         <span>View Details</span>
                       </button>
 
                       <Link
                         href={`/owner/properties/${property.id}/rooms`}
-                        className="w-full text-left px-3 py-2 text-brand-charcoal hover:bg-slate-50 flex items-center gap-2 font-medium"
+                        className="w-full text-left px-3 py-2 text-brand-charcoal dark:text-white hover:bg-slate-50 dark:hover:bg-[#1E293B] flex items-center gap-2 font-medium"
                       >
-                        <Bed className="w-3.5 h-3.5 text-blue-600" />
+                        <Bed className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                         <span>Manage Rooms</span>
                       </Link>
 
                       <Link
                         href={`/owner/properties/${property.id}/edit`}
-                        className="w-full text-left px-3 py-2 text-brand-charcoal hover:bg-slate-50 flex items-center gap-2 font-medium"
+                        className="w-full text-left px-3 py-2 text-brand-charcoal dark:text-white hover:bg-slate-50 dark:hover:bg-[#1E293B] flex items-center gap-2 font-medium"
                       >
-                        <Edit className="w-3.5 h-3.5 text-brand-charcoal" />
+                        <Edit className="w-3.5 h-3.5 text-brand-charcoal dark:text-slate-300" />
                         <span>Edit Property</span>
                       </Link>
 
-                      <div className="my-1 border-t border-slate-100" />
+                      <div className="my-1 border-t border-slate-100 dark:border-[#253246]" />
 
-                      <div className="px-3 py-1 text-[10px] uppercase font-bold text-brand-muted">
+                      <div className="px-3 py-1 text-[10px] uppercase font-bold text-brand-muted dark:text-slate-400">
                         Change Status
                       </div>
 
@@ -161,7 +161,7 @@ export function PropertyCard({
                         <button
                           type="button"
                           onClick={() => setConfirmStatusModal("active")}
-                          className="w-full text-left px-3 py-1.5 text-emerald-700 hover:bg-emerald-50 flex items-center gap-2 font-semibold"
+                          className="w-full text-left px-3 py-1.5 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 flex items-center gap-2 font-semibold"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Mark Active</span>
@@ -172,7 +172,7 @@ export function PropertyCard({
                         <button
                           type="button"
                           onClick={() => setConfirmStatusModal("under_maintenance")}
-                          className="w-full text-left px-3 py-1.5 text-amber-700 hover:bg-amber-50 flex items-center gap-2 font-semibold"
+                          className="w-full text-left px-3 py-1.5 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/40 flex items-center gap-2 font-semibold"
                         >
                           <AlertTriangle className="w-3.5 h-3.5" />
                           <span>Mark Maintenance</span>
@@ -183,7 +183,7 @@ export function PropertyCard({
                         <button
                           type="button"
                           onClick={() => setConfirmStatusModal("inactive")}
-                          className="w-full text-left px-3 py-1.5 text-slate-700 hover:bg-slate-100 flex items-center gap-2 font-semibold"
+                          className="w-full text-left px-3 py-1.5 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#1E293B] flex items-center gap-2 font-semibold"
                         >
                           <Clock className="w-3.5 h-3.5" />
                           <span>Mark Inactive</span>
@@ -196,8 +196,8 @@ export function PropertyCard({
             </div>
 
             {/* Bottom Overlay: Price Pill */}
-            <div className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded-md bg-white/95 text-brand-charcoal text-[11px] font-black shadow-xs backdrop-blur-xs">
-              From {formatINR(property.monthlyStartingRent)} <span className="text-[9px] font-normal text-brand-muted">/mo</span>
+            <div className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded-md bg-white/95 dark:bg-[#111622]/95 dark:text-white dark:border dark:border-white/10 text-brand-charcoal text-[11px] font-black shadow-xs backdrop-blur-xs">
+              From {formatINR(property.monthlyStartingRent)} <span className="text-[9px] font-normal text-brand-muted dark:text-slate-400">/mo</span>
             </div>
           </div>
 
@@ -205,18 +205,18 @@ export function PropertyCard({
           <div className="p-4 space-y-3">
             {/* Title & Locality */}
             <div>
-              <h3 className="text-base font-extrabold text-brand-charcoal tracking-tight truncate group-hover:text-blue-600 transition-colors">
+              <h3 className="text-base font-extrabold text-brand-charcoal dark:text-white tracking-tight truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {property.name}
               </h3>
-              <p className="text-xs text-brand-muted flex items-center gap-1 mt-0.5 truncate">
-                <MapPin className="w-3 h-3 text-brand-muted flex-shrink-0" />
+              <p className="text-xs text-brand-muted dark:text-slate-300 flex items-center gap-1 mt-0.5 truncate">
+                <MapPin className="w-3 h-3 text-brand-muted dark:text-blue-400 flex-shrink-0" />
                 <span className="truncate">{property.locality}, {property.city}</span>
               </p>
             </div>
 
             {/* Description snippet */}
             {property.description && (
-              <p className="text-xs text-brand-muted line-clamp-2 leading-relaxed">
+              <p className="text-xs text-brand-muted dark:text-slate-300 line-clamp-2 leading-relaxed">
                 {property.description}
               </p>
             )}
@@ -226,9 +226,9 @@ export function PropertyCard({
               {visibleAmenities.map((amenity) => (
                 <span
                   key={amenity}
-                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200/60 text-[10px] font-semibold text-slate-700"
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-[#151D2A] border border-slate-200/60 dark:border-[#243144] text-[10px] font-semibold text-slate-700 dark:text-slate-200"
                 >
-                  <span className="text-blue-600">{getAmenityIcon(amenity)}</span>
+                  <span className="text-blue-600 dark:text-blue-400">{getAmenityIcon(amenity)}</span>
                   <span className="truncate max-w-[90px]">{amenity}</span>
                 </span>
               ))}
@@ -236,45 +236,64 @@ export function PropertyCard({
               {remainingAmenitiesCount > 0 && (
                 <span
                   onClick={() => onViewDetails(property)}
-                  className="px-1.5 py-0.5 rounded-md bg-slate-100 text-[10px] font-bold text-brand-muted hover:text-brand-charcoal cursor-pointer"
+                  className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-[#151D2A] border border-slate-200/60 dark:border-[#243144] text-[10px] font-bold text-brand-muted dark:text-slate-300 hover:text-brand-charcoal dark:hover:text-white cursor-pointer"
                 >
                   +{remainingAmenitiesCount} more
                 </span>
               )}
             </div>
 
-            {/* Room & Bed Occupancy Breakdown */}
-            <div className="pt-2 border-t border-slate-100">
-              <div className="grid grid-cols-4 gap-1.5 text-center bg-slate-50/70 p-2 rounded-xl border border-slate-100">
-                <div>
-                  <span className="text-[9px] uppercase font-bold text-brand-muted block">
-                    Rooms
-                  </span>
-                  <span className="text-xs font-black text-brand-charcoal">
+            {/* Room & Bed Occupancy Breakdown - Distinct Semantic Micro-Cards */}
+            <div className="pt-2 border-t border-slate-100 dark:border-[#1E293B]">
+              <div className="grid grid-cols-4 gap-1.5 text-center">
+                {/* Rooms Card - Indigo Identity */}
+                <div className="bg-indigo-50/70 dark:bg-[#15192E] p-2 rounded-xl border border-indigo-100/80 dark:border-indigo-500/35 transition-all">
+                  <div className="flex items-center justify-center gap-1 mb-0.5">
+                    <Building2 className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
+                    <span className="text-[9px] uppercase font-bold text-indigo-700 dark:text-indigo-300 block tracking-wider">
+                      Rooms
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-indigo-950 dark:text-white block">
                     {property.totalRooms}
                   </span>
                 </div>
-                <div>
-                  <span className="text-[9px] uppercase font-bold text-brand-muted block">
-                    Total Beds
-                  </span>
-                  <span className="text-xs font-black text-brand-charcoal">
+
+                {/* Total Beds Card - Sky/Blue Identity */}
+                <div className="bg-sky-50/70 dark:bg-[#0F1E29] p-2 rounded-xl border border-sky-100/80 dark:border-sky-500/35 transition-all">
+                  <div className="flex items-center justify-center gap-1 mb-0.5">
+                    <Bed className="w-2.5 h-2.5 text-sky-600 dark:text-sky-400" />
+                    <span className="text-[9px] uppercase font-bold text-sky-700 dark:text-sky-300 block tracking-wider truncate">
+                      Beds
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-sky-950 dark:text-white block">
                     {property.totalBeds}
                   </span>
                 </div>
-                <div>
-                  <span className="text-[9px] uppercase font-bold text-emerald-700 block">
-                    Occupied
-                  </span>
-                  <span className="text-xs font-black text-emerald-700">
+
+                {/* Occupied Card - Emerald Identity */}
+                <div className="bg-emerald-50/80 dark:bg-[#0E241B] p-2 rounded-xl border border-emerald-200/80 dark:border-emerald-500/40 transition-all">
+                  <div className="flex items-center justify-center gap-1 mb-0.5">
+                    <Users className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-[9px] uppercase font-bold text-emerald-700 dark:text-emerald-300 block tracking-wider truncate">
+                      Occupied
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-emerald-800 dark:text-emerald-200 block">
                     {property.occupiedBeds}
                   </span>
                 </div>
-                <div>
-                  <span className="text-[9px] uppercase font-bold text-blue-700 block">
-                    Available
-                  </span>
-                  <span className="text-xs font-black text-blue-700">
+
+                {/* Available Card - Amber/Gold Identity */}
+                <div className="bg-amber-50/80 dark:bg-[#231E10] p-2 rounded-xl border border-amber-200/80 dark:border-amber-500/40 transition-all">
+                  <div className="flex items-center justify-center gap-1 mb-0.5">
+                    <CheckCircle2 className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                    <span className="text-[9px] uppercase font-bold text-amber-700 dark:text-amber-300 block tracking-wider truncate">
+                      Available
+                    </span>
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-amber-800 dark:text-amber-200 block">
                     {property.availableBeds}
                   </span>
                 </div>
@@ -283,18 +302,18 @@ export function PropertyCard({
               {/* Progress Bar */}
               <div className="mt-2.5">
                 <div className="flex items-center justify-between text-[11px] mb-1">
-                  <span className="font-semibold text-brand-muted text-[10px] uppercase">
+                  <span className="font-semibold text-brand-muted dark:text-slate-300 text-[10px] uppercase">
                     Occupancy
                   </span>
-                  <span className="font-bold text-emerald-700">
+                  <span className="font-bold text-emerald-700 dark:text-emerald-400">
                     {occupancyRate}%
                   </span>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden flex">
+                <div className="w-full bg-slate-100 dark:bg-[#1A2332] rounded-full h-1.5 overflow-hidden flex">
                   <div
                     className={cn(
                       "h-full rounded-full transition-all duration-500",
-                      occupancyRate >= 85 ? "bg-emerald-500" : occupancyRate >= 70 ? "bg-blue-600" : "bg-amber-500"
+                      occupancyRate >= 85 ? "bg-emerald-500" : occupancyRate >= 70 ? "bg-blue-600 dark:bg-blue-500" : "bg-amber-500"
                     )}
                     style={{ width: `${occupancyRate}%` }}
                   />
@@ -305,19 +324,19 @@ export function PropertyCard({
         </div>
 
         {/* Card Footer Actions */}
-        <div className="p-3 bg-slate-50/60 border-t border-slate-100 flex items-center justify-between gap-2">
+        <div className="p-3 bg-slate-50/80 dark:bg-[#0D121B] border-t border-slate-100 dark:border-[#1E2638] flex items-center justify-between gap-2">
           <button
             type="button"
             onClick={() => onViewDetails(property)}
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-xl border border-brand-border bg-white hover:bg-slate-50 text-xs font-bold text-brand-charcoal shadow-2xs transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-brand-border dark:border-[#28354A] bg-white dark:bg-[#151D2A] hover:bg-slate-50 dark:hover:bg-[#1D2738] text-xs font-bold text-brand-charcoal dark:text-white shadow-2xs transition-all"
           >
-            <Eye className="w-3.5 h-3.5 text-blue-600" />
+            <Eye className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>View Details</span>
           </button>
 
           <Link
             href={`/owner/properties/${property.id}/edit`}
-            className="flex-1 inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-xl bg-brand-obsidian text-white text-xs font-bold hover:bg-brand-obsidian-hover shadow-2xs transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-brand-obsidian dark:bg-[#1F293D] hover:bg-brand-obsidian-hover dark:hover:bg-[#28354D] border dark:border-white/10 text-white text-xs font-bold shadow-2xs transition-all"
           >
             <Edit className="w-3.5 h-3.5 text-brand-lime" />
             <span>Edit Property</span>
@@ -327,20 +346,20 @@ export function PropertyCard({
 
       {/* Status Change Confirmation Modal */}
       {confirmStatusModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-2xl border border-brand-border p-5 max-w-sm w-full shadow-2xl animate-scaleUp">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white dark:bg-[#121620] rounded-2xl border border-brand-border dark:border-[#242E40] p-5 max-w-sm w-full shadow-2xl animate-scaleUp">
             <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center">
                 <AlertTriangle className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-bold text-brand-charcoal">
+              <h3 className="text-sm font-bold text-brand-charcoal dark:text-white">
                 Change Property Status?
               </h3>
             </div>
 
-            <p className="text-xs text-brand-muted leading-relaxed mb-4">
+            <p className="text-xs text-brand-muted dark:text-slate-300 leading-relaxed mb-4">
               Are you sure you want to change <strong>{property.name}</strong> to{" "}
-              <span className="font-bold uppercase text-brand-charcoal">
+              <span className="font-bold uppercase text-brand-charcoal dark:text-white">
                 {confirmStatusModal.replace("_", " ")}
               </span>
               ? The property record will remain intact and visible in filters.
@@ -350,14 +369,14 @@ export function PropertyCard({
               <button
                 type="button"
                 onClick={() => setConfirmStatusModal(null)}
-                className="px-3 py-1.5 text-xs font-semibold text-brand-muted hover:text-brand-charcoal rounded-xl"
+                className="px-3 py-1.5 text-xs font-semibold text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white rounded-xl"
               >
                 Cancel
               </button>
               <button
                 type="button"
                 onClick={() => handleConfirmStatus(confirmStatusModal)}
-                className="px-4 py-1.5 text-xs font-bold text-white bg-brand-obsidian hover:bg-brand-obsidian-hover rounded-xl shadow-xs"
+                className="px-4 py-1.5 text-xs font-bold text-white bg-brand-obsidian dark:bg-brand-lime dark:text-brand-obsidian hover:bg-brand-obsidian-hover rounded-xl shadow-xs"
               >
                 Confirm Status
               </button>

@@ -35,7 +35,7 @@ export function CollectionTrendChart({
   const formatINR = (val: number) => "₹" + val.toLocaleString("en-IN");
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 p-5 shadow-xs flex flex-col justify-between h-full">
+    <div className="bg-white rounded-2xl p-5 shadow-xs flex flex-col justify-between h-full">
       {/* Chart Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
         <div>
@@ -112,8 +112,8 @@ export function CollectionTrendChart({
               content={({ active, payload, label }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="bg-brand-obsidian text-white text-xs p-3 rounded-xl shadow-xl border border-white/10 min-w-[180px]">
-                      <p className="font-extrabold text-white pb-1.5 border-b border-white/10 mb-2">
+                    <div className="bg-brand-obsidian text-white text-xs p-3 rounded-xl shadow-xl min-w-[180px]">
+                      <p className="font-extrabold text-white pb-1.5 mb-2">
                         {label}
                       </p>
                       {payload.map((entry: any, i: number) => (

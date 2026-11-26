@@ -240,7 +240,7 @@ export default function SettingsPage() {
       {/* 2. Appearance Section Card */}
       <div className="rounded-2xl bg-white border border-brand-border shadow-xs overflow-hidden">
         {/* Section Header */}
-        <div className="p-5 sm:p-6 border-b border-brand-border bg-slate-50/50">
+        <div className="p-5 sm:p-6 border-b border-brand-border bg-slate-100/10">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-brand-obsidian text-brand-lime flex items-center justify-center shrink-0 shadow-2xs">
@@ -344,30 +344,6 @@ export default function SettingsPage() {
                 </button>
               );
             })}
-          </div>
-
-          {/* Theme Information Banner */}
-          <div className="mt-6 p-4 rounded-xl bg-slate-50 border border-brand-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-brand-lime/30 text-brand-charcoal flex items-center justify-center shrink-0 font-bold">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-brand-charcoal">
-                  Zero Page Refresh Architecture
-                </p>
-                <p className="text-[11px] text-brand-muted">
-                  Your theme preference is saved in local browser storage and applied instantaneously across all owner dashboards, tables, modals, and drawers.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-brand-border text-[11px] font-semibold text-brand-charcoal shadow-2xs">
-                <Eye className="w-3 h-3 text-brand-muted" />
-                Live Preview Ready
-              </span>
-            </div>
           </div>
         </div>
       </div>

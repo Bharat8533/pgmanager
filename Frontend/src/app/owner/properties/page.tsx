@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOwner } from "@/contexts/OwnerContext";
 import { Property, PropertyStatus } from "@/types/owner";
-import { PropertyStats } from "@/components/properties/PropertyStats";
+import { PropertyStats } from "@/components/owner/properties/PropertyStats";
 import {
   PropertyFilters,
   StatusFilterOption,
   OccupancyFilterOption,
   SortOption,
-} from "@/components/properties/PropertyFilters";
-import { PropertyCard } from "@/components/properties/PropertyCard";
-import { PropertyDetailModal } from "@/components/properties/PropertyDetailModal";
+} from "@/components/owner/properties/PropertyFilters";
+import { PropertyCard } from "@/components/owner/properties/PropertyCard";
+import { PropertyDetailModal } from "@/components/owner/properties/PropertyDetailModal";
 import {
   Building2,
   Plus,
@@ -133,18 +133,18 @@ export default function PropertiesListingPage() {
   return (
     <div className="space-y-6 sm:space-y-7 animate-fadeIn pb-12">
       {/* A. PAGE HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-brand-border/60">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-brand-border/60 dark:border-[#1E2638]">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-brand-charcoal uppercase tracking-wider bg-brand-lime/30 text-brand-charcoal px-2.5 py-0.5 rounded-full border border-brand-lime/60 shadow-2xs">
-              <Sparkles className="w-3 h-3 text-brand-charcoal" />
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-brand-charcoal dark:text-brand-lime uppercase tracking-wider bg-brand-lime/30 dark:bg-brand-lime/15 px-2.5 py-0.5 rounded-full border border-brand-lime/60 dark:border-brand-lime/30 shadow-2xs">
+              <Sparkles className="w-3 h-3 text-brand-charcoal dark:text-brand-lime" />
               <span>Multi-Property Portfolio</span>
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-brand-charcoal tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-brand-charcoal dark:text-white tracking-tight">
             Properties
           </h1>
-          <p className="text-sm text-brand-muted mt-0.5 leading-relaxed">
+          <p className="text-sm text-brand-muted dark:text-slate-300 mt-0.5 leading-relaxed">
             Manage all your PG properties, rooms, beds, and occupancy from one place.
           </p>
         </div>
@@ -188,15 +188,15 @@ export default function PropertiesListingPage() {
       <section aria-label="Properties List">
         {properties.length === 0 ? (
           /* Empty State: Zero properties in account */
-          <div className="bg-white rounded-3xl border border-brand-border/80 p-8 sm:p-12 text-center shadow-xs max-w-lg mx-auto space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-brand-lime/30 text-brand-charcoal flex items-center justify-center mx-auto shadow-xs border border-brand-lime/60">
-              <Building2 className="w-7 h-7 text-brand-charcoal" />
+          <div className="bg-white dark:bg-[#111622] rounded-3xl border border-brand-border/80 dark:border-[#222E42] p-8 sm:p-12 text-center shadow-xs max-w-lg mx-auto space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-brand-lime/30 text-brand-charcoal dark:text-brand-lime flex items-center justify-center mx-auto shadow-xs border border-brand-lime/60 dark:border-brand-lime/30">
+              <Building2 className="w-7 h-7 text-brand-charcoal dark:text-brand-lime" />
             </div>
             <div>
-              <h3 className="text-lg font-extrabold text-brand-charcoal">
+              <h3 className="text-lg font-extrabold text-brand-charcoal dark:text-white">
                 No properties added yet.
               </h3>
-              <p className="text-xs text-brand-muted mt-1 leading-relaxed">
+              <p className="text-xs text-brand-muted dark:text-slate-300 mt-1 leading-relaxed">
                 Start managing your PG business by adding your first property. Configure rooms, bed inventory, and amenities easily.
               </p>
             </div>
@@ -210,22 +210,22 @@ export default function PropertiesListingPage() {
           </div>
         ) : filteredProperties.length === 0 ? (
           /* Search Empty State: No matches for current filters */
-          <div className="bg-white rounded-2xl border border-brand-border/80 p-8 sm:p-10 text-center shadow-xs max-w-md mx-auto space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-slate-100 text-brand-muted flex items-center justify-center mx-auto">
-              <SearchX className="w-6 h-6 text-brand-muted" />
+          <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border/80 dark:border-[#222E42] p-8 sm:p-10 text-center shadow-xs max-w-md mx-auto space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-[#18212F] text-brand-muted dark:text-slate-300 flex items-center justify-center mx-auto">
+              <SearchX className="w-6 h-6 text-brand-muted dark:text-slate-300" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-brand-charcoal">
+              <h3 className="text-base font-bold text-brand-charcoal dark:text-white">
                 No properties found
               </h3>
-              <p className="text-xs text-brand-muted mt-1">
+              <p className="text-xs text-brand-muted dark:text-slate-300 mt-1">
                 No properties match your active search &quot;{searchQuery}&quot; or filter criteria.
               </p>
             </div>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-brand-charcoal text-xs font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#1E293B] hover:bg-slate-200 dark:hover:bg-[#28354D] text-brand-charcoal dark:text-white text-xs font-bold transition-colors"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Clear All Filters</span>

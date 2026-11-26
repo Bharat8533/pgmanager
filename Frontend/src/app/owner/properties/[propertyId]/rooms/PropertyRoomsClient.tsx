@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useOwner } from "@/contexts/OwnerContext";
-import { RoomsView } from "@/components/rooms/RoomsView";
+import { RoomsView } from "@/components/owner/rooms/RoomsView";
 
 export function PropertyRoomsClient() {
   const params = useParams();

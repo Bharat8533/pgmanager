@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOwner } from "@/contexts/OwnerContext";
 import { Property } from "@/types/owner";
-import { PropertyForm } from "@/components/properties/PropertyForm";
+import { PropertyForm } from "@/components/owner/properties/PropertyForm";
 import { ArrowLeft, Sparkles, Building2, CheckCircle2, AlertCircle } from "lucide-react";
 
 interface EditPropertyClientProps {

@@ -98,7 +98,7 @@ function KPICardItem({ card }: { card: KPICardMetric }) {
   return (
     <div
       className={cn(
-        "group relative bg-white rounded-2xl border border-brand-border/80 p-4 shadow-xs",
+        "group relative bg-white rounded-2xl p-4 shadow-xs",
         "flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300"
       )}
     >

@@ -3,7 +3,7 @@
 import React from "react";
 import { Room, RoomStatus, Bed } from "@/types/room";
 import { useRoom } from "@/contexts/RoomContext";
-import { getRoomAmenityIcon } from "@/components/rooms/RoomCard";
+import { getRoomAmenityIcon } from "@/components/owner/rooms/RoomCard";
 import {
   BedDouble,
   Users,
@@ -79,11 +79,10 @@ export function RoomAccordionRow({
 
   return (
     <div
-      className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs hover:shadow-sm ${
-        isOpen
+      className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs hover:shadow-sm ${isOpen
           ? "border-brand-obsidian ring-1 ring-brand-obsidian/10"
           : "border-brand-border hover:border-brand-border/80"
-      }`}
+        }`}
     >
       {/* =========================================================================
           ACCORDION HEADER ROW (Mobile Optimized 2-line layout / Desktop single row)
@@ -137,9 +136,8 @@ export function RoomAccordionRow({
               <Edit className="w-4 h-4" />
             </button>
             <div
-              className={`w-6 h-6 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${
-                isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
-              }`}
+              className={`w-6 h-6 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
+                }`}
             >
               <ChevronDown className="w-4 h-4" />
             </div>
@@ -166,15 +164,14 @@ export function RoomAccordionRow({
                 <span
                   key={b.id}
                   title={`${b.bedNumber}: ${b.status}`}
-                  className={`w-2 h-2 rounded-full ${
-                    b.status === "available"
+                  className={`w-2 h-2 rounded-full ${b.status === "available"
                       ? "bg-emerald-500 ring-1 ring-emerald-300"
                       : b.status === "occupied"
-                      ? "bg-brand-obsidian"
-                      : b.status === "reserved"
-                      ? "bg-amber-500"
-                      : "bg-rose-500"
-                  }`}
+                        ? "bg-brand-obsidian"
+                        : b.status === "reserved"
+                          ? "bg-amber-500"
+                          : "bg-rose-500"
+                    }`}
                 />
               ))
             ) : (
@@ -219,9 +216,8 @@ export function RoomAccordionRow({
             </button>
 
             <div
-              className={`w-7 h-7 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${
-                isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
-              }`}
+              className={`w-7 h-7 rounded-lg flex items-center justify-center text-brand-muted transition-transform duration-200 ${isOpen ? "rotate-180 text-brand-obsidian bg-slate-100" : ""
+                }`}
             >
               <ChevronDown className="w-4 h-4" />
             </div>
@@ -312,30 +308,28 @@ export function RoomAccordionRow({
                   return (
                     <div
                       key={bed.id}
-                      className={`p-3 rounded-xl border transition-all ${
-                        bed.status === "available"
+                      className={`p-3 rounded-xl border transition-all ${bed.status === "available"
                           ? "bg-emerald-50/50 border-emerald-200 hover:border-emerald-300"
                           : bed.status === "occupied"
-                          ? "bg-white border-brand-border hover:border-brand-obsidian/30"
-                          : bed.status === "reserved"
-                          ? "bg-amber-50/50 border-amber-200"
-                          : "bg-rose-50/50 border-rose-200"
-                      }`}
+                            ? "bg-white border-brand-border hover:border-brand-obsidian/30"
+                            : bed.status === "reserved"
+                              ? "bg-amber-50/50 border-amber-200"
+                              : "bg-rose-50/50 border-rose-200"
+                        }`}
                     >
                       <div className="flex items-center justify-between mb-1.5">
                         <span className="text-xs font-black text-brand-charcoal">
                           Bed {bed.bedNumber}
                         </span>
                         <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            bed.status === "available"
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${bed.status === "available"
                               ? "bg-emerald-100 text-emerald-800"
                               : bed.status === "occupied"
-                              ? "bg-brand-obsidian text-white"
-                              : bed.status === "reserved"
-                              ? "bg-amber-100 text-amber-800"
-                              : "bg-rose-100 text-rose-800"
-                          }`}
+                                ? "bg-brand-obsidian text-white"
+                                : bed.status === "reserved"
+                                  ? "bg-amber-100 text-amber-800"
+                                  : "bg-rose-100 text-rose-800"
+                            }`}
                         >
                           {bed.status === "available" ? "Free" : bed.status}
                         </span>
@@ -389,9 +383,8 @@ export function RoomAccordionRow({
                     Pending Rent
                   </span>
                   <span
-                    className={`text-xs font-black mt-0.5 block ${
-                      financial.pendingRent > 0 ? "text-rose-600" : "text-emerald-700"
-                    }`}
+                    className={`text-xs font-black mt-0.5 block ${financial.pendingRent > 0 ? "text-rose-600" : "text-emerald-700"
+                      }`}
                   >
                     ₹{financial.pendingRent.toLocaleString("en-IN")}
                   </span>

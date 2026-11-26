@@ -37,7 +37,7 @@ export function AuthBrandPanel() {
         {/* Top Header */}
         <div className="relative z-10 flex items-center justify-between">
           <Logo size="md" showTagline />
-          <Badge variant="outline" className="text-[11px] font-medium bg-white/80 backdrop-blur-sm shadow-xs">
+          <Badge variant="outline" className="text-[11px] font-medium bg-white/20 backdrop-blur-sm shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-lime inline-block mr-1 ring-1 ring-brand-charcoal/20" />
             Multi-Property Management Cloud
           </Badge>

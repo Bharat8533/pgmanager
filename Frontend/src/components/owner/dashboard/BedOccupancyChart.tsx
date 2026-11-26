@@ -31,7 +31,7 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border border-brand-border/80 p-5 shadow-xs flex flex-col justify-between h-full">
+    <div className="bg-white rounded-2xl p-5 shadow-xs flex flex-col justify-between h-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3 border-b border-slate-100">
         <div className="min-w-0">
@@ -60,7 +60,7 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
 
       {/* Primary Capacity Metric Cards (Occupied vs Available vs Total) */}
       <div className="grid grid-cols-3 gap-2 sm:gap-3 my-3">
-        <div className="p-2 sm:p-3 rounded-xl bg-slate-50 border border-slate-200/70 min-w-0">
+        <div className="p-2 sm:p-3 rounded-xl bg-slate-50 min-w-0">
           <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-brand-muted block truncate">
             Total Beds
           </span>
@@ -70,7 +70,7 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
           <span className="text-[9px] sm:text-[10px] text-brand-muted block mt-0.5 truncate">Full Capacity</span>
         </div>
 
-        <div className="p-2 sm:p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/70 min-w-0">
+        <div className="p-2 sm:p-3 rounded-xl bg-emerald-50 min-w-0">
           <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-emerald-700 block truncate">
             Occupied Beds
           </span>
@@ -80,7 +80,7 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
           <span className="text-[9px] sm:text-[10px] text-emerald-600 block mt-0.5 truncate">Generating Rent</span>
         </div>
 
-        <div className="p-2 sm:p-3 rounded-xl bg-blue-50/60 border border-blue-200/70 min-w-0">
+        <div className="p-2 sm:p-3 rounded-xl bg-blue-50 min-w-0">
           <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-blue-700 block truncate">
             Available Beds
           </span>
@@ -148,11 +148,11 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
           {data.sharingBreakdown.map((share) => (
             <div
               key={share.type}
-              className="flex items-center justify-between p-2 rounded-xl bg-slate-50/70 border border-slate-200/60 text-xs"
+              className="flex items-center justify-between p-2 rounded-xl bg-slate-50/10 text-xs"
             >
               <div className="flex items-center gap-2">
                 <span className="font-bold text-brand-charcoal">{share.type}</span>
-                <span className="text-[10px] text-brand-muted bg-white border border-slate-200 px-1.5 py-0.5 rounded-md">
+                <span className="text-[10px] text-brand-muted bg-white px-1.5 py-0.5 rounded-md">
                   {share.pricePerBed}
                 </span>
               </div>
@@ -171,7 +171,7 @@ export function BedOccupancyChart({ data }: BedOccupancyChartProps) {
       </div>
 
       {/* Difference Note: Room vs Bed */}
-      <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-start gap-2 text-[11px] text-brand-muted">
+      <div className="mt-3 pt-2.5 flex items-start gap-2 text-[11px] text-brand-muted">
         <Sparkles className="w-3.5 h-3.5 text-blue-600 flex-shrink-0 mt-0.5" />
         <span className="leading-tight">{data.insightNote}</span>
       </div>

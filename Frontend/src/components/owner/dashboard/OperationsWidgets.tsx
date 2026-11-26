@@ -32,9 +32,9 @@ export function OperationsWidgets({
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* 1. Upcoming Check-ins */}
-      <div className="bg-white rounded-2xl border border-brand-border/80 p-4 shadow-xs flex flex-col justify-between">
+      <div className="bg-white rounded-2xl p-4 shadow-xs flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 mb-3">
+          <div className="flex items-center justify-between pb-2.5 mb-3">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <UserCheck className="w-4 h-4" />
@@ -52,7 +52,7 @@ export function OperationsWidgets({
             {checkIns.map((item) => (
               <div
                 key={item.id}
-                className="p-2.5 rounded-xl bg-slate-50/60 border border-slate-200/60 flex items-center justify-between gap-2 text-xs"
+                className="p-2.5 rounded-xl bg-slate-50/60 flex items-center justify-between gap-2 text-xs"
               >
                 <div className="min-w-0">
                   <p className="font-bold text-brand-charcoal truncate">
@@ -77,7 +77,7 @@ export function OperationsWidgets({
 
         <Link
           href="/owner/bookings"
-          className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-bold hover:text-blue-700"
+          className="pt-2.5 mt-2 flex items-center justify-between text-xs text-blue-600 font-bold hover:text-blue-700"
         >
           <span>Review All Check-ins</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -85,9 +85,9 @@ export function OperationsWidgets({
       </div>
 
       {/* 2. Upcoming Check-outs */}
-      <div className="bg-white rounded-2xl border border-brand-border/80 p-4 shadow-xs flex flex-col justify-between">
+      <div className="bg-white rounded-2xl p-4 shadow-xs flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 mb-3">
+          <div className="flex items-center justify-between pb-2.5 mb-3">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
                 <UserX className="w-4 h-4" />
@@ -105,7 +105,7 @@ export function OperationsWidgets({
             {checkOuts.map((item) => (
               <div
                 key={item.id}
-                className="p-2.5 rounded-xl bg-slate-50/60 border border-slate-200/60 flex items-center justify-between gap-2 text-xs"
+                className="p-2.5 rounded-xl bg-slate-50/60 flex items-center justify-between gap-2 text-xs"
               >
                 <div className="min-w-0">
                   <p className="font-bold text-brand-charcoal truncate">
@@ -130,7 +130,7 @@ export function OperationsWidgets({
 
         <Link
           href="/owner/tenants"
-          className="pt-2.5 mt-2 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-bold hover:text-blue-700"
+          className="pt-2.5 mt-2 flex items-center justify-between text-xs text-blue-600 font-bold hover:text-blue-700"
         >
           <span>Manage Vacancies & Inspections</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -138,9 +138,9 @@ export function OperationsWidgets({
       </div>
 
       {/* 3. Pending Complaints */}
-      <div className="bg-white rounded-2xl border border-brand-border/80 p-4 shadow-xs flex flex-col justify-between">
+      <div className="bg-white rounded-2xl p-4 shadow-xs flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 mb-3">
+          <div className="flex items-center justify-between pb-2.5 mb-3">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
                 <AlertTriangle className="w-4 h-4" />

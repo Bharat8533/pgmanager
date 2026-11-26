@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Room, RoomType, RoomStatus } from "@/types/room";
 import { useRoom } from "@/contexts/RoomContext";
-import { getRoomAmenityIcon } from "@/components/rooms/RoomCard";
+import { getRoomAmenityIcon } from "@/components/owner/rooms/RoomCard";
 import {
   X,
   Plus,

@@ -63,7 +63,7 @@ export function DashboardHeader({
 
   // Time-aware greeting
   const greeting = React.useMemo(() => {
-    const hours = 10; // Static daytime for SSR consistency
+    const hours = new Date().getHours();
     if (hours < 12) return "Good Morning";
     if (hours < 17) return "Good Afternoon";
     return "Good Evening";
@@ -107,7 +107,12 @@ export function DashboardHeader({
             <span className="text-xs text-brand-muted hidden sm:inline">•</span>
 
             <span className="text-xs text-brand-muted hidden sm:inline">
-              Tuesday, 24 Nov 2026
+              {new Date().toLocaleDateString("en-GB", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </span>
           </div>
 
