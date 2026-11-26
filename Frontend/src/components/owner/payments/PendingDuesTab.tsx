@@ -94,54 +94,56 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
     <div className="space-y-4">
       {/* Aging Breakdown Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-        <div className="bg-white rounded-2xl border border-[#E2E5DF] p-3.5 shadow-2xs">
-          <span className="text-[10px] font-bold uppercase text-[#777D78] block">Not Yet Due</span>
-          <p className="text-base sm:text-lg font-black text-[#171A18] my-1">
+        <div className="bg-white dark:bg-[#111622] rounded-2xl border border-[#E2E5DF] dark:border-[#222E42] p-3.5 shadow-2xs">
+          <span className="text-[10px] font-bold uppercase text-[#777D78] dark:text-slate-400 block">Not Yet Due</span>
+          <p className="text-base sm:text-lg font-black text-[#171A18] dark:text-white my-1">
             ₹{aging.notYetDue.amount.toLocaleString("en-IN")}
           </p>
-          <span className="text-[11px] text-[#777D78]">{aging.notYetDue.count} residents</span>
+          <span className="text-[11px] text-[#777D78] dark:text-slate-400">{aging.notYetDue.count} residents</span>
         </div>
 
-        <div className="bg-white rounded-2xl border border-[#FDE68A] p-3.5 shadow-2xs bg-[#FEF3C7]/20">
-          <span className="text-[10px] font-bold uppercase text-[#B45309] block">1–7 Days Overdue</span>
-          <p className="text-base sm:text-lg font-black text-[#B45309] my-1">
+        <div className="bg-[#FEF3C7]/20 dark:bg-amber-500/10 rounded-2xl border border-[#FDE68A] dark:border-amber-500/30 p-3.5 shadow-2xs">
+          <span className="text-[10px] font-bold uppercase text-[#B45309] dark:text-amber-400 block">1–7 Days Overdue</span>
+          <p className="text-base sm:text-lg font-black text-[#B45309] dark:text-amber-400 my-1">
             ₹{aging.days1to7.amount.toLocaleString("en-IN")}
           </p>
-          <span className="text-[11px] text-[#B45309]">{aging.days1to7.count} residents</span>
+          <span className="text-[11px] text-[#B45309] dark:text-amber-400">{aging.days1to7.count} residents</span>
         </div>
 
-        <div className="bg-white rounded-2xl border border-[#FDBA74] p-3.5 shadow-2xs bg-[#FFF7ED]/30">
-          <span className="text-[10px] font-bold uppercase text-[#C2410C] block">8–15 Days Overdue</span>
-          <p className="text-base sm:text-lg font-black text-[#C2410C] my-1">
+        <div className="bg-[#FFF7ED]/30 dark:bg-orange-500/10 rounded-2xl border border-[#FDBA74] dark:border-orange-500/30 p-3.5 shadow-2xs">
+          <span className="text-[10px] font-bold uppercase text-[#C2410C] dark:text-orange-400 block">8–15 Days Overdue</span>
+          <p className="text-base sm:text-lg font-black text-[#C2410C] dark:text-orange-400 my-1">
             ₹{aging.days8to15.amount.toLocaleString("en-IN")}
           </p>
-          <span className="text-[11px] text-[#C2410C]">{aging.days8to15.count} residents</span>
+          <span className="text-[11px] text-[#C2410C] dark:text-orange-400">{aging.days8to15.count} residents</span>
         </div>
 
-        <div className="bg-white rounded-2xl border border-[#FCA5A5] p-3.5 shadow-2xs bg-[#FEF2F2]/40">
-          <span className="text-[10px] font-bold uppercase text-[#DC2626] block">16–30 Days Overdue</span>
-          <p className="text-base sm:text-lg font-black text-[#DC2626] my-1">
+        <div className="bg-[#FEF2F2]/40 dark:bg-rose-500/10 rounded-2xl border border-[#FCA5A5] dark:border-rose-500/30 p-3.5 shadow-2xs">
+          <span className="text-[10px] font-bold uppercase text-[#DC2626] dark:text-rose-400 block">16–30 Days Overdue</span>
+          <p className="text-base sm:text-lg font-black text-[#DC2626] dark:text-rose-400 my-1">
             ₹{aging.days16to30.amount.toLocaleString("en-IN")}
           </p>
-          <span className="text-[11px] text-[#DC2626]">{aging.days16to30.count} residents</span>
+          <span className="text-[11px] text-[#DC2626] dark:text-rose-400">{aging.days16to30.count} residents</span>
         </div>
 
-        <div className="bg-white rounded-2xl border border-red-300 p-3.5 shadow-2xs bg-red-50/50 col-span-2 sm:col-span-1">
-          <span className="text-[10px] font-bold uppercase text-red-700 block">&gt; 30 Days Overdue</span>
-          <p className="text-base sm:text-lg font-black text-red-700 my-1">
+        <div className="bg-red-50/50 dark:bg-red-500/15 rounded-2xl border border-red-300 dark:border-red-500/30 p-3.5 shadow-2xs col-span-2 sm:col-span-1">
+          <span className="text-[10px] font-bold uppercase text-red-700 dark:text-red-400 block">&gt; 30 Days Overdue</span>
+          <p className="text-base sm:text-lg font-black text-red-700 dark:text-red-400 my-1">
             ₹{aging.daysAbove30.amount.toLocaleString("en-IN")}
           </p>
-          <span className="text-[11px] text-red-700">{aging.daysAbove30.count} critical</span>
+          <span className="text-[11px] text-red-700 dark:text-red-400">{aging.daysAbove30.count} critical</span>
         </div>
       </div>
 
       {/* Sub-Filters Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3.5 sm:p-4 rounded-2xl border border-[#E2E5DF] shadow-xs">
-        <div className="flex flex-wrap items-center gap-1.5 bg-[#F4F5F2] p-1 rounded-xl text-xs font-semibold">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-[#111622] p-3.5 sm:p-4 rounded-2xl border border-[#E2E5DF] dark:border-[#222E42] shadow-xs">
+        <div className="flex flex-wrap items-center gap-1.5 bg-[#F4F5F2] dark:bg-[#151D2A] p-1 rounded-xl text-xs font-semibold border border-transparent dark:border-[#263346]">
           <button
             onClick={() => setFilterMode("all")}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-              filterMode === "all" ? "bg-white text-[#171A18] shadow-2xs font-bold" : "text-[#777D78]"
+              filterMode === "all"
+                ? "bg-white dark:bg-[#1E293B] text-[#171A18] dark:text-white shadow-2xs font-bold"
+                : "text-[#777D78] dark:text-slate-400 hover:dark:text-white"
             }`}
           >
             All Pending ({pendingItems.length})
@@ -149,7 +151,9 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
           <button
             onClick={() => setFilterMode("overdue")}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-              filterMode === "overdue" ? "bg-white text-red-600 shadow-2xs font-bold" : "text-[#777D78]"
+              filterMode === "overdue"
+                ? "bg-white dark:bg-rose-500/20 text-red-600 dark:text-rose-400 shadow-2xs font-bold"
+                : "text-[#777D78] dark:text-slate-400 hover:dark:text-white"
             }`}
           >
             Overdue Dues
@@ -157,7 +161,9 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
           <button
             onClick={() => setFilterMode("partial")}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-              filterMode === "partial" ? "bg-white text-[#B45309] shadow-2xs font-bold" : "text-[#777D78]"
+              filterMode === "partial"
+                ? "bg-white dark:bg-amber-500/20 text-[#B45309] dark:text-amber-400 shadow-2xs font-bold"
+                : "text-[#777D78] dark:text-slate-400 hover:dark:text-white"
             }`}
           >
             Partially Paid
@@ -165,25 +171,27 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
           <button
             onClick={() => setFilterMode("due_soon")}
             className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-              filterMode === "due_soon" ? "bg-white text-[#171A18] shadow-2xs font-bold" : "text-[#777D78]"
+              filterMode === "due_soon"
+                ? "bg-white dark:bg-[#1E293B] text-[#171A18] dark:text-white shadow-2xs font-bold"
+                : "text-[#777D78] dark:text-slate-400 hover:dark:text-white"
             }`}
           >
             Due Soon
           </button>
         </div>
 
-        <span className="text-xs font-semibold text-[#777D78]">
-          Total Outstanding: <strong className="text-red-600 font-extrabold">₹{aging.totalOutstanding.toLocaleString("en-IN")}</strong>
+        <span className="text-xs font-semibold text-[#777D78] dark:text-slate-400">
+          Total Outstanding: <strong className="text-red-600 dark:text-rose-400 font-extrabold">₹{aging.totalOutstanding.toLocaleString("en-IN")}</strong>
         </span>
       </div>
 
       {/* Pending Table & Responsive Mobile Cards */}
-      <div className="bg-white rounded-2xl border border-[#E2E5DF] shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-[#111622] rounded-2xl border border-[#E2E5DF] dark:border-[#222E42] shadow-xs overflow-hidden">
         {/* Desktop Table (md+) */}
         <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-[#F0F2EE] bg-[#FAFAF8] text-[11px] font-bold text-[#777D78] uppercase tracking-wider">
+              <tr className="border-b border-[#F0F2EE] dark:border-[#1E2638] bg-[#FAFAF8] dark:bg-[#151D2A] text-[11px] font-bold text-[#777D78] dark:text-slate-400 uppercase tracking-wider">
                 <th className="py-3.5 px-6">Resident & Room</th>
                 <th className="py-3.5 px-4">Billing Month</th>
                 <th className="py-3.5 px-4 text-right">Pending Amount</th>
@@ -192,7 +200,7 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
                 <th className="py-3.5 px-6 text-right">Remind & Collect</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#F0F2EE]">
+            <tbody className="divide-y divide-[#F0F2EE] dark:divide-[#1E2638]">
               {filteredPending.map((item) => {
                 const dueDate = new Date(item.dueDate);
                 const diff = Math.floor((now.getTime() - dueDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -200,42 +208,42 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
                 const isCopied = copiedId === item.id;
 
                 return (
-                  <tr key={item.id} className="hover:bg-[#F9FAF8] transition-colors">
+                  <tr key={item.id} className="hover:bg-[#F9FAF8] dark:hover:bg-[#1E293B]/50 transition-colors">
                     <td className="py-4 px-6 whitespace-nowrap">
-                      <div className="font-extrabold text-[#171A18] text-sm">{item.residentName}</div>
-                      <div className="text-[11px] text-[#777D78] flex items-center gap-2 mt-0.5 font-medium">
-                        <span className="text-[#171A18]">Room {item.roomNumber} ({item.bedNumber})</span>
+                      <div className="font-extrabold text-[#171A18] dark:text-white text-sm">{item.residentName}</div>
+                      <div className="text-[11px] text-[#777D78] dark:text-slate-400 flex items-center gap-2 mt-0.5 font-medium">
+                        <span className="text-[#171A18] dark:text-slate-200">Room {item.roomNumber} ({item.bedNumber})</span>
                         <span>•</span>
-                        <span className="flex items-center gap-0.5 text-[#777D78]">
+                        <span className="flex items-center gap-0.5 text-[#777D78] dark:text-slate-400">
                           <Phone className="w-3 h-3" />
                           {item.residentPhone}
                         </span>
                       </div>
                     </td>
 
-                    <td className="py-4 px-4 whitespace-nowrap font-medium text-[#171A18]">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#FAFAF8] border border-[#E2E5DF]">
-                        <Calendar className="w-3 h-3 text-[#777D78]" />
+                    <td className="py-4 px-4 whitespace-nowrap font-medium text-[#171A18] dark:text-white">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#FAFAF8] dark:bg-[#151D2A] border border-[#E2E5DF] dark:border-[#263346] text-[#171A18] dark:text-slate-200">
+                        <Calendar className="w-3 h-3 text-[#777D78] dark:text-slate-400" />
                         {item.billingMonth}
                       </span>
                     </td>
 
-                    <td className="py-4 px-4 text-right whitespace-nowrap font-black text-sm text-red-600">
+                    <td className="py-4 px-4 text-right whitespace-nowrap font-black text-sm text-red-600 dark:text-rose-400">
                       ₹{item.pendingAmount.toLocaleString("en-IN")}
                     </td>
 
-                    <td className="py-4 px-4 whitespace-nowrap font-medium text-[#777D78]">
+                    <td className="py-4 px-4 whitespace-nowrap font-medium text-[#777D78] dark:text-slate-400">
                       {item.dueDate}
                     </td>
 
                     <td className="py-4 px-4 text-center whitespace-nowrap">
                       {daysOverdue > 0 ? (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-red-100 text-red-700 border border-red-200">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-red-100 dark:bg-rose-500/15 text-red-700 dark:text-rose-300 border border-red-200 dark:border-rose-500/30">
                           <AlertTriangle className="w-3 h-3" />
                           <span>{daysOverdue} days overdue</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#DCFCE7] text-[#15803D] border border-[#86EFAC]/50">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#DCFCE7] dark:bg-emerald-500/15 text-[#15803D] dark:text-emerald-300 border border-[#86EFAC]/50 dark:border-emerald-500/30">
                           <Clock className="w-3 h-3" />
                           <span>Due Soon</span>
                         </span>
@@ -248,27 +256,27 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
                         <button
                           type="button"
                           onClick={() => handleCopyReminder(item)}
-                          className="p-1.5 text-[#777D78] hover:text-[#171A18] hover:bg-[#F4F5F2] rounded-xl transition-all border border-[#E2E5DF]"
+                          className="p-1.5 text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white hover:bg-[#F4F5F2] dark:hover:bg-[#1E293B] rounded-xl transition-all border border-[#E2E5DF] dark:border-[#263346]"
                           title="Copy payment reminder text"
                         >
-                          {isCopied ? <Check className="w-4 h-4 text-[#15803D]" /> : <Copy className="w-4 h-4" />}
+                          {isCopied ? <Check className="w-4 h-4 text-[#15803D] dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                         </button>
 
                         {/* WhatsApp click-to-chat */}
                         <button
                           type="button"
                           onClick={() => handleWhatsAppChat(item)}
-                          className="p-1.5 text-[#047857] hover:bg-[#ECFDF5] border border-transparent hover:border-[#A7F3D0] rounded-xl transition-all"
+                          className="p-1.5 text-[#047857] dark:text-emerald-400 hover:bg-[#ECFDF5] dark:hover:bg-emerald-500/15 border border-transparent hover:border-[#A7F3D0] dark:hover:border-emerald-500/30 rounded-xl transition-all"
                           title="Open WhatsApp chat with pre-filled reminder"
                         >
-                          <MessageSquare className="w-4 h-4 text-[#047857]" />
+                          <MessageSquare className="w-4 h-4 text-[#047857] dark:text-emerald-400" />
                         </button>
 
                         {/* Record Payment */}
                         <button
                           type="button"
                           onClick={() => onRecordPayment(item)}
-                          className="px-3 py-1.5 bg-[#C6F36B] hover:bg-[#bbf057] text-[#171A18] rounded-xl text-xs font-black transition-all shadow-2xs active:scale-95 cursor-pointer"
+                          className="px-3 py-1.5 bg-[#C6F36B] dark:bg-brand-lime hover:bg-[#bbf057] dark:hover:bg-[#BCE600] text-[#171A18] dark:text-brand-obsidian rounded-xl text-xs font-black transition-all shadow-2xs active:scale-95 cursor-pointer"
                         >
                           Pay
                         </button>
@@ -282,7 +290,7 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
         </div>
 
         {/* Mobile Cards (md:hidden) */}
-        <div className="md:hidden divide-y divide-[#F0F2EE]">
+        <div className="md:hidden divide-y divide-[#F0F2EE] dark:divide-[#1E2638]">
           {filteredPending.map((item) => {
             const dueDate = new Date(item.dueDate);
             const diff = Math.floor((now.getTime() - dueDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -293,28 +301,28 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
               <div key={`pending-mob-${item.id}`} className="p-4 space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <div>
-                    <h4 className="font-extrabold text-sm text-[#171A18]">{item.residentName}</h4>
-                    <span className="text-[11px] text-[#777D78]">
+                    <h4 className="font-extrabold text-sm text-[#171A18] dark:text-white">{item.residentName}</h4>
+                    <span className="text-[11px] text-[#777D78] dark:text-slate-400 font-medium">
                       Room {item.roomNumber} ({item.bedNumber}) • {item.residentPhone}
                     </span>
                   </div>
 
-                  <span className="font-black text-sm text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-lg">
+                  <span className="font-black text-sm text-red-600 dark:text-rose-300 bg-red-50 dark:bg-rose-500/15 border border-red-200 dark:border-rose-500/30 px-2.5 py-0.5 rounded-lg">
                     ₹{item.pendingAmount.toLocaleString("en-IN")}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-[#777D78] bg-[#FAFAF8] p-2.5 rounded-xl border border-[#E2E5DF]">
+                <div className="flex items-center justify-between text-xs text-[#777D78] dark:text-slate-400 bg-[#FAFAF8] dark:bg-[#151D2A] p-2.5 rounded-xl border border-[#E2E5DF] dark:border-[#263346]">
                   <div>
-                    <span>Month: <strong className="text-[#171A18]">{item.billingMonth}</strong></span>
+                    <span>Month: <strong className="text-[#171A18] dark:text-white">{item.billingMonth}</strong></span>
                     <span className="mx-1.5">•</span>
-                    <span>Due: <strong className="text-[#171A18]">{item.dueDate}</strong></span>
+                    <span>Due: <strong className="text-[#171A18] dark:text-white">{item.dueDate}</strong></span>
                   </div>
                   <div>
                     {daysOverdue > 0 ? (
-                      <span className="text-red-600 font-bold">{daysOverdue}d overdue</span>
+                      <span className="text-red-600 dark:text-rose-400 font-bold">{daysOverdue}d overdue</span>
                     ) : (
-                      <span className="text-green-600 font-bold">Due soon</span>
+                      <span className="text-green-600 dark:text-emerald-400 font-bold">Due soon</span>
                     )}
                   </div>
                 </div>
@@ -324,15 +332,15 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
                     <button
                       type="button"
                       onClick={() => handleCopyReminder(item)}
-                      className="p-2 text-[#777D78] hover:text-[#171A18] bg-[#FAFAF8] rounded-xl border border-[#E2E5DF]"
+                      className="p-2 text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white bg-[#FAFAF8] dark:bg-[#151D2A] rounded-xl border border-[#E2E5DF] dark:border-[#263346]"
                       title="Copy reminder"
                     >
-                      {isCopied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
+                      {isCopied ? <Check className="w-4 h-4 text-green-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleWhatsAppChat(item)}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] rounded-xl text-xs font-bold"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-[#ECFDF5] dark:bg-emerald-500/15 text-[#047857] dark:text-emerald-300 border border-[#A7F3D0] dark:border-emerald-500/30 rounded-xl text-xs font-bold"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>WhatsApp</span>
@@ -342,7 +350,7 @@ export const PendingDuesTab: React.FC<PendingDuesTabProps> = ({
                   <button
                     type="button"
                     onClick={() => onRecordPayment(item)}
-                    className="px-4 py-1.5 bg-[#C6F36B] hover:bg-[#bbf057] text-[#171A18] rounded-xl text-xs font-black shadow-2xs"
+                    className="px-4 py-1.5 bg-[#C6F36B] dark:bg-brand-lime hover:bg-[#bbf057] dark:hover:bg-[#BCE600] text-[#171A18] dark:text-brand-obsidian rounded-xl text-xs font-black shadow-2xs cursor-pointer"
                   >
                     Record Pay
                   </button>

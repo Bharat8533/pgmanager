@@ -58,7 +58,7 @@ export function ComplaintStatusTabs({
   ];
 
   return (
-    <div className="flex items-center gap-1.5 p-1 bg-white border border-brand-border rounded-2xl shadow-2xs overflow-x-auto no-scrollbar">
+    <div className="flex items-center gap-1.5 p-1 bg-white dark:bg-[#111622] border border-brand-border dark:border-[#222E42] rounded-2xl shadow-2xs overflow-x-auto no-scrollbar">
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
         return (
@@ -69,11 +69,11 @@ export function ComplaintStatusTabs({
             className={cn(
               "flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer",
               isActive
-                ? "bg-brand-obsidian text-white shadow-xs"
-                : "text-brand-muted hover:text-brand-charcoal hover:bg-brand-offwhite"
+                ? "bg-brand-obsidian dark:bg-[#151D2A] text-white shadow-xs border border-transparent dark:border-[#263346]"
+                : "text-brand-muted dark:text-slate-400 hover:text-brand-charcoal dark:hover:text-white hover:bg-brand-offwhite dark:hover:bg-[#151D2A]/60"
             )}
           >
-            <span className={cn(isActive ? "text-brand-lime" : "text-brand-muted")}>
+            <span className={cn(isActive ? "text-brand-lime" : "text-brand-muted dark:text-slate-400")}>
               {tab.icon}
             </span>
             <span>{tab.label}</span>
@@ -82,7 +82,7 @@ export function ComplaintStatusTabs({
                 "px-1.5 py-0.5 rounded-full text-[10px] font-extrabold min-w-[20px] text-center",
                 isActive
                   ? "bg-white/20 text-white"
-                  : "bg-brand-offwhite text-brand-charcoal border border-brand-border/60"
+                  : "bg-brand-offwhite dark:bg-[#1E2638] text-brand-charcoal dark:text-slate-200 border border-brand-border/60 dark:border-[#263346]"
               )}
             >
               {tab.count}

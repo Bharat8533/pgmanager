@@ -60,20 +60,20 @@ export function ComplaintMobileList({
 }: ComplaintMobileListProps) {
   if (complaints.length === 0) {
     return (
-      <div className="md:hidden bg-white rounded-2xl border border-brand-border p-8 text-center shadow-2xs space-y-3">
-        <div className="w-12 h-12 rounded-2xl bg-brand-offwhite border border-brand-border flex items-center justify-center mx-auto text-brand-muted">
-          <Inbox className="w-6 h-6 text-brand-muted" />
+      <div className="md:hidden bg-white dark:bg-[#111622] rounded-2xl border border-brand-border dark:border-[#222E42] p-8 text-center shadow-2xs space-y-3">
+        <div className="w-12 h-12 rounded-2xl bg-brand-offwhite dark:bg-[#1E2638] border border-brand-border dark:border-[#263346] flex items-center justify-center mx-auto text-brand-muted dark:text-slate-400">
+          <Inbox className="w-6 h-6 text-brand-muted dark:text-slate-400" />
         </div>
-        <h3 className="text-sm font-bold text-brand-charcoal">
+        <h3 className="text-sm font-bold text-brand-charcoal dark:text-white">
           No Complaints Found
         </h3>
-        <p className="text-xs text-brand-muted max-w-xs mx-auto">
+        <p className="text-xs text-brand-muted dark:text-slate-400 max-w-xs mx-auto">
           No records match your active filters. Try searching with a different term.
         </p>
         <button
           type="button"
           onClick={onClearFilters}
-          className="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-obsidian text-white text-xs font-semibold"
+          className="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-brand-obsidian dark:bg-brand-lime text-white dark:text-brand-obsidian text-xs font-semibold cursor-pointer"
         >
           Reset Filters
         </button>
@@ -97,18 +97,18 @@ export function ComplaintMobileList({
           <div
             key={complaint.id}
             onClick={() => onSelectComplaint(complaint)}
-            className="p-4 bg-white rounded-2xl border border-brand-border shadow-2xs space-y-3 cursor-pointer active:scale-[0.99] transition-transform"
+            className="p-4 bg-white dark:bg-[#111622] rounded-2xl border border-brand-border dark:border-[#222E42] shadow-2xs space-y-3 cursor-pointer active:scale-[0.99] transition-transform"
           >
             {/* Top row: ID, submitted date, priority */}
             <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-1.5 font-mono font-bold text-brand-charcoal">
+              <div className="flex items-center gap-1.5 font-mono font-bold text-brand-charcoal dark:text-white">
                 <span>{complaint.complaintNumber}</span>
                 {complaint.attachments.length > 0 && (
-                  <Paperclip className="w-3 h-3 text-brand-muted" />
+                  <Paperclip className="w-3 h-3 text-brand-muted dark:text-slate-400" />
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-brand-muted">{formattedDate}</span>
+                <span className="text-[10px] text-brand-muted dark:text-slate-400">{formattedDate}</span>
                 <span
                   className={cn(
                     "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold border uppercase tracking-wider",
@@ -137,25 +137,25 @@ export function ComplaintMobileList({
                 {CATEGORY_ICON_MAP[complaint.category]}
                 <span>{catMeta.label}</span>
               </span>
-              <h4 className="text-xs font-bold text-brand-charcoal line-clamp-1">
+              <h4 className="text-xs font-bold text-brand-charcoal dark:text-white line-clamp-1">
                 {complaint.title}
               </h4>
-              <p className="text-[11px] text-brand-muted line-clamp-2 mt-0.5">
+              <p className="text-[11px] text-brand-muted dark:text-slate-400 line-clamp-2 mt-0.5">
                 {complaint.description}
               </p>
             </div>
 
             {/* Resident & Room footer */}
-            <div className="pt-2 border-t border-brand-border/60 flex items-center justify-between text-xs">
+            <div className="pt-2 border-t border-brand-border/60 dark:border-[#1E2638] flex items-center justify-between text-xs">
               <div className="flex items-center gap-2 min-w-0">
-                <div className="w-6 h-6 rounded-full bg-brand-obsidian text-white flex items-center justify-center font-bold text-[9px] shrink-0">
+                <div className="w-6 h-6 rounded-full bg-brand-obsidian dark:bg-[#1E2638] text-white dark:text-brand-lime flex items-center justify-center font-bold text-[9px] shrink-0 border border-transparent dark:border-[#263346]">
                   {complaint.residentName.charAt(0)}
                 </div>
                 <div className="min-w-0 truncate">
-                  <span className="font-semibold text-brand-charcoal truncate block text-[11px]">
+                  <span className="font-semibold text-brand-charcoal dark:text-white truncate block text-[11px]">
                     {complaint.residentName}
                   </span>
-                  <span className="text-[10px] text-brand-muted block -mt-0.5">
+                  <span className="text-[10px] text-brand-muted dark:text-slate-400 block -mt-0.5">
                     Room {complaint.roomNumber}
                   </span>
                 </div>
@@ -175,7 +175,7 @@ export function ComplaintMobileList({
                 </span>
                 <button
                   type="button"
-                  className="p-1.5 bg-brand-offwhite rounded-lg text-brand-charcoal border border-brand-border"
+                  className="p-1.5 bg-brand-offwhite dark:bg-[#151D2A] rounded-lg text-brand-charcoal dark:text-slate-200 border border-brand-border dark:border-[#263346]"
                 >
                   <Eye className="w-3.5 h-3.5" />
                 </button>

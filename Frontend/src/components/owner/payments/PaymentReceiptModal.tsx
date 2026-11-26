@@ -35,25 +35,25 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl border border-[#E2E5DF] shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]">
+      <div className="bg-white dark:bg-[#111622] rounded-3xl border border-[#E2E5DF] dark:border-[#222E42] shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]">
         {/* Top Action Bar */}
-        <div className="px-6 py-4 border-b border-[#F0F2EE] flex items-center justify-between bg-[#FAFAF8] print:hidden">
-          <span className="text-xs font-bold text-[#171A18] uppercase tracking-wider">
+        <div className="px-6 py-4 border-b border-[#F0F2EE] dark:border-[#1E2638] flex items-center justify-between bg-[#FAFAF8] dark:bg-[#0D111A] print:hidden">
+          <span className="text-xs font-bold text-[#171A18] dark:text-white uppercase tracking-wider">
             Official Payment Receipt
           </span>
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#171A18] text-white rounded-xl text-xs font-bold hover:bg-[#2A2E2B] transition-all shadow-2xs"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#171A18] dark:bg-[#151D2A] text-white rounded-xl text-xs font-bold hover:bg-[#2A2E2B] dark:hover:bg-[#1E293B] border border-transparent dark:border-[#263346] transition-all shadow-2xs cursor-pointer"
             >
-              <Printer className="w-3.5 h-3.5 text-[#C6F36B]" />
+              <Printer className="w-3.5 h-3.5 text-[#C6F36B] dark:text-brand-lime" />
               <span>Print</span>
             </button>
             <button
               type="button"
               onClick={handleWhatsAppShare}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#DCFCE7] text-[#15803D] border border-[#86EFAC] rounded-xl text-xs font-bold hover:bg-[#bbf7d0] transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#DCFCE7] dark:bg-emerald-500/15 text-[#15803D] dark:text-emerald-300 border border-[#86EFAC] dark:border-emerald-500/30 rounded-xl text-xs font-bold hover:bg-[#bbf7d0] dark:hover:bg-emerald-500/25 transition-all cursor-pointer"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
@@ -61,7 +61,7 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 text-[#777D78] hover:text-[#171A18] rounded-xl"
+              className="p-1.5 text-[#777D78] dark:text-slate-400 hover:text-[#171A18] dark:hover:text-white rounded-xl cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -69,46 +69,46 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
         </div>
 
         {/* Printable Receipt Paper */}
-        <div className="p-8 space-y-6 overflow-y-auto text-xs bg-white text-[#171A18] print:p-0">
+        <div className="p-8 space-y-6 overflow-y-auto text-xs bg-white dark:bg-[#151D2A] text-[#171A18] dark:text-white print:bg-white print:text-black print:p-0">
           {/* Header */}
-          <div className="border-b border-[#E2E5DF] pb-5 flex justify-between items-start">
+          <div className="border-b border-[#E2E5DF] dark:border-[#263346] pb-5 flex justify-between items-start">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-black text-lg text-[#171A18] tracking-tight">StayManage</span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#C6F36B] text-[#171A18]">
+                <span className="font-black text-lg text-[#171A18] dark:text-white tracking-tight">StayManage</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#C6F36B] dark:bg-brand-lime text-[#171A18] dark:text-brand-obsidian">
                   VERIFIED
                 </span>
               </div>
-              <p className="font-extrabold text-sm text-[#171A18]">{payment.propertyName}</p>
-              <p className="text-[11px] text-[#777D78]">{ownerBusinessName} • Ph: {ownerPhone}</p>
+              <p className="font-extrabold text-sm text-[#171A18] dark:text-white">{payment.propertyName}</p>
+              <p className="text-[11px] text-[#777D78] dark:text-slate-400">{ownerBusinessName} • Ph: {ownerPhone}</p>
             </div>
 
             <div className="text-right">
-              <span className="text-[10px] uppercase font-bold text-[#777D78] block">Receipt #</span>
-              <span className="font-mono font-black text-sm text-[#171A18]">{payment.id}</span>
-              <span className="text-[11px] text-[#777D78] block mt-1">Date: {payment.paymentDate}</span>
+              <span className="text-[10px] uppercase font-bold text-[#777D78] dark:text-slate-400 block">Receipt #</span>
+              <span className="font-mono font-black text-sm text-[#171A18] dark:text-white">{payment.id}</span>
+              <span className="text-[11px] text-[#777D78] dark:text-slate-400 block mt-1">Date: {payment.paymentDate}</span>
             </div>
           </div>
 
           {/* Resident Details Box */}
-          <div className="p-4 rounded-xl bg-[#FAFAF8] border border-[#E2E5DF] grid grid-cols-2 gap-3 text-xs">
+          <div className="p-4 rounded-xl bg-[#FAFAF8] dark:bg-[#111622] border border-[#E2E5DF] dark:border-[#263346] grid grid-cols-2 gap-3 text-xs">
             <div>
-              <span className="text-[10px] uppercase font-bold text-[#777D78] block">Received From:</span>
-              <span className="font-extrabold text-sm text-[#171A18] block mt-0.5">{payment.residentName}</span>
-              <span className="text-[11px] text-[#777D78]">{payment.residentPhone}</span>
+              <span className="text-[10px] uppercase font-bold text-[#777D78] dark:text-slate-400 block">Received From:</span>
+              <span className="font-extrabold text-sm text-[#171A18] dark:text-white block mt-0.5">{payment.residentName}</span>
+              <span className="text-[11px] text-[#777D78] dark:text-slate-400">{payment.residentPhone}</span>
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-[#777D78] block">Stay Assignment:</span>
-              <span className="font-bold text-[#171A18] block mt-0.5">Room {payment.roomNumber} ({payment.bedNumber})</span>
-              <span className="text-[11px] text-[#777D78]">{payment.propertyName}</span>
+              <span className="text-[10px] uppercase font-bold text-[#777D78] dark:text-slate-400 block">Stay Assignment:</span>
+              <span className="font-bold text-[#171A18] dark:text-white block mt-0.5">Room {payment.roomNumber} ({payment.bedNumber})</span>
+              <span className="text-[11px] text-[#777D78] dark:text-slate-400">{payment.propertyName}</span>
             </div>
           </div>
 
           {/* Payment Particulars */}
-          <div className="border border-[#E2E5DF] rounded-xl overflow-hidden">
+          <div className="border border-[#E2E5DF] dark:border-[#263346] rounded-xl overflow-hidden">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#FAFAF8] border-b border-[#F0F2EE] text-[10px] font-bold text-[#777D78] uppercase">
+                <tr className="bg-[#FAFAF8] dark:bg-[#111622] border-b border-[#F0F2EE] dark:border-[#1E2638] text-[10px] font-bold text-[#777D78] dark:text-slate-400 uppercase">
                   <th className="p-3">Description / Purpose</th>
                   <th className="p-3">Payment Mode</th>
                   <th className="p-3">Transaction Reference</th>
@@ -117,14 +117,14 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-3 font-bold text-[#171A18]">
+                  <td className="p-3 font-bold text-[#171A18] dark:text-white">
                     {payment.paymentType} – {payment.billingMonth}
                   </td>
-                  <td className="p-3 text-[#171A18] font-medium">{payment.paymentMethod}</td>
-                  <td className="p-3 font-mono text-[11px] text-[#777D78]">
+                  <td className="p-3 text-[#171A18] dark:text-slate-200 font-medium">{payment.paymentMethod}</td>
+                  <td className="p-3 font-mono text-[11px] text-[#777D78] dark:text-slate-400">
                     {payment.transactionReference || "Cash / In-Person"}
                   </td>
-                  <td className="p-3 text-right font-black text-sm text-[#171A18]">
+                  <td className="p-3 text-right font-black text-sm text-[#171A18] dark:text-white">
                     ₹{payment.amount.toLocaleString("en-IN")}
                   </td>
                 </tr>
@@ -134,32 +134,32 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
 
           {/* Allocation Breakdown if multiple months */}
           {payment.allocations && payment.allocations.length > 0 && (
-            <div className="p-3 bg-[#F4F5F2] rounded-xl text-xs space-y-1">
-              <span className="text-[10px] font-bold uppercase text-[#777D78] block">Allocated Towards:</span>
+            <div className="p-3 bg-[#F4F5F2] dark:bg-[#111622] border border-transparent dark:border-[#263346] rounded-xl text-xs space-y-1">
+              <span className="text-[10px] font-bold uppercase text-[#777D78] dark:text-slate-400 block">Allocated Towards:</span>
               {payment.allocations.map((a) => (
-                <div key={a.billingMonth} className="flex justify-between text-[#171A18]">
+                <div key={a.billingMonth} className="flex justify-between text-[#171A18] dark:text-slate-200">
                   <span>Month: {a.billingMonth}</span>
-                  <span className="font-bold">₹{a.amountAllocated.toLocaleString("en-IN")}</span>
+                  <span className="font-bold dark:text-white">₹{a.amountAllocated.toLocaleString("en-IN")}</span>
                 </div>
               ))}
             </div>
           )}
 
           {/* Total & Seal */}
-          <div className="pt-4 border-t border-[#E2E5DF] flex justify-between items-end">
+          <div className="pt-4 border-t border-[#E2E5DF] dark:border-[#263346] flex justify-between items-end">
             <div className="space-y-1">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#15803D]">
-                <ShieldCheck className="w-4 h-4 text-[#15803D]" />
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#15803D] dark:text-emerald-400">
+                <ShieldCheck className="w-4 h-4 text-[#15803D] dark:text-emerald-400" />
                 <span>Payment Verified & Cleared</span>
               </div>
-              <p className="text-[10px] text-[#777D78]">
+              <p className="text-[10px] text-[#777D78] dark:text-slate-400">
                 This receipt confirms the recorded payment. Not a tax invoice.
               </p>
             </div>
 
             <div className="text-right">
-              <span className="text-[10px] uppercase font-bold text-[#777D78] block">Total Amount Received</span>
-              <span className="font-black text-2xl text-[#171A18] block tracking-tight">
+              <span className="text-[10px] uppercase font-bold text-[#777D78] dark:text-slate-400 block">Total Amount Received</span>
+              <span className="font-black text-2xl text-[#171A18] dark:text-white block tracking-tight">
                 ₹{payment.amount.toLocaleString("en-IN")}
               </span>
             </div>
@@ -167,11 +167,11 @@ export const PaymentReceiptModal: React.FC<PaymentReceiptModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-[#FAFAF8] border-t border-[#F0F2EE] flex justify-end print:hidden">
+        <div className="px-6 py-4 bg-[#FAFAF8] dark:bg-[#0D111A] border-t border-[#F0F2EE] dark:border-[#1E2638] flex justify-end print:hidden">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-[#171A18] text-white rounded-xl text-xs font-bold hover:bg-[#2A2E2B]"
+            className="px-4 py-2 bg-[#171A18] dark:bg-[#151D2A] text-white rounded-xl text-xs font-bold hover:bg-[#2A2E2B] dark:hover:bg-[#1E293B] border border-transparent dark:border-[#263346] cursor-pointer"
           >
             Close Receipt
           </button>
