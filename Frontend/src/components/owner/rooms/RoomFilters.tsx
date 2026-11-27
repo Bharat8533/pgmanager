@@ -64,6 +64,7 @@ export function RoomFilters({
     { label: "Least Beds", value: "beds_low" },
   ];
 
+  
   return (
     <div className="bg-white dark:bg-[#111622] rounded-2xl border border-brand-border/80 dark:border-[#222E42] p-3 sm:p-4 shadow-2xs space-y-3">
       {/* Top Search & Primary Action Row */}
